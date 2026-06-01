@@ -267,14 +267,35 @@
       transform: translateY(0) scale(1);
     }
     
-    .lightbox-content-wrap img {
-      max-height: 72vh;
-      max-width: 100%;
+    .lightbox-img-container {
+      position: relative;
+      overflow: hidden;
       border-radius: 20px;
-      object-fit: contain;
       box-shadow: 0 30px 90px rgba(0, 0, 0, 0.65);
       border: 1px solid rgba(255, 255, 255, 0.08);
       background: #0d1a14;
+      cursor: zoom-in;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-height: 72vh;
+      width: 100%;
+    }
+    
+    .lightbox-img-container.zoomed {
+      cursor: zoom-out;
+    }
+    
+    .lightbox-img-container img {
+      max-height: 72vh;
+      max-width: 100%;
+      object-fit: contain;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-origin: center center;
+    }
+    
+    .lightbox-img-container.zoomed img {
+      transform: scale(2.5);
     }
     
     .lightbox-caption {
@@ -471,7 +492,9 @@
     <span id="lightboxPrev" class="lightbox-nav lightbox-prev">&#10094;</span>
     <span id="lightboxNext" class="lightbox-nav lightbox-next">&#10095;</span>
     <div class="lightbox-content-wrap">
-      <img id="lightboxImg" src="" alt="Enlarged field photograph" />
+      <div class="lightbox-img-container" id="lightboxImgContainer">
+        <img id="lightboxImg" src="" alt="Enlarged field photograph" />
+      </div>
       <div class="lightbox-caption">
         <div class="lightbox-title-row">
           <div class="lightbox-title-wrap">
@@ -498,6 +521,7 @@
       const tabs = photoTabs.querySelectorAll('.tab');
       
       const lightbox = document.getElementById('lightbox');
+      const lightboxImgContainer = document.getElementById('lightboxImgContainer');
       const lightboxImg = document.getElementById('lightboxImg');
       const lightboxEmoji = document.getElementById('lightboxEmoji');
       const lightboxTitle = document.getElementById('lightboxTitle');
@@ -690,6 +714,7 @@
       function openLightbox(speciesIdx, imgIdx) {
         currentSpeciesIndex = speciesIdx;
         currentImageIndex = imgIdx;
+        resetZoom();
         updateLightboxContent();
         lightbox.classList.add('visible');
         document.body.style.overflow = 'hidden';
@@ -698,6 +723,35 @@
       function closeLightbox() {
         lightbox.classList.remove('visible');
         document.body.style.overflow = '';
+        resetZoom();
+      }
+      
+      // Zoom and Pan Handlers
+      lightboxImgContainer.addEventListener('click', (e) => {
+        lightboxImgContainer.classList.toggle('zoomed');
+        if (!lightboxImgContainer.classList.contains('zoomed')) {
+          lightboxImg.style.transformOrigin = 'center center';
+        } else {
+          updateZoomOrigin(e);
+        }
+      });
+      
+      lightboxImgContainer.addEventListener('mousemove', (e) => {
+        if (lightboxImgContainer.classList.contains('zoomed')) {
+          updateZoomOrigin(e);
+        }
+      });
+      
+      function updateZoomOrigin(e) {
+        const rect = lightboxImgContainer.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        lightboxImg.style.transformOrigin = `${x}% ${y}%`;
+      }
+      
+      function resetZoom() {
+        lightboxImgContainer.classList.remove('zoomed');
+        lightboxImg.style.transformOrigin = 'center center';
       }
       
       function updateLightboxContent() {
@@ -723,6 +777,8 @@
       function navigateLightbox(dir) {
         const p = filteredPhotos[currentSpeciesIndex];
         if (!p) return;
+        
+        resetZoom();
         
         if (dir === 1) {
           // Go Forward

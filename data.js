@@ -60,8 +60,8 @@ const site = {
       doi: '10.1093/ornithology/ukag021',
       url: 'https://doi.org/10.1093/ornithology/ukag021',
       note: 'Investigates how vocal activity during the dawn chorus acts as an acoustic beacon, influencing the social centrality and cohesion of mixed-species understory bird flocks.',
-      speciesName: 'Eastern Himalayan MSF Birds',
-      img: 'Photography/DSC_0755.JPG',
+      speciesName: 'Vocal Centrality Network Plot',
+      img: 'Photography/bird_network_plot.png',
       citations: {
         apa: 'Gupta, S., Bharadwaj, A., Bhat, A., Thapa, A., Biswakarma, A., Tamang, B., Munda, B., Biswakarma, B., Tamang, D., Pradhan, D., Rai, M. K., Rai, R., Rai, S., & Srinivasan, U. (2026). Vocal species are more central in Eastern Himalayan mixed-species bird flocks. Ornithology, 115(2), ukag021. https://doi.org/10.1093/ornithology/ukag021',
         mla: 'Gupta, Satyam, et al. "Vocal Species Are More Central in Eastern Himalayan Mixed-Species Bird Flocks." Ornithology, vol. 115, no. 2, 2026, ukag021, https://doi.org/10.1093/ornithology/ukag021.',
@@ -100,7 +100,7 @@ const site = {
       emoji: '🐦',
       bio: 'Real field recording of the Green-crowned Warbler calling, recorded in high canopy mixed flocks.',
       src: 'Audio Bank/GCW.wav',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Green-crowned_Warbler_%28Phylloscopus_burkii%29_by_Shishir_Bhat.jpg',
+      img: 'Audio Bank/GCW.jpg',
       imgCredit: 'Shishir Bhat / Wikimedia Commons',
       audioCredit: 'Satyam Gupta'
     },
@@ -113,7 +113,7 @@ const site = {
       emoji: '🐦',
       bio: 'High canopy flycatcher active vocalizations, recorded during Eastern Himalayas surveys.',
       src: 'Audio Bank/GHCF.wav',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Culicicapa_ceylonensis-2.jpg',
+      img: 'Audio Bank/GHCF.jpg',
       imgCredit: 'L. Shyamal / Wikimedia Commons',
       audioCredit: 'Satyam Gupta'
     },
@@ -126,7 +126,7 @@ const site = {
       emoji: '🐦',
       bio: 'Rapid calling patterns, recorded from mixed-species flocks in Sikkim.',
       src: 'Audio Bank/RTM.wav',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Red-tailed_Minla_%28Minla_ignotincta%29_by_L_Shyamal.jpg',
+      img: 'Audio Bank/RTM.jpg',
       imgCredit: 'L. Shyamal / Wikimedia Commons',
       audioCredit: 'Satyam Gupta'
     },
@@ -139,7 +139,7 @@ const site = {
       emoji: '🐸',
       bio: 'Monsoon advertisement call of the Indian Golden-backed Frog, recorded near wet torrents.',
       src: 'Audio Bank/Hylarana_indica.wav',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Indosylvirana_indica_-_Shreeram_MV_-_Agumbe.jpg',
+      img: 'Audio Bank/Hylarana_indica.jpg',
       imgCredit: 'Shreeram MV / Wikimedia Commons',
       audioCredit: 'Satyam Gupta'
     },
@@ -152,7 +152,7 @@ const site = {
       emoji: '🐸',
       bio: 'Field recording of Rao\'s Intermediate Golden-backed Frog, endemic to the Western Ghats wet forests.',
       src: 'Audio Bank/H.intermedius_Ind_07.WAV',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/c/c2/Indosylvirana_intermedia.jpg',
+      img: 'Audio Bank/H_intermedius.jpg',
       imgCredit: 'Shreeram MV / Wikimedia Commons',
       audioCredit: 'Satyam Gupta'
     },
@@ -165,7 +165,7 @@ const site = {
       emoji: '🐸',
       bio: 'Advertisement call of the Malabar Gliding Frog, recorded during night surveys in Kerala.',
       src: 'Audio Bank/R.malabaricus_Ind_08.WAV',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/e/e5/Rhacophorus_malabaricus.jpg',
+      img: 'Audio Bank/R_malabaricus.jpg',
       imgCredit: 'Kalyan Varma / Wikimedia Commons',
       audioCredit: 'Satyam Gupta'
     },
@@ -178,7 +178,7 @@ const site = {
       emoji: '🌿',
       bio: 'A composite outdoor field soundscape containing forest ambience, insects, and distant biophony.',
       src: 'Audio Bank/Soundscape.wav',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/080110_zell_mosel.JPG/1200px-080110_zell_mosel.JPG',
+      img: 'Audio Bank/Soundscape.jpg',
       imgCredit: 'Hans-Peter Scholz / Wikimedia Commons',
       audioCredit: 'Satyam Gupta'
     }
