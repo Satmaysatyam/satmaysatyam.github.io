@@ -14,16 +14,21 @@ const site = {
       id: 'flock',
       title: 'MSF Flock Ecology',
       emoji: '🐦',
-      intro: 'Symphony of Survival: Bioacoustics in the Eastern Himalayas',
-      desc: 'Investigating vocal species centrality in mixed-species bird flocks (MSFs) to understand how vocalizations maintain flock cohesion during the dawn chorus. This research was conducted in the Eaglenest Wildlife Sanctuary, Arunachal Pradesh, India.',
+      intro: 'Symphony of Survival: Bioacoustics & Prey Dynamics in the Eastern Himalayas',
+      desc: 'My Master\'s thesis research investigated vocal species centrality in mixed-species bird flocks (MSFs) in Eaglenest Wildlife Sanctuary, Arunachal Pradesh, India. This study combined bioacoustic network modeling of the dawn chorus with field sampling of insect/arthropod prey availability to examine how acoustic beacons and resource density influence group cohesion and foraging dynamics.',
       points: [
-        'Studied mixed-species bird flocks using bioacoustics in the Eastern Himalayas, Arunachal Pradesh, India.',
-        'Analyzed dawn chorus vocal activity as acoustic beacons that maintain group cohesion.',
-        'Modeled social network centrality based on vocal behavior of species in Mixed-Species Flocks (MSFs).'
+        'Conducted bioacoustic recordings of mixed-species understory bird flocks during the dawn chorus in the Eastern Himalayas.',
+        'Modeled social network centrality to demonstrate how highly vocal species act as acoustic beacons to maintain flock cohesion.',
+        'Estimated insect/arthropod prey availability across an elevational gradient to analyze how understory bird prey biomass affects flock movement and species composition.',
+        'Conducted extensive understory arthropod sampling using foliage-sweeping and trunk-bark search methods.'
       ],
       images: [
         { src: 'Photography/bird_network_plot.png', caption: 'Vocal Centrality Network Plot representing social structure' },
         { src: 'Photography/Field photos/bioacoustic_recording.jpg', caption: 'Conducting bioacoustic recordings in Eaglenest Wildlife Sanctuary' }
+      ],
+      logos: [
+        { name: 'Pondicherry University', abbr: 'PU', color: '#0b5d43', bg: '#f6f2ea' },
+        { name: 'Indian Institute of Science', abbr: 'IISc', color: '#143559', bg: '#eef3ed' }
       ]
     },
     {
@@ -40,6 +45,10 @@ const site = {
       images: [
         { src: 'Photography/Field photos/frog_measurement.jpg', caption: 'Taking morphometric measurements (SVL and weight) of a bush frog' },
         { src: 'Photography/Field photos/herp_fieldwork.jpg', caption: 'Nocturnal survey and snake capture during herpetological indexing' }
+      ],
+      logos: [
+        { name: 'Indian Institute of Science', abbr: 'IISc', color: '#143559', bg: '#eef3ed' },
+        { name: 'Association for Tropical Biology & Conservation', abbr: 'ATBC', color: '#d9a441', bg: '#f6f2ea' }
       ]
     },
     {
@@ -58,6 +67,13 @@ const site = {
       images: [
         { src: 'Photography/_DSC0328.png', caption: 'Evergreen Forest Canopy: assessing canopy cover and habitat complexity for field surveys' },
         { src: 'personal photos/_DSC0620.JPG', caption: 'Conducting field research and data collection during fieldwork' }
+      ],
+      logos: [
+        { name: 'Wildlife Institute of India', abbr: 'WII', color: '#0b5d43', bg: '#f6f2ea' },
+        { name: 'Indian Institute of Science', abbr: 'IISc', color: '#143559', bg: '#eef3ed' },
+        { name: 'Chhattisgarh Forest Department', abbr: 'CG-FD', color: '#163126', bg: '#f4f8f6' },
+        { name: 'Haryana Forest Department', abbr: 'HR-FD', color: '#163126', bg: '#f4f8f6' },
+        { name: 'WALMI Bhopal', abbr: 'WALMI', color: '#174f7b', bg: '#f0f5fa' }
       ]
     },
     {
@@ -76,6 +92,12 @@ const site = {
       images: [
         { src: 'Photography/Leopard1-0435.jpg', caption: 'Indian Leopard (Panthera pardus fusca) captured in central India camera traps' },
         { src: 'Photography/spotted_deer2-0140.png', caption: 'Spotted Deer (Axis axis) herd along a deciduous forest meadow edge in central India' }
+      ],
+      logos: [
+        { name: 'World Wide Fund for Nature India', abbr: 'WWF', color: '#163126', bg: '#f4f8f6' },
+        { name: 'Wildlife Research & Conservation Society', abbr: 'WRCS', color: '#8d5d3b', bg: '#f6f2ea' },
+        { name: 'Centre for Wildlife Studies', abbr: 'CWS', color: '#0b5d43', bg: '#f6f2ea' },
+        { name: 'Madhya Pradesh Forest Department', abbr: 'MP-FD', color: '#163126', bg: '#f4f8f6' }
       ]
     }
   ],
@@ -128,7 +150,7 @@ const site = {
       name: 'Green-crowned Warbler',
       scientific: 'Seicercus burkii',
       habitat: 'Eastern Himalayas',
-      voice: 'chirp',
+      voice: 'call',
       emoji: '🐦',
       src: 'Audio Bank/GCW.wav',
       img: 'Audio Bank/GCW.jpg',
@@ -172,6 +194,18 @@ const site = {
       audioCredit: 'Satyam Gupta'
     },
     {
+      id: 'hylarana_ind_01',
+      name: 'Indian Golden-backed Frog (Call 2)',
+      scientific: 'Hylarana indica',
+      habitat: 'Western Ghats',
+      voice: 'croak',
+      emoji: '🐸',
+      src: 'Audio Bank/H.indica_Ind_01 (mp3cut.net).wav',
+      img: 'Audio Bank/Hylarana_indica.jpg',
+      imgCredit: 'Shreeram MV / Wikimedia Commons',
+      audioCredit: 'Satyam Gupta'
+    },
+    {
       id: 'hydrophylax',
       name: 'Intermediate Golden-backed Frog',
       scientific: 'Hydrophylax intermedius',
@@ -179,6 +213,18 @@ const site = {
       voice: 'croak',
       emoji: '🐸',
       src: 'Audio Bank/H.intermedius_Ind_07.WAV',
+      img: 'Audio Bank/H_intermedius.jpg',
+      imgCredit: 'Shreeram MV / Wikimedia Commons',
+      audioCredit: 'Satyam Gupta'
+    },
+    {
+      id: 'intermedius_ind_14',
+      name: 'Intermediate Golden-backed Frog (Call 2)',
+      scientific: 'Hydrophylax intermedius',
+      habitat: 'Western Ghats',
+      voice: 'croak',
+      emoji: '🐸',
+      src: 'Audio Bank/H.intermedius_Ind_14 (mp3cut.net).wav',
       img: 'Audio Bank/H_intermedius.jpg',
       imgCredit: 'Shreeram MV / Wikimedia Commons',
       audioCredit: 'Satyam Gupta'
@@ -193,6 +239,126 @@ const site = {
       src: 'Audio Bank/R.malabaricus_Ind_08.WAV',
       img: 'Audio Bank/R_malabaricus.jpg',
       imgCredit: 'Kalyan Varma / Wikimedia Commons',
+      audioCredit: 'Satyam Gupta'
+    },
+    {
+      id: 'malabaricus_ind_11',
+      name: 'Malabar Gliding Frog (Call 2)',
+      scientific: 'Rhacophorus malabaricus',
+      habitat: 'Western Ghats',
+      voice: 'croak',
+      emoji: '🐸',
+      src: 'Audio Bank/R.malabaricus_Ind_11 (mp3cut.net).wav',
+      img: 'Audio Bank/R_malabaricus.jpg',
+      imgCredit: 'Kalyan Varma / Wikimedia Commons',
+      audioCredit: 'Satyam Gupta'
+    },
+    {
+      id: 'curtipes',
+      name: 'Bicolored Frog',
+      scientific: 'Clinotarsus curtipes',
+      habitat: 'Western Ghats',
+      voice: 'croak',
+      emoji: '🐸',
+      src: 'Audio Bank/C.curtipes_Ind_01 (mp3cut.net).wav',
+      img: 'Audio Bank/Hylarana_indica.jpg',
+      imgCredit: 'Shreeram MV / Wikimedia Commons',
+      audioCredit: 'Satyam Gupta'
+    },
+    {
+      id: 'cyanophlyctis',
+      name: 'Skittering Frog',
+      scientific: 'Euphlyctis cyanophlyctis',
+      habitat: 'Western Ghats / Wetlands',
+      voice: 'croak',
+      emoji: '🐸',
+      src: 'Audio Bank/E.cyanophlyctis_Ind_08 (mp3cut.net).wav',
+      img: 'Audio Bank/Hylarana_indica.jpg',
+      imgCredit: 'Shreeram MV / Wikimedia Commons',
+      audioCredit: 'Satyam Gupta'
+    },
+    {
+      id: 'bahuvistara',
+      name: 'Sahyadri Golden-backed Frog',
+      scientific: 'Hydrophylax bahuvistara',
+      habitat: 'Western Ghats',
+      voice: 'croak',
+      emoji: '🐸',
+      src: 'Audio Bank/H.bahuvistara_Ind_10 (mp3cut.net).wav',
+      img: 'Audio Bank/H_intermedius.jpg',
+      imgCredit: 'Shreeram MV / Wikimedia Commons',
+      audioCredit: 'Satyam Gupta'
+    },
+    {
+      id: 'syhadrensis_ind_13',
+      name: 'Syhadri Pygmy Frog (Call 1)',
+      scientific: 'Minervarya syhadrensis',
+      habitat: 'Western Ghats / Grasslands',
+      voice: 'chirp',
+      emoji: '🐸',
+      src: 'Audio Bank/M.krishnan_Ind_13 (mp3cut.net).wav',
+      img: 'Audio Bank/H_intermedius.jpg',
+      imgCredit: 'Shreeram MV / Wikimedia Commons',
+      audioCredit: 'Satyam Gupta'
+    },
+    {
+      id: 'syhadrensis_ind_18',
+      name: 'Syhadri Pygmy Frog (Call 2)',
+      scientific: 'Minervarya syhadrensis',
+      habitat: 'Western Ghats / Grasslands',
+      voice: 'chirp',
+      emoji: '🐸',
+      src: 'Audio Bank/M.syhadrensis_Ind_18 (mp3cut.net).wav',
+      img: 'Audio Bank/H_intermedius.jpg',
+      imgCredit: 'Shreeram MV / Wikimedia Commons',
+      audioCredit: 'Satyam Gupta'
+    },
+    {
+      id: 'amboli',
+      name: 'Amboli Bush Frog',
+      scientific: 'Pseudophilautus amboli',
+      habitat: 'Western Ghats',
+      voice: 'croak',
+      emoji: '🐸',
+      src: 'Audio Bank/P.amboli_Ind_19 (mp3cut.net).wav',
+      img: 'Audio Bank/Hylarana_indica.jpg',
+      imgCredit: 'Shreeram MV / Wikimedia Commons',
+      audioCredit: 'Satyam Gupta'
+    },
+    {
+      id: 'maculatus',
+      name: 'Chunam Tree Frog',
+      scientific: 'Polypedates maculatus',
+      habitat: 'Western Ghats',
+      voice: 'croak',
+      emoji: '🐸',
+      src: 'Audio Bank/P.maculatus_Ind_19 (mp3cut.net).wav',
+      img: 'Audio Bank/R_malabaricus.jpg',
+      imgCredit: 'Kalyan Varma / Wikimedia Commons',
+      audioCredit: 'Satyam Gupta'
+    },
+    {
+      id: 'tuberculosus',
+      name: 'Malabar Tree Toad',
+      scientific: 'Pedostibes tuberculosus',
+      habitat: 'Western Ghats / Canopy',
+      voice: 'croak',
+      emoji: '🐸',
+      src: 'Audio Bank/P.tuberculosus_Ind_15 (mp3cut.net).wav',
+      img: 'Audio Bank/R_malabaricus.jpg',
+      imgCredit: 'Kalyan Varma / Wikimedia Commons',
+      audioCredit: 'Satyam Gupta'
+    },
+    {
+      id: 'luteolus',
+      name: 'Coorg Yellow Bush Frog',
+      scientific: 'Raorchestes luteolus',
+      habitat: 'Western Ghats',
+      voice: 'whistle',
+      emoji: '🐸',
+      src: 'Audio Bank/R.luteolus_Ind_14 (mp3cut.net).wav',
+      img: 'Audio Bank/Hylarana_indica.jpg',
+      imgCredit: 'Shreeram MV / Wikimedia Commons',
       audioCredit: 'Satyam Gupta'
     },
     {
