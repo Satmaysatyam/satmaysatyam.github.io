@@ -139,9 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   const mapElement = document.getElementById('field-map');
   if (mapElement) {
-    // Center of India, zoom level 4.5
+    // Center of India, zoom level 4
     const map = L.map('field-map', {
-      center: [21.3, 78.8],
+      center: [21.5, 78.5],
       zoom: 4,
       zoomControl: false,
       scrollWheelZoom: false
@@ -154,20 +154,23 @@ document.addEventListener('DOMContentLoaded', () => {
       maxZoom: 10
     }).addTo(map);
 
-    // Custom marker icon design
-    const customIcon = L.divIcon({
+    // Custom marker icon design based on studied Taxa
+    const getCustomIcon = (emoji) => L.divIcon({
       className: 'custom-map-pin',
       html: `<div style="
-        width: 14px; 
-        height: 14px; 
-        background: #0b5d43; 
-        border: 2px solid white; 
+        width: 26px; 
+        height: 26px; 
+        background: rgba(255, 255, 255, 0.95); 
+        border: 2px solid #0b5d43; 
         border-radius: 50%; 
-        box-shadow: 0 0 8px rgba(11,93,67,0.6);
+        box-shadow: 0 4px 10px rgba(13,33,25,0.2);
+        display: grid;
+        place-items: center;
+        font-size: 15px;
         animation: pulse-pin 1.5s infinite alternate;
-      "></div>`,
-      iconSize: [14, 14],
-      iconAnchor: [7, 7]
+      ">${emoji}</div>`,
+      iconSize: [26, 26],
+      iconAnchor: [13, 13]
     });
 
     // CSS Keyframe injected dynamically for marker animation
@@ -175,33 +178,79 @@ document.addEventListener('DOMContentLoaded', () => {
     styleSheet.type = 'text/css';
     styleSheet.innerText = `
       @keyframes pulse-pin {
-        0% { transform: scale(1); box-shadow: 0 0 6px rgba(11,93,67,0.5); }
-        100% { transform: scale(1.25); box-shadow: 0 0 14px rgba(11,93,67,0.9); }
+        0% { transform: scale(1); box-shadow: 0 0 6px rgba(11,93,67,0.4); }
+        100% { transform: scale(1.15); box-shadow: 0 0 12px rgba(11,93,67,0.7); }
       }
     `;
     document.head.appendChild(styleSheet);
 
-    // Field sites data matching Satyam's CV
+    // Research sites data matching Satyam's CV
     const sites = [
       {
-        coords: [27.15, 92.40],
-        title: "Eastern Himalayas",
-        desc: "Thesis research focused on vocally active species and community network dynamics within mixed-species bird flocks."
+        coords: [27.150, 92.400],
+        title: "Eaglenest Wildlife Sanctuary",
+        emoji: "🐦",
+        desc: "Avian Bioacoustics: Researching vocal species centrality, social networks, and community dynamics of mixed-species bird flocks in selectively logged forests."
       },
       {
-        coords: [22.25, 80.60],
+        coords: [22.464, 78.182],
+        title: "Satpura Tiger Reserve",
+        emoji: "🐯",
+        desc: "Landscape Conservation: Mammal occupancy modeling, transect surveys, and camera trap monitoring in central Indian dry-deciduous forests."
+      },
+      {
+        coords: [21.468, 77.142],
+        title: "Melghat Tiger Reserve",
+        emoji: "🐯",
+        desc: "Landscape Conservation: Camera trapping exercises and large mammal corridor connectivity surveys."
+      },
+      {
+        coords: [24.636, 79.988],
+        title: "Panna Tiger Reserve",
+        emoji: "🐯",
+        desc: "Landscape Conservation: Camera trap grid deployment and carnivore prey-base occupancy monitoring."
+      },
+      {
+        coords: [22.250, 80.600],
         title: "Kanha Tiger Reserve",
-        desc: "Field documentation and bioacoustic monitoring inside dense central Indian dry-deciduous forests."
+        emoji: "🐯",
+        desc: "Landscape Conservation: Bioacoustic canopy recording and mammalian occupancy surveys."
       },
       {
-        coords: [13.52, 75.09],
-        title: "Agumbe Rainforest",
-        desc: "Acoustic profiling of canopy frogs and tracking territory calls of the Wayanad Torrent Frog."
+        coords: [22.484, 81.761],
+        title: "Achanakmar Tiger Reserve",
+        emoji: "🐯",
+        desc: "Landscape Conservation: Species occupancy mapping, camera trap logistics, and prey-base counting."
       },
       {
-        coords: [22.46, 69.97],
-        title: "Marine National Park",
-        desc: "Genetic connectivity and marine species conservation surveys for the Short-tailed Sea Snake."
+        coords: [12.115, 79.843],
+        title: "Kazhuveli Wildlife Sanctuary",
+        emoji: "🐦",
+        desc: "Wetland Ecology: Migratory shorebird census, species richness monitoring, and wetland habitat surveys."
+      },
+      {
+        coords: [14.619, 74.844],
+        title: "Sirsi, Karnataka",
+        emoji: "🐸",
+        desc: "Amphibian Ecology: Herpetological profiling, microhabitat breeding counts, and bioacoustic profiling of tree frogs in Western Ghats."
+      },
+      {
+        coords: [28.148, 77.332],
+        title: "Palwal, Haryana",
+        emoji: "🐦",
+        desc: "Avian Ecology: Sarus Crane breeding biology and nesting surveys within agricultural and wetland ecosystems."
+      },
+      {
+        coords: [22.466, 69.066],
+        title: "Okha, Gulf of Kutch",
+        emoji: "🐍",
+        desc: "Marine Herpetology: Field surveys and genetic connectivity sampling of the Short-tailed Sea Snake (Hydrophis curtus)."
+      },
+      {
+        coords: [10.285, 79.851],
+        title: "Point Calimere",
+        emoji: "🐬",
+        desc: "Marine Conservation: Seagrass mapping and habitat connectivity assessments for the CAMPA Dugong Conservation Project."
       }
     ];
 
@@ -209,16 +258,16 @@ document.addEventListener('DOMContentLoaded', () => {
     sites.forEach(site => {
       const popupContent = `
         <div>
-          <h5>📍 ${site.title}</h5>
+          <h5>${site.emoji} ${site.title}</h5>
           <p>${site.desc}</p>
         </div>
       `;
-      L.marker(site.coords, { icon: customIcon })
+      L.marker(site.coords, { icon: getCustomIcon(site.emoji) })
         .addTo(map)
         .bindPopup(popupContent, {
           closeButton: false,
-          minWidth: 180,
-          maxWidth: 220
+          minWidth: 200,
+          maxWidth: 240
         });
     });
   }
