@@ -7,6 +7,27 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     /* --- Research Panel Visual Styling --- */
+    .inst-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(22, 49, 38, 0.03);
+      border: 1px solid rgba(22, 49, 38, 0.08);
+      border-radius: 12px;
+      padding: 6px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink);
+      box-shadow: 0 2px 8px rgba(13,33,25,0.03);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .inst-badge:hover {
+      background: rgba(11, 93, 67, 0.05);
+      border-color: var(--brand);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(13,33,25,0.06);
+    }
+    
     .research-visuals-col {
       display: flex;
       flex-direction: column;
@@ -601,6 +622,30 @@
           </div>
         `).join('');
 
+        const logosHtml = tab.logos && tab.logos.length > 0 ? `
+          <div class="research-logos-section" style="margin-top: 28px; border-top: 1px solid rgba(22, 49, 38, 0.08); padding-top: 18px;">
+            <span class="profile-label" style="display: block; font-size: 0.72rem; color: var(--brand); letter-spacing: 0.08em; font-weight: 800; margin-bottom: 12px; text-transform: uppercase;">Affiliated Institutions / Sponsors</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+              ${tab.logos.map(logo => {
+                if (logo.abbr === 'ATBC') {
+                  return `
+                    <div class="inst-badge" title="${logo.name}">
+                      <img src="logos/atbc.png" alt="ATBC" style="height: 18px; width: auto; object-fit: contain;">
+                      <span>${logo.name}</span>
+                    </div>
+                  `;
+                }
+                return `
+                  <div class="inst-badge" title="${logo.name}">
+                    <div style="width: 22px; height: 22px; border-radius: 50%; background: ${logo.color}; color: white; display: grid; place-items: center; font-size: 0.6rem; font-weight: 800; border: 1px solid rgba(255,255,255,0.1);">${logo.abbr}</div>
+                    <span>${logo.name}</span>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        ` : '';
+
         researchPanel.innerHTML = `
           <div class="panel-inner split">
             <div>
@@ -616,6 +661,7 @@
                   </div>
                 `).join('')}
               </div>
+              ${logosHtml}
             </div>
             <div>
               <div class="research-visuals-col">
