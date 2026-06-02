@@ -2,7 +2,6 @@ const site = {
   pages: [
     { id: 'home', label: 'Home', url: 'index.html' },
     { id: 'research', label: 'Research', url: 'research.html' },
-    { id: 'publications', label: 'Publications', url: 'publications.html' },
     { id: 'audio', label: 'Audio Bank', url: 'audio.html' },
     { id: 'photography', label: 'Photography', url: 'photography.html' },
     { id: 'art', label: 'Art', url: 'art.html' },
@@ -12,15 +11,15 @@ const site = {
   ],
   researchTabs: [
     {
-      id: 'avian',
-      title: 'Avian Bioacoustics',
+      id: 'flock',
+      title: 'MSF Flock Ecology',
       emoji: '🐦',
       intro: 'Symphony of Survival: Bioacoustics in the Eastern Himalayas',
-      desc: 'Investigating vocal species centrality in mixed-species bird flocks (MSFs) to understand how vocalizations maintain flock cohesion during the dawn chorus.',
+      desc: 'Investigating vocal species centrality in mixed-species bird flocks (MSFs) to understand how vocalizations maintain flock cohesion during the dawn chorus. This research was conducted in the Eaglenest Wildlife Sanctuary, Arunachal Pradesh, India.',
       points: [
-        'Modeled social network centrality based on vocal behavior of species in Mixed-Species Flocks (MSFs)',
-        'Analyzed dawn chorus vocal activity as acoustic beacons that maintain group cohesion',
-        'Elevational acoustic monitoring of bird communities in rugged Himalayan woodlands'
+        'Studied mixed-species bird flocks using bioacoustics in the Eastern Himalayas, Arunachal Pradesh, India.',
+        'Analyzed dawn chorus vocal activity as acoustic beacons that maintain group cohesion.',
+        'Modeled social network centrality based on vocal behavior of species in Mixed-Species Flocks (MSFs).'
       ],
       images: [
         { src: 'Photography/bird_network_plot.png', caption: 'Vocal Centrality Network Plot representing social structure' },
@@ -28,15 +27,15 @@ const site = {
       ]
     },
     {
-      id: 'amphibian',
-      title: 'Amphibian Ecology',
+      id: 'breeding',
+      title: 'Amphibian Breeding Ecology',
       emoji: '🐸',
       intro: 'Amphibian Bioacoustics & Breeding Ecology in the Western Ghats',
-      desc: 'Deploying passive acoustic monitoring (Audiomoth) to document calling intensity, microhabitat associations, and winter breeding ecology of endemic amphibians.',
+      desc: 'Investigating acoustic communication, calling phenology, and microhabitat associations of endemic frogs in the evergreen forests of Sirsi, Western Ghats. Recipient of the ATBC Seed Research Grant (2025).',
       points: [
-        'Passive Acoustic Monitoring (PAM) utilizing Audiomoth recorders to track vocal active times',
-        'Field documentation of breeding phenology and microhabitat parameters',
-        'Endemic bush frog call structural analysis in the evergreen forests of Sirsi'
+        'Deploying passive acoustic monitoring (PAM) using Audiomoth recorders to track vocal active times.',
+        'Studying acoustic eavesdropping by mosquitoes on anuran calls in the Western Ghats.',
+        'Analyzing call structural variations of endemic tree and bush frogs relative to microclimate.'
       ],
       images: [
         { src: 'Photography/Field photos/frog_measurement.jpg', caption: 'Taking morphometric measurements (SVL and weight) of a bush frog' },
@@ -44,19 +43,39 @@ const site = {
       ]
     },
     {
-      id: 'landscape',
-      title: 'Landscape Conservation',
-      emoji: '🗺️',
-      intro: 'Landscape-Scale Connectivity and Carnivore Occupancy',
-      desc: 'Designing occupancy frameworks, camera trap grids, and line transects to study mammal migration and habitat corridors across central Indian dry forests.',
+      id: 'intern',
+      title: 'Research Intern & Field Assistant',
+      emoji: '🔬',
+      intro: 'Field Assistantships & Professional Research Internships',
+      desc: 'Professional research roles spanning marine biology, People’s Biodiversity Registers (PBR) documentation, spatial modeling, and elevational bird prey surveys across India.',
       points: [
-        'Grid-based camera trap deployment for tiger, leopard, and prey base occupancy modeling',
-        'Corridor mapping and connectivity studies across Kanha, Satpura, and Melghat Reserves',
-        'Compiling People’s Biodiversity Registers (PBRs) in collaboration with local communities'
+        '<b>Field Assistant (Jan 2021 - Feb 2021)</b>: Worked with the Wildlife Institute of India (WII) on the CAMPA Dugong Conservation Project at Marine National Park, Gulf of Kutch, Gujarat. Conducted seagrass habitat mapping, awareness programs, and sorted seagrass-associated macrobenthic fauna.',
+        '<b>Research Intern (Jan 2021)</b>: Documented Rural People’s Biodiversity Registers (PBR) in the Core region of the Achanakmar Tiger Reserve, Chhattisgarh, with the Forest Department and FRLHT.',
+        '<b>Research Intern (March 2020 - Sept 2020)</b>: Prepared Rural and Urban PBR documentation for three districts in Haryana with the Forest Department and FRLHT.',
+        '<b>Summer Intern (April 2022 - July 2022)</b>: Worked with Dr. Umesh Srinivasan (IISc) to estimate arthropod prey availability for insectivorous birds along an elevational gradient in Eaglenest Wildlife Sanctuary.',
+        '<b>GIS Intern (May 2021)</b>: Completed training in GIS and Remote Sensing applications for biodiversity conservation at WALMI, Bhopal.'
+      ],
+      images: [
+        { src: 'Photography/_DSC0328.png', caption: 'Evergreen Forest Canopy: assessing canopy cover and habitat complexity for field surveys' },
+        { src: 'personal photos/_DSC0620.JPG', caption: 'Conducting field research and data collection during fieldwork' }
+      ]
+    },
+    {
+      id: 'volunteer',
+      title: 'Volunteership',
+      emoji: '🤝',
+      intro: 'Wildlife Conservation Volunteerships',
+      desc: 'Active participation in conservation-led field surveys, large-mammal occupancy camera-trapping, and wildlife census drives in collaboration with NGOs and State Forest Departments.',
+      points: [
+        '<b>Kanha Bird Survey (Feb 2022)</b>: Participated in the annual bird count at Kanha Tiger Reserve with the Wildlife and Nature Conservancy (WNC) Indore.',
+        '<b>Camera Trapping & Occupancy Survey (July 2021 - Aug 2021)</b>: Worked with WWF-India in the Satpura-Pench Corridor, setting up camera trap grids and collecting occupancy data.',
+        '<b>Occupancy Survey (June 2021 & Oct 2020)</b>: Volunteered with the Wildlife Research and Conservation Society (WRCS) Pune for Phase II of the tiger, co-predator, and prey occupancy surveys in the Satpura-Melghat Corridor.',
+        '<b>Wildlife Tourism Volunteer (March 2021)</b>: Collected data for the Centre for Wildlife Sciences (CWS) project examining nature-viewing preferences of tourists in Kanha Tiger Reserve.',
+        '<b>Vulture Census (March 2021)</b>: Assisted the Madhya Pradesh Forest Department in conducting the Vulture Census at Anuppur.'
       ],
       images: [
         { src: 'Photography/Leopard1-0435.jpg', caption: 'Indian Leopard (Panthera pardus fusca) captured in central India camera traps' },
-        { src: 'Photography/_DSC0328.png', caption: 'Evergreen Forest Canopy: assessing canopy cover and habitat complexity' }
+        { src: 'Photography/spotted_deer2-0140.png', caption: 'Spotted Deer (Axis axis) herd along a deciduous forest meadow edge in central India' }
       ]
     }
   ],
