@@ -286,19 +286,15 @@ const site = {
       emoji: '🐍'
     },
     {
-      id: 'sea_snake_photo',
-      title: 'Short-tailed Sea Snake',
-      scientific: 'Hydrophis curtus',
+      id: 'indian_tent_turtle',
+      title: 'Indian Tent Turtle',
+      scientific: 'Pangshura tentoria',
       group: 'Reptiles',
-      srcs: [
-        'Photography/Hydrophis_curtus_350251401.jpg',
-        'Photography/Lapemis_curtus.jpg'
-      ],
+      srcs: ['Photography/_DSC0792.JPG'],
       captions: [
-        'A short-tailed sea snake (Hydrophis curtus) documented during coastal biodiversity and genetic connectivity surveys in India. (Photo: Svetlana Tsarakhova / iNaturalist CC0)',
-        'Detail of the scale pattern and head structure of Hydrophis curtus, adapted for marine life. (Photo: Wikimedia Commons / CC-BY-SA 3.0)'
+        'A group of Indian Tent Turtles (Pangshura tentoria) basking in a line on a log in their riverine habitat.'
       ],
-      emoji: '🐍'
+      emoji: '🐢'
     },
     {
       id: 'collared_cat_snake',
@@ -394,6 +390,30 @@ const site = {
       ],
       emoji: '🪶'
     },
+    {
+      id: 'yellow_footed_green_pigeon',
+      title: 'Yellow-footed Green Pigeon',
+      scientific: 'Treron phoenicopterus',
+      group: 'Birds',
+      srcs: ['Photography/_DSC0499.JPG', 'Photography/_DSC0521.JPG'],
+      captions: [
+        'A Yellow-footed Green Pigeon (Treron phoenicopterus) feeding on silk-cotton flowers in the early morning.',
+        'Perched in the high canopy, showing its striking yellow legs and pastel green coloration.'
+      ],
+      emoji: '🐦'
+    },
+    {
+      id: 'great_hornbill',
+      title: 'Great Hornbill',
+      scientific: 'Buceros bicornis',
+      group: 'Birds',
+      srcs: ['Photography/_DSC0631.JPG', 'Photography/_DSC0774.JPG'],
+      captions: [
+        'A Great Hornbill (Buceros bicornis) perched among canopy branches in an evergreen forest.',
+        'A close view of the majestic Great Hornbill, showcasing its massive bill and yellow casque.'
+      ],
+      emoji: '🪶'
+    },
 
     // --- Mammals ---
     {
@@ -452,6 +472,54 @@ const site = {
         'Foraging along the edge of a deciduous forest meadow in the early morning.'
       ],
       emoji: '🦌'
+    },
+    {
+      id: 'hog_deer',
+      title: 'Hog Deer',
+      scientific: 'Axis porcinus',
+      group: 'Mammals',
+      srcs: ['Photography/_DSC0310.JPG'],
+      captions: [
+        'An adult Hog Deer (Axis porcinus) observed in a grassland clearing during biodiversity occupancy surveys.'
+      ],
+      emoji: '🦌'
+    },
+    {
+      id: 'black_giant_squirrel',
+      title: 'Black Giant Squirrel',
+      scientific: 'Ratufa bicolor',
+      group: 'Mammals',
+      srcs: ['Photography/_DSC0479.JPG'],
+      captions: [
+        'An arboreal Black Giant Squirrel (Ratufa bicolor) foraging high in the canopy of a broadleaf forest.'
+      ],
+      emoji: '🐿️'
+    },
+    {
+      id: 'indian_muntjac',
+      title: 'Indian Muntjac / Barking Deer',
+      scientific: 'Muntiacus muntjak',
+      group: 'Mammals',
+      srcs: ['Photography/_DSC0525.JPG', 'Photography/_DSC0538.JPG'],
+      captions: [
+        'An Indian Muntjac or Barking Deer (Muntiacus muntjak) scaling a steep, mossy slope in a dense forested ravine.',
+        'Keeping alert while navigating the steep terrain of its forest habitat.'
+      ],
+      emoji: '🦌'
+    },
+
+    // --- Invertebrates ---
+    {
+      id: 'indian_earth_tiger',
+      title: 'Indian Earth Tiger',
+      scientific: 'Chilobrachys species',
+      group: 'Invertebrates',
+      srcs: ['Photography/_DSC0131.JPG', 'Photography/_DSC0138.JPG'],
+      captions: [
+        'An Indian Earth Tiger tarantula (Chilobrachys species) photographed on tree bark during arthropod elevational surveys in the Eastern Himalayas.',
+        'Close-up showing the characteristic stout legs and thick hairy body adapted for burrowing and bark dwelling.'
+      ],
+      emoji: '🕷️'
     },
 
     // --- Habitats & Fieldwork ---
