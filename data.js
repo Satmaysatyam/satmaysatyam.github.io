@@ -391,18 +391,6 @@ const site = {
       emoji: '🪶'
     },
     {
-      id: 'yellow_footed_green_pigeon',
-      title: 'Yellow-footed Green Pigeon',
-      scientific: 'Treron phoenicopterus',
-      group: 'Birds',
-      srcs: ['Photography/_DSC0499.JPG', 'Photography/_DSC0521.JPG'],
-      captions: [
-        'A Yellow-footed Green Pigeon (Treron phoenicopterus) feeding on silk-cotton flowers in the early morning.',
-        'Perched in the high canopy, showing its striking yellow legs and pastel green coloration.'
-      ],
-      emoji: '🐦'
-    },
-    {
       id: 'great_hornbill',
       title: 'Great Hornbill',
       scientific: 'Buceros bicornis',
