@@ -189,8 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         coords: [27.150, 92.400],
         title: "Eaglenest Wildlife Sanctuary",
-        emoji: "🐦",
-        desc: "Avian Bioacoustics: Researching vocal species centrality, social networks, and community dynamics of mixed-species bird flocks in selectively logged forests."
+        emoji: "🪲",
+        desc: "Arthropod Ecology: Conducting elevational sampling of arthropod communities to document species distribution patterns and altitudinal gradients."
       },
       {
         coords: [22.464, 78.182],
