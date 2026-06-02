@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Satyam Gupta | Behavioral Ecologist & Bioacoustician</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 </head>
 
 <body>
@@ -24,6 +25,9 @@
           <div class="hero-actions">
             <a href="research.html" class="btn primary">Explore research</a>
             <a href="audio.html" class="btn secondary">Open audio bank</a>
+            <button id="ambientToggle" class="btn secondary audio-btn" style="display: inline-flex; align-items: center; gap: 8px;">
+              <span>🎙️</span> <span class="audio-btn-text">Listen to wild India</span>
+            </button>
           </div>
         </div>
         <div class="hero-meta">
@@ -95,11 +99,9 @@
                 MSc in Ecology with thesis research focused on bioacoustics and community dynamics of Eastern Himalayan mixed-species bird flocks. Experienced in planning and executing field surveys in diverse ecosystems across India.
               </p>
               
-              <div class="field-roles">
-                <span class="role-badge">📍 Kanha</span>
-                <span class="role-badge">📍 Satpura-Pench</span>
-                <span class="role-badge">📍 Melghat</span>
-                <span class="role-badge">📍 Marine National Park</span>
+              <div class="map-section-wrap" style="margin-top: 14px; margin-bottom: 10px;">
+                <span class="profile-label" style="display: block; margin-bottom: 6px;">FIELDWORK MAP</span>
+                <div id="field-map" style="height: 240px; border-radius: var(--radius2); overflow: hidden; border: 1px solid rgba(11, 93, 67, 0.12); box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: relative; z-index: 5;"></div>
               </div>
               
               <div class="chip-row">
@@ -144,6 +146,10 @@
 
   <script src="data.js"></script>
   <script src="navigation.js"></script>
+  <!-- Leaflet Map library -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Premium page enhancements (Map, Audio toggle, Particles, Scroll-reveals) -->
+  <script src="homepage-enhancements.js"></script>
 </body>
 
 </html>

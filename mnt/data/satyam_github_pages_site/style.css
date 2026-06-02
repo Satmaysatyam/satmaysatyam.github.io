@@ -655,3 +655,131 @@ input[type="range"] { width: 100%; accent-color: var(--brand); }
   }
 }
 
+/* --- Ambient Audio Button --- */
+.audio-btn {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.audio-btn.active {
+  background: var(--accent) !important;
+  color: var(--ink) !important;
+  border-color: transparent !important;
+  box-shadow: 0 10px 24px rgba(217, 164, 65, 0.35);
+  font-weight: 700;
+  animation: pulse-audio-glow 2s infinite alternate;
+}
+
+@keyframes pulse-audio-glow {
+  0% { box-shadow: 0 8px 20px rgba(217, 164, 65, 0.2); }
+  100% { box-shadow: 0 12px 30px rgba(217, 164, 65, 0.45); }
+}
+
+/* --- Animated Bioacoustic Waveform Active State --- */
+.hero-waveform {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-waveform.playing {
+  opacity: 0.95;
+  transform: scale(1.05);
+}
+
+.hero-waveform.playing .wave-bar {
+  background: var(--accent);
+  animation-duration: 0.5s;
+}
+
+/* --- Analog Texture Overlay (Tactile Film Grain) --- */
+.app {
+  position: relative;
+}
+
+.app::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.038;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* --- Interactive Floating Leaves Background --- */
+#particle-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* --- Leaflet Map Styling --- */
+.map-section-wrap {
+  position: relative;
+}
+
+#field-map {
+  background: #11261d !important; /* Matches leaflet dark tiles */
+  outline: none;
+}
+
+/* Custom styles for leaflet popups */
+.leaflet-popup-content-wrapper {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(11, 93, 67, 0.15) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 10px 24px rgba(13, 33, 25, 0.1) !important;
+  color: var(--ink) !important;
+  font-family: Inter, system-ui, sans-serif !important;
+  padding: 4px 6px !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(11, 93, 67, 0.15) !important;
+  box-shadow: none !important;
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px !important;
+  line-height: 1.4 !important;
+}
+
+.leaflet-popup-content h5 {
+  margin: 0 0 4px !important;
+  font-size: 0.92rem !important;
+  font-weight: 800 !important;
+  color: var(--brand) !important;
+}
+
+.leaflet-popup-content p {
+  margin: 0 !important;
+  font-size: 0.8rem !important;
+  color: var(--muted) !important;
+  line-height: 1.45 !important;
+}
+
+/* --- Scroll Reveal Animations --- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px) scale(0.98);
+  filter: blur(4px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+
