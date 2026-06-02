@@ -187,10 +187,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Research sites data matching Satyam's CV
     const sites = [
       {
-        coords: [27.150, 92.400],
+        coords: [27.070, 92.400],
         title: "Eaglenest Wildlife Sanctuary",
         emoji: "🪲",
         desc: "Arthropod Ecology: Conducting elevational sampling of arthropod communities to document species distribution patterns and altitudinal gradients."
+      },
+      {
+        coords: [27.150, 92.400],
+        title: "Eaglenest Wildlife Sanctuary",
+        emoji: "🐦",
+        desc: "Avian Bioacoustics: Studying mixed-species bird flocks (MSFs) to model social networks and vocal centrality during the dawn chorus (Symphony of Survival)."
       },
       {
         coords: [22.464, 78.182],
