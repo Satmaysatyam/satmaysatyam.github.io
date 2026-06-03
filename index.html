@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Satyam Gupta | Behavioral Ecologist & Bioacoustician</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+</head>
+
+<body>
+  <div class="app">
+    <!-- Header dynamically injected by navigation.js -->
+
+    <section class="hero">
+      <div class="hero-panel">
+        <div>
+          <div class="eyebrow">Behavioral Ecologist • Bioacoustician • Conservation Researcher</div>
+          <h1>Satyam Gupta</h1>
+          <p class="hero-desc" style="font-size: 0.98rem; line-height: 1.65; opacity: 0.92; margin-bottom: 24px;">
+            Welcome! I am a behavioral ecologist from India, driven by a deep fascination with how animals navigate the complexities of collective life. My research bridges sociality, animal communication, and movement ecology to understand how groups coordinate, make decisions, and thrive in dynamic environments. Currently, I am a DAAD Fellow and PhD researcher at the Deutsches Primatenzentrum (DPZ) - Leibniz Institute for Primate Research in Göttingen, Germany. My doctoral research shifts focus to primates, where I investigate the fundamental drivers and mechanisms of collective movement in ring-tailed lemurs (<i>Lemur catta</i>).
+          </p>
+          <div class="hero-actions">
+            <a href="research.html" class="btn primary">Explore research</a>
+            <a href="audio.html" class="btn secondary">Open audio bank</a>
+            <a href="photography.html" class="btn secondary">View photography</a>
+          </div>
+        </div>
+        
+        <!-- Live ambient bioacoustics waveform animation -->
+        <div class="hero-waveform" aria-hidden="true">
+          <div class="wave-bar" style="--h: 24px; --d: 0.1s;"></div>
+          <div class="wave-bar" style="--h: 48px; --d: 0.3s;"></div>
+          <div class="wave-bar" style="--h: 18px; --d: 0.5s;"></div>
+          <div class="wave-bar" style="--h: 56px; --d: 0.2s;"></div>
+          <div class="wave-bar" style="--h: 32px; --d: 0.4s;"></div>
+          <div class="wave-bar" style="--h: 14px; --d: 0.6s;"></div>
+          <div class="wave-bar" style="--h: 42px; --d: 0.15s;"></div>
+          <div class="wave-bar" style="--h: 28px; --d: 0.35s;"></div>
+          <div class="wave-bar" style="--h: 52px; --d: 0.05s;"></div>
+          <div class="wave-bar" style="--h: 20px; --d: 0.45s;"></div>
+        </div>
+      </div>
+      
+      <!-- Interactive floating collage of personal photos -->
+      <div class="hero-gallery">
+        <div class="single-hero-card">
+          <img src="personal photos/Profile_Picture.jpg" alt="Satyam Gupta" loading="lazy">
+        </div>
+        
+        <!-- Animated floating ecology indicators -->
+        <div class="floating-icon icon-bird" style="--delay: 0s; --left: 8%; --top: -12%;">🐦</div>
+        <div class="floating-icon icon-frog" style="--delay: 2s; --left: 82%; --top: 55%;">🐸</div>
+        <div class="floating-icon icon-snake" style="--delay: 4s; --left: -6%; --top: 72%;">🐍</div>
+
+
+      </div>
+
+      <!-- Lemur Collective Movement Animation (Beastbox Style) -->
+      <div class="lemur-troop" aria-hidden="true">
+        <div class="lemur leader">
+          <div class="lemur-sprite"><img src="lemur-transparent.png" alt="lemur" style="width: 60px; height: 60px; object-fit: contain; display: block; filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.3));"></div>
+          <span class="call-bubble">🎵</span>
+        </div>
+        <div class="lemur follower f1"><div class="lemur-sprite"><img src="lemur-transparent.png" alt="lemur" style="width: 50px; height: 50px; object-fit: contain; display: block; filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.3));"></div></div>
+        <div class="lemur follower f2"><div class="lemur-sprite"><img src="lemur-transparent.png" alt="lemur" style="width: 50px; height: 50px; object-fit: contain; display: block; filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.3));"></div></div>
+        <div class="lemur follower f3"><div class="lemur-sprite"><img src="lemur-transparent.png" alt="lemur" style="width: 50px; height: 50px; object-fit: contain; display: block; filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.3));"></div></div>
+      </div>
+    </section>
+
+    <main class="section-wrap">
+      <section id="page-home" class="page">
+        
+        <div class="home-split-layout">
+          <!-- Left side: Professional profile card -->
+          <div class="profile-card-wrap">
+            <div class="mini-card profile-info-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(11, 93, 67, 0.12);">
+              <div>
+                <div class="about-image-wrap" style="border-radius: var(--radius2); overflow: hidden; border: 1px solid rgba(22, 49, 38, 0.08); box-shadow: 0 8px 24px rgba(13,33,25,0.06); margin-bottom: 8px;">
+                  <img src="personal photos/Satyam_Gupta.jpeg" alt="Satyam Gupta" style="width: 100%; height: auto; display: block;">
+                </div>
+              </div>
+              <div style="border-top: 1px solid rgba(22, 49, 38, 0.08); padding-top: 16px; margin-top: auto;">
+                <span class="profile-label">RESEARCH TOOLKIT</span>
+                <div class="chip-row">
+                  <span class="chip">🗺️ Spatial analysis</span>
+                  <span class="chip">🎙️ Raven Pro</span>
+                  <span class="chip">📷 Photography</span>
+                  <span class="chip">🎨 Art</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Right side: Interactive field map card -->
+          <div class="profile-card-wrap">
+            <div class="mini-card profile-info-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(11, 93, 67, 0.12);">
+              <div>
+                <span class="profile-label">INTERACTIVE FIELD MAP</span>
+                <h3 style="margin-top: 8px; margin-bottom: 12px; font-size: 1.6rem; font-weight: 800;">Research & Fieldwork Sites</h3>
+                <p style="line-height: 1.5; font-size: 0.95rem; color: var(--muted); margin: 0 0 16px 0;">
+                  Explore interactive markers showing study regions spanning bioacoustic monitoring, mammal camera-trapping, and marine conservation across India.
+                </p>
+              </div>
+              <div class="map-section-wrap" style="flex-grow: 1; min-height: 280px; position: relative;">
+                <div id="field-map" style="position: absolute; inset: 0; width: 100%; height: 100%; border-radius: var(--radius2); overflow: hidden; border: 1px solid rgba(11, 93, 67, 0.12); box-shadow: 0 4px 12px rgba(0,0,0,0.05); z-index: 5;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Focus Grid Cards (3 columns) -->
+        <div class="home-focus-row" style="margin-top: 24px;">
+          <div class="focus-grid-three">
+            <a href="research.html" class="focus-card card pad">
+              <div class="focus-icon-wrap">🔬</div>
+              <div>
+                <h3>Research lens</h3>
+                <p>Ecological behavior, vocal communication, and landscape-scale conservation, with a strong emphasis on bioacoustics and field-based observation.</p>
+              </div>
+            </a>
+            <a href="photography.html" class="focus-card card pad">
+              <div class="focus-icon-wrap">🎨</div>
+              <div>
+                <h3>Creative layer</h3>
+                <p>Wildlife photography and scientific illustrations integrated as key visual media supporting ecological documentation and storytelling.</p>
+              </div>
+            </a>
+            <a href="cv.html" class="focus-card card pad">
+              <div class="focus-icon-wrap">🗺️</div>
+              <div>
+                <h3>Experience map</h3>
+                <p>Broad, multi-taxonomic exposure across mountains, wetlands, dry forests, and marine habitats, specializing in community-facing conservation work.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer dynamically injected by navigation.js -->
+  </div>
+
+  <script src="data.js"></script>
+  <script src="navigation.js"></script>
+  <!-- Leaflet Map library -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Premium page enhancements (Map, Audio toggle, Particles, Scroll-reveals) -->
+  <script src="homepage-enhancements.js"></script>
+</body>
+
+</html>

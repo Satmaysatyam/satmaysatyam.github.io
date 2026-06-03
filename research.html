@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research & Publications | Satyam Gupta</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* --- Research Panel Visual Styling --- */
+    .inst-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(22, 49, 38, 0.03);
+      border: 1px solid rgba(22, 49, 38, 0.08);
+      border-radius: 12px;
+      padding: 6px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink);
+      box-shadow: 0 2px 8px rgba(13,33,25,0.03);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .inst-badge:hover {
+      background: rgba(11, 93, 67, 0.05);
+      border-color: var(--brand);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(13,33,25,0.06);
+    }
+    
+    .research-visuals-col {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .research-fig-card {
+      background: white;
+      border: 1px solid rgba(22, 49, 38, 0.08);
+      border-radius: var(--radius2);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(13,33,25,0.06);
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .research-fig-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 45px rgba(13,33,25,0.12);
+      border-color: rgba(11, 93, 67, 0.15);
+    }
+    
+    .fig-img-wrap {
+      position: relative;
+      height: 450px;
+      overflow: hidden;
+      background: #f0ebe1;
+    }
+    
+    .fig-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .research-fig-card:hover .fig-img-wrap img {
+      transform: scale(1.04);
+    }
+    
+    .fig-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(11, 93, 67, 0.82);
+      backdrop-filter: blur(8px);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      z-index: 5;
+    }
+    
+    .fig-caption {
+      padding: 14px 16px;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+      border-top: 1px solid rgba(22, 49, 38, 0.04);
+      background: rgba(255,255,255,0.5);
+    }
+    
+    /* --- Lightbox Modal --- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(8, 18, 14, 0.97);
+      backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .lightbox.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .lightbox-content-wrap {
+      max-width: 960px;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transform: translateY(20px) scale(0.95);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .lightbox.visible .lightbox-content-wrap {
+      transform: translateY(0) scale(1);
+    }
+    
+    .lightbox-img-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #0d1a14;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-height: 72vh;
+      width: 100%;
+    }
+    
+    .lightbox-img-container img {
+      max-height: 72vh;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    
+    .lightbox-caption {
+      width: 100%;
+      margin-top: 20px;
+      color: white;
+      text-align: left;
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 18px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .lightbox-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      width: 44px;
+      height: 44px;
+      font-size: 32px;
+      color: white;
+      cursor: pointer;
+      opacity: 0.65;
+      transition: all 0.2s ease;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.08);
+      z-index: 20;
+    }
+    
+    .lightbox-close:hover {
+      opacity: 1;
+      background: rgba(255,255,255,0.15);
+      transform: scale(1.05);
+    }
+
+    /* --- Carousel Styling --- */
+    .research-carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: var(--radius2);
+      padding: 10px 0;
+    }
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.4s ease-in-out;
+      width: 100%;
+    }
+    .carousel-item {
+      min-width: 100%;
+      flex: 0 0 100%;
+      box-sizing: border-box;
+      padding: 5px; /* space for box-shadow */
+    }
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      top: 40%;
+      width: 100%;
+      pointer-events: none;
+    }
+    .carousel-btn {
+      pointer-events: auto;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      margin: 0 10px;
+      font-size: 16px;
+      color: var(--ink);
+      transition: all 0.2s;
+    }
+    .carousel-btn:hover {
+      background: white;
+      transform: scale(1.1);
+    }
+
+    /* --- Publications Section Styling --- */
+    .pub-card {
+      background: white;
+      border: 1px solid rgba(22, 49, 38, 0.08);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 32px rgba(13, 33, 25, 0.05);
+      overflow: hidden;
+      margin-bottom: 30px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .pub-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(13, 33, 25, 0.08);
+      border-color: rgba(11, 93, 67, 0.15);
+    }
+    
+    .pub-info {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .pub-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    
+    .pub-year-badge {
+      background: var(--brand);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    
+    .pub-journal {
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    
+    .pub-title {
+      margin: 0 0 12px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    
+    .pub-authors {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.58;
+      margin-bottom: 14px;
+    }
+    
+    .pub-authors strong {
+      color: var(--brand);
+      font-weight: 800;
+    }
+    
+    .pub-note {
+      font-size: 0.94rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0 0 22px;
+      background: rgba(11, 93, 67, 0.03);
+      border-left: 4px solid var(--brand);
+      padding: 12px 16px;
+      border-radius: 0 10px 10px 0;
+    }
+    
+    .pub-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    
+    .pub-actions .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.25s;
+      border: 1px solid rgba(22, 49, 38, 0.12);
+      background: white;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    
+    .pub-actions .btn-link.primary {
+      background: var(--brand);
+      color: white;
+      border-color: transparent;
+    }
+    
+    .pub-actions .btn-link.primary:hover {
+      background: #084934;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(11, 93, 67, 0.15);
+    }
+    
+    .pub-actions .btn-link.secondary:hover {
+      border-color: var(--brand);
+      color: var(--brand);
+      transform: translateY(-2px);
+    }
+    
+    .pub-visual {
+      position: relative;
+      overflow: hidden;
+      background: #f0ebe1;
+      height: 100%;
+      min-height: 280px;
+    }
+    
+    .pub-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .pub-card:hover .pub-visual img {
+      transform: scale(1.04);
+    }
+    
+    .pub-caption {
+      position: absolute;
+      bottom: 0;
+      inset-inline: 0;
+      background: linear-gradient(180deg, transparent, rgba(8,18,14,0.85));
+      color: white;
+      padding: 18px 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    
+    .pub-caption span {
+      font-style: italic;
+      opacity: 0.95;
+    }
+    
+    /* --- Citation Modal --- */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(8, 18, 14, 0.5);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .modal.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid rgba(22, 49, 38, 0.08);
+      box-shadow: 0 30px 90px rgba(13, 33, 25, 0.15);
+      max-width: 650px;
+      width: 90%;
+      padding: 30px;
+      position: relative;
+      transform: translateY(20px) scale(0.95);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .modal.visible .modal-content {
+      transform: translateY(0) scale(1);
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      color: var(--muted);
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(22, 49, 38, 0.04);
+      transition: all 0.2s;
+    }
+    
+    .modal-close:hover {
+      color: var(--ink);
+      background: rgba(22, 49, 38, 0.08);
+    }
+    
+    .modal-title {
+      margin: 0 0 16px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--ink);
+      padding-right: 30px;
+      line-height: 1.35;
+    }
+    
+    .modal-tabs {
+      display: flex;
+      border-bottom: 1px solid rgba(22, 49, 38, 0.08);
+      gap: 4px;
+      margin-bottom: 18px;
+      overflow-x: auto;
+    }
+    
+    .modal-tab {
+      border: 0;
+      background: transparent;
+      padding: 10px 16px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--muted);
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    
+    .modal-tab:hover {
+      color: var(--ink);
+    }
+    
+    .modal-tab.active {
+      color: var(--brand);
+      border-bottom-color: var(--brand);
+    }
+    
+    .modal-body {
+      position: relative;
+    }
+    
+    .citation-box {
+      width: 100%;
+      min-height: 110px;
+      background: rgba(11, 93, 67, 0.03);
+      border: 1px solid rgba(11, 93, 67, 0.08);
+      border-radius: var(--radius2);
+      padding: 16px;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ink);
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: Inter, system-ui, sans-serif;
+    }
+    
+    .citation-box.code-font {
+      font-family: monospace;
+      font-size: 0.78rem;
+      color: #0c3325;
+      background: #f4f8f6;
+    }
+    
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: 1px solid rgba(22, 49, 38, 0.12);
+      color: var(--ink);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    
+    .copy-btn:hover {
+      border-color: var(--brand);
+      color: var(--brand);
+    }
+    
+    .copy-btn.copied {
+      background: var(--brand);
+      color: white;
+      border-color: transparent;
+    }
+    
+    @media (max-width: 900px) {
+      .pub-card {
+        grid-template-columns: 1fr;
+      }
+      .pub-visual {
+        min-height: 220px;
+        order: -1;
+      }
+    }
+    
+    /* --- Grants & Funding Styling --- */
+    .grants-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .grant-card {
+      background: white;
+      border: 1px solid rgba(22, 49, 38, 0.08);
+      border-radius: var(--radius2);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 8px 24px rgba(13,33,25,0.04);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .grant-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(13,33,25,0.08);
+      border-color: rgba(11, 93, 67, 0.15);
+    }
+    .grant-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .grant-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      object-fit: contain;
+      background: white;
+      border: 1px solid rgba(22, 49, 38, 0.06);
+      padding: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      flex-shrink: 0;
+    }
+    .grant-info {
+      flex-grow: 1;
+    }
+    .grant-title {
+      margin: 0 0 6px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      line-height: 1.3;
+      color: var(--ink);
+    }
+    .grant-agency {
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .grant-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .grant-amount {
+      font-size: 0.82rem;
+      background: rgba(217, 164, 65, 0.15);
+      color: #9c6c0b;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-weight: 800;
+    }
+    .grant-year {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 700;
+      background: rgba(22, 49, 38, 0.06);
+      padding: 5px 12px;
+      border-radius: 6px;
+    }
+    .grant-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0;
+      padding-top: 16px;
+      border-top: 1px dashed rgba(22, 49, 38, 0.12);
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <!-- Header dynamically injected by navigation.js -->
+
+    <main class="section-wrap">
+      <section id="page-research" class="page">
+        <div class="section-title">
+          <div>
+            <h2>Research</h2>
+            <p>Field research modules detailing key study questions, methodologies, and visual findings in bioacoustics and ecology.</p>
+          </div>
+          <span class="badge">Research Experience</span>
+        </div>
+
+        <div class="tabs" id="researchTabs"></div>
+        <div id="researchPanel" class="panel"></div>
+      </section>
+
+      <!-- Publications Section -->
+      <section id="page-publications" class="page" style="margin-top: 50px; border-top: 1px solid rgba(22, 49, 38, 0.08); padding-top: 40px;">
+        <div class="section-title">
+          <div>
+            <h2>Publications</h2>
+            <p>Peer-reviewed journal articles and scientific contributions. Citations are ready to copy in all major formats.</p>
+          </div>
+          <span class="badge">Selected Outputs</span>
+        </div>
+        
+        <!-- Publications List Container -->
+        <div class="pub-list" id="pubList"></div>
+      </section>
+
+      <!-- Grants & Funding Section -->
+      <section id="page-grants" class="page" style="margin-top: 50px; border-top: 1px solid rgba(22, 49, 38, 0.08); padding-top: 40px;">
+        <div class="section-title">
+          <div>
+            <h2>Grants & Funding</h2>
+            <p>Fellowships, research grants, and travel awards supporting my academic journey and fieldwork.</p>
+          </div>
+          <span class="badge">Awards</span>
+        </div>
+        
+        <div class="grants-grid" id="grantsGrid"></div>
+      </section>
+    </main>
+
+    <!-- Footer dynamically injected by navigation.js -->
+  </div>
+
+  <!-- Lightbox Modal for figures -->
+  <div id="lightbox" class="lightbox">
+    <span id="lightboxClose" class="lightbox-close">&times;</span>
+    <div class="lightbox-content-wrap">
+      <div class="lightbox-img-container" id="lightboxImgContainer">
+        <img id="lightboxImg" src="" alt="Enlarged research figure" />
+      </div>
+      <div class="lightbox-caption">
+        <div class="lightbox-title-row">
+          <div class="lightbox-title-wrap">
+            <span id="lightboxTitle" class="lightbox-title"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Citation Dialog Modal for papers -->
+  <div id="citationModal" class="modal">
+    <div class="modal-content">
+      <span id="modalClose" class="modal-close">&times;</span>
+      <h3 class="modal-title">Cite Paper</h3>
+      
+      <!-- Citation Format Selector Tabs -->
+      <div class="modal-tabs">
+        <button class="modal-tab active" data-format="apa">APA 7</button>
+        <button class="modal-tab" data-format="mla">MLA 9</button>
+        <button class="modal-tab" data-format="chicago">Chicago 17</button>
+        <button class="modal-tab" data-format="bibtex">BibTeX</button>
+      </div>
+      
+      <div class="modal-body">
+        <div id="citationBox" class="citation-box"></div>
+        <button id="copyBtn" class="copy-btn">
+          <span>📋 Copy citation</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="navigation.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- Research Tabs Logic ---
+      const researchTabs = document.getElementById('researchTabs');
+      const researchPanel = document.getElementById('researchPanel');
+      
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxTitle = document.getElementById('lightboxTitle');
+      const lightboxClose = document.getElementById('lightboxClose');
+      
+      let activeResearch = 'flock';
+
+      function renderResearch() {
+        researchTabs.innerHTML = site.researchTabs.map(tab => `
+          <button class="tab ${tab.id === activeResearch ? 'active' : ''}" data-tab="${tab.id}">${tab.emoji} ${tab.title}</button>
+        `).join('');
+        
+        const tab = site.researchTabs.find(t => t.id === activeResearch);
+        
+        let imagesHtml = '';
+        if (tab.imageGroups) {
+          imagesHtml = tab.imageGroups.map((group, groupIdx) => `
+            <div style="margin-bottom: 30px;">
+              <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--ink); border-bottom: 2px solid var(--brand); display: inline-block; padding-bottom: 4px;">${group.groupName}</h4>
+              <div class="research-carousel">
+                <div class="carousel-inner" id="carouselInner-${tab.id}-${groupIdx}">
+                  ${group.images.map((img, idx) => `
+                    <div class="carousel-item ${idx === 0 ? 'active' : ''}" data-idx="${idx}">
+                      <div class="research-fig-card" data-img-src="${img.src}" data-img-caption="${img.caption}">
+                        <div class="fig-img-wrap">
+                          <img src="${img.src}" alt="${img.caption}" loading="lazy">
+                          <span class="fig-badge">Figure ${idx + 1} of ${group.images.length}</span>
+                        </div>
+                        <div class="fig-caption">${img.caption}</div>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+                ${group.images.length > 1 ? `
+                <div class="carousel-controls">
+                  <button class="carousel-btn prev-btn" onclick="moveCarousel('${tab.id}-${groupIdx}', -1)">❮</button>
+                  <button class="carousel-btn next-btn" onclick="moveCarousel('${tab.id}-${groupIdx}', 1)">❯</button>
+                </div>
+                ` : ''}
+              </div>
+            </div>
+          `).join('');
+        } else if (tab.images && tab.images.length > 0) {
+          imagesHtml = `
+            <div class="research-carousel">
+              <div class="carousel-inner" id="carouselInner-${tab.id}">
+                ${tab.images.map((img, idx) => `
+                  <div class="carousel-item ${idx === 0 ? 'active' : ''}" data-idx="${idx}">
+                    <div class="research-fig-card" data-img-src="${img.src}" data-img-caption="${img.caption}">
+                      <div class="fig-img-wrap">
+                        <img src="${img.src}" alt="${img.caption}" loading="lazy">
+                        <span class="fig-badge">Figure ${idx + 1} of ${tab.images.length}</span>
+                      </div>
+                      <div class="fig-caption">${img.caption}</div>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+              ${tab.images.length > 1 ? `
+              <div class="carousel-controls">
+                <button class="carousel-btn prev-btn" onclick="moveCarousel('${tab.id}', -1)">❮</button>
+                <button class="carousel-btn next-btn" onclick="moveCarousel('${tab.id}', 1)">❯</button>
+              </div>
+              ` : ''}
+            </div>
+          `;
+        }
+
+        const logosHtml = tab.logos && tab.logos.length > 0 ? `
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end;">
+            ${tab.logos.map(logo => {
+              if (logo.logoUrl) {
+                return `
+                  <div class="inst-badge" title="${logo.name}" style="background: white; padding: 4px 6px; border: 1px solid rgba(0,0,0,0.06); border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); display: flex; align-items: center;">
+                    <img src="${logo.logoUrl}" alt="${logo.abbr}" style="height: 24px; width: auto; max-width: 70px; object-fit: contain;">
+                    <span style="display:none;">${logo.name}</span>
+                  </div>
+                `;
+              }
+              return `
+                <div class="inst-badge" title="${logo.name}">
+                  <div style="width: 24px; height: 24px; border-radius: 50%; background: ${logo.color}; color: white; display: grid; place-items: center; font-size: 0.65rem; font-weight: 800; border: 1px solid rgba(255,255,255,0.1);">${logo.abbr}</div>
+                  <span style="display:none;">${logo.name}</span>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        ` : '';
+
+        researchPanel.innerHTML = `
+          <div class="panel-inner split">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 15px;">
+                <span class="badge" style="margin-bottom: 0;">${tab.emoji} ${tab.title}</span>
+                ${logosHtml}
+              </div>
+              <h3 style="margin-top:14px; font-size:1.6rem; font-weight:800; line-height:1.25;">${tab.intro}</h3>
+              <p style="margin-top:12px; font-size:1.02rem; line-height:1.65; color:var(--muted);">${tab.desc}</p>
+              <div class="divider"></div>
+              <div class="timeline" style="margin-top:20px;">
+                ${tab.points.map(p => `
+                  <div class="timeline-item">
+                    <div class="timeline-year">▸</div>
+                    <div style="line-height:1.55;">${p}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+            <div>
+              <div class="research-visuals-col">
+                ${imagesHtml}
+              </div>
+            </div>
+          </div>
+        `;
+
+        // Add lightbox click event listeners to new cards
+        const figCards = researchPanel.querySelectorAll('.research-fig-card');
+        figCards.forEach(card => {
+          card.addEventListener('click', () => {
+            const src = card.getAttribute('data-img-src');
+            const caption = card.getAttribute('data-img-caption');
+            openLightbox(src, caption);
+          });
+        });
+      }
+
+      window.moveCarousel = function(tabId, dir) {
+        const inner = document.getElementById(`carouselInner-${tabId}`);
+        const items = inner.querySelectorAll('.carousel-item');
+        let activeIdx = Array.from(items).findIndex(item => item.classList.contains('active'));
+        items[activeIdx].classList.remove('active');
+        activeIdx = (activeIdx + dir + items.length) % items.length;
+        items[activeIdx].classList.add('active');
+        inner.style.transform = `translateX(-${activeIdx * 100}%)`;
+      };
+
+      // Lightbox functions
+      function openLightbox(src, caption) {
+        lightboxImg.src = src;
+        lightboxTitle.textContent = caption;
+        lightbox.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('visible');
+        document.body.style.overflow = '';
+      }
+
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('visible')) {
+          closeLightbox();
+        }
+      });
+
+      researchTabs.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-tab]');
+        if (!btn) return;
+        activeResearch = btn.dataset.tab;
+        renderResearch();
+      });
+
+      renderResearch();
+
+      // --- Publications & Citation Modal Logic ---
+      const pubList = document.getElementById('pubList');
+      const citationModal = document.getElementById('citationModal');
+      const modalClose = document.getElementById('modalClose');
+      const modalTabs = citationModal.querySelectorAll('.modal-tab');
+      const citationBox = document.getElementById('citationBox');
+      const copyBtn = document.getElementById('copyBtn');
+      
+      let selectedPub = null;
+      let selectedFormat = 'apa';
+      
+      function highlightAuthor(authorsString) {
+        return authorsString.replace('Satyam Gupta', '<strong>Satyam Gupta</strong>');
+      }
+      
+      function renderPublications() {
+        pubList.innerHTML = site.publications.map((p, idx) => `
+          <div class="pub-card">
+            <div class="pub-info">
+              <div>
+                <div class="pub-header">
+                  <span class="pub-year-badge">${p.year}</span>
+                  <span class="pub-journal">${p.journal} • ${p.volume}</span>
+                </div>
+                <h3 class="pub-title">${p.title}</h3>
+                <div class="pub-authors">${highlightAuthor(p.authors)}</div>
+                <p class="pub-note">${p.note}</p>
+              </div>
+              <div class="pub-actions">
+                <a href="${p.url}" target="_blank" class="btn-link primary">
+                  View Publisher (DOI)
+                </a>
+                <button class="btn-link secondary cite-trigger" data-id="${p.id}">
+                  📋 Cite Paper
+                </button>
+              </div>
+            </div>
+            <div class="pub-visual">
+              <img src="${p.img}" alt="${p.title}" loading="lazy">
+              <div class="pub-caption">
+                <span>${p.id === 'bird_flocks' ? '📊' : '📸'} ${p.speciesName}</span>
+                ${p.imgCredit ? `<br><span class="pub-credit" style="font-size: 0.72rem; opacity: 0.8; font-weight: normal; margin-top: 4px; display: inline-block;">Photo: ${p.imgCredit}</span>` : ''}
+              </div>
+            </div>
+          </div>
+        `).join('');
+        
+        const triggers = pubList.querySelectorAll('.cite-trigger');
+        triggers.forEach(trig => {
+          trig.addEventListener('click', () => {
+            const pubId = trig.getAttribute('data-id');
+            const found = site.publications.find(p => p.id === pubId);
+            if (found) {
+              openCitationModal(found);
+            }
+          });
+        });
+      }
+      
+      function openCitationModal(pub) {
+        selectedPub = pub;
+        selectedFormat = 'apa';
+        
+        modalTabs.forEach(t => {
+          if (t.getAttribute('data-format') === 'apa') {
+            t.classList.add('active');
+          } else {
+            t.classList.remove('active');
+          }
+        });
+        
+        updateCitationText();
+        citationModal.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+      }
+      
+      function closeCitationModal() {
+        citationModal.classList.remove('visible');
+        document.body.style.overflow = '';
+      }
+      
+      function updateCitationText() {
+        if (!selectedPub) return;
+        const text = selectedPub.citations[selectedFormat];
+        citationBox.textContent = text;
+        
+        if (selectedFormat === 'bibtex') {
+          citationBox.classList.add('code-font');
+        } else {
+          citationBox.classList.remove('code-font');
+        }
+      }
+      
+      modalTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          modalTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          selectedFormat = tab.getAttribute('data-format');
+          updateCitationText();
+        });
+      });
+      
+      modalClose.addEventListener('click', closeCitationModal);
+      citationModal.addEventListener('click', (e) => {
+        if (e.target === citationModal) {
+          closeCitationModal();
+        }
+      });
+      
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && citationModal.classList.contains('visible')) {
+          closeCitationModal();
+        }
+      });
+      
+      copyBtn.addEventListener('click', () => {
+        if (!selectedPub) return;
+        const text = selectedPub.citations[selectedFormat];
+        
+        navigator.clipboard.writeText(text).then(() => {
+          copyBtn.classList.add('copied');
+          copyBtn.querySelector('span').textContent = '✅ Copied!';
+          
+          setTimeout(() => {
+            copyBtn.classList.remove('copied');
+            copyBtn.querySelector('span').textContent = '📋 Copy citation';
+          }, 2000);
+        }).catch(err => {
+          console.error('Failed to copy text: ', err);
+        });
+      });
+      
+      // Render Grants
+      function renderGrants() {
+        const grantsGrid = document.getElementById('grantsGrid');
+        if (!grantsGrid || !site.grants) return;
+        
+        grantsGrid.innerHTML = site.grants.map(g => `
+          <div class="grant-card">
+            <div class="grant-header">
+              <img src="${g.logo}" alt="${g.agency} logo" class="grant-logo" loading="lazy" onerror="this.style.display='none'">
+              <div class="grant-info">
+                <h3 class="grant-title">${g.title}</h3>
+                <div class="grant-agency">${g.agency}</div>
+              </div>
+            </div>
+            <p class="grant-desc">${g.note}</p>
+            <div class="grant-meta">
+              <span class="grant-amount">${g.amount}</span>
+              <span class="grant-year">${g.year}</span>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      renderPublications();
+      renderGrants();
+    });
+  </script>
+</body>
+</html>
