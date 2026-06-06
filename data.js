@@ -16,11 +16,8 @@ const site = {
       date: 'Starting Oct 2026',
       emoji: '🐒',
       intro: 'Multimodal Communication & Social Dynamics in the Coordination of Collective Movement',
-      desc: 'To understand how individual decisions scale into coordinated group action, our research investigates the collective movement of ring-tailed lemurs (<i>Lemur catta</i>) at Affenwald Park, Germany. While group travel offers vital survival benefits like reduced predation and shared resource knowledge, it requires complex, continuous negotiation over when, where, and whom to follow.',
-      points: [
-        'By equipping entire lemur groups with multi-sensor collars that synchronously record GPS, inertial movement, proximity, and on-animal acoustics, we capture a real-time, comprehensive picture of their behavior.',
-        'This data allows us to explore exactly how multimodal communication—combining acoustic and visual cues—interacts with existing social relationships to drive and coordinate collective movement.'
-      ],
+      desc: 'To understand how individual decisions scale into coordinated group action, our research investigates the collective movement of ring-tailed lemurs (<i>Lemur catta</i>) at Affenwald Park, Germany. While group travel offers vital survival benefits like reduced predation and shared resource knowledge, it requires complex, continuous negotiation over when, where, and whom to follow. By equipping entire lemur groups with multi-sensor collars that synchronously record GPS, inertial movement, proximity, and on-animal acoustics, we capture a real-time, comprehensive picture of their behavior. This data allows us to explore exactly how multimodal communication—combining acoustic and visual cues—interacts with existing social relationships to drive and coordinate collective movement.',
+      points: [],
       images: [
         { src: 'Research/lemur_multimodal_diagram.jpg', caption: 'Diagram demonstrating the role of visual and acoustic cues in coordinating collective movement' }
       ],

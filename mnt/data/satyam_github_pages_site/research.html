@@ -847,15 +847,17 @@
                 </div>
               </div>
               <p style="margin-top:16px; font-size:1.02rem; line-height:1.65; color:var(--muted);">${tab.desc}</p>
-              <div class="divider"></div>
-              <div class="timeline" style="margin-top:20px;">
-                ${tab.points.map(p => `
-                  <div class="timeline-item">
-                    <div class="timeline-year">▸</div>
-                    <div style="line-height:1.55;">${p}</div>
-                  </div>
-                `).join('')}
-              </div>
+              ${tab.points && tab.points.length > 0 ? `
+                <div class="divider"></div>
+                <div class="timeline" style="margin-top:20px;">
+                  ${tab.points.map(p => `
+                    <div class="timeline-item">
+                      <div class="timeline-year">▸</div>
+                      <div style="line-height:1.55;">${p}</div>
+                    </div>
+                  `).join('')}
+                </div>
+              ` : ''}
             </div>
             <div>
               <div class="research-visuals-col">
