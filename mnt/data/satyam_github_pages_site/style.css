@@ -476,36 +476,38 @@ input[type="range"] { width: 100%; accent-color: var(--brand); }
 /* --- Lemur Collective Movement Animation --- */
 .lemur-troop {
   position: absolute;
-  top: -45px;
+  top: -60px;
   left: 0;
   display: flex;
   align-items: flex-end;
   gap: 15px;
   z-index: 10;
   pointer-events: none;
-  animation: lemur-traverse 28s linear infinite;
+  transform-origin: center bottom;
+  animation: lemur-traverse 35s linear infinite;
 }
 
 @keyframes lemur-traverse {
-  /* 1. Start off-screen top-left, move right */
-  0% { transform: translate(-300px, 0) rotate(0deg) scaleX(1); }
+  /* 1. Climb UP the left edge of the green box */
+  0% { transform: translate(-108px, 678px) rotate(-90deg) scaleX(1); }
+  20% { transform: translate(-108px, 128px) rotate(-90deg) scaleX(1); }
   
-  /* 2. Walk along the top of the green box to the gap */
-  28% { transform: translate(calc(60% - 134px), 0) rotate(0deg) scaleX(1); }
+  /* Corner 1: Pivot around top-left corner */
+  25% { transform: translate(-108px, 0) rotate(0deg) scaleX(1); }
   
-  /* 3. Quick pivot to face down the gap */
-  31% { transform: translate(calc(60% - 134px), 50px) rotate(90deg) scaleX(1); }
+  /* 2. Walk RIGHT along the top of the green box */
+  47% { transform: translate(calc(60% - 262px), 0) rotate(0deg) scaleX(1); }
   
-  /* 4. Climb down the gap */
-  55% { transform: translate(calc(60% - 134px), 530px) rotate(90deg) scaleX(1); }
+  /* Corner 2: Pivot around the gap */
+  52% { transform: translate(calc(60% - 134px), 0) rotate(90deg) scaleX(1); }
   
-  /* 5. Quick pivot to face right at the bottom */
-  58% { transform: translate(calc(60% - 134px), 550px) rotate(0deg) scaleX(1); }
+  /* 3. Climb DOWN the gap */
+  68% { transform: translate(calc(60% - 134px), 422px) rotate(90deg) scaleX(1); }
   
-  /* 6. Walk right along the bottom of the photo */
-  88% { transform: translate(calc(100vw + 300px), 550px) rotate(0deg) scaleX(1); }
+  /* Corner 3: Pivot around bottom of photo */
+  73% { transform: translate(calc(60% - 134px), 550px) rotate(0deg) scaleX(1); }
   
-  /* 7. Stay off-screen to reset */
+  /* 4. Walk RIGHT along the bottom of the photo */
   100% { transform: translate(calc(100vw + 300px), 550px) rotate(0deg) scaleX(1); }
 }
 
@@ -517,15 +519,18 @@ input[type="range"] { width: 100%; accent-color: var(--brand); }
 }
 
 .follower {
-  animation: follower-catch-up 28s infinite ease-in-out;
+  animation: follower-catch-up 35s infinite ease-in-out;
 }
 
 @keyframes follower-catch-up {
-  0%, 15% { transform: translateX(-150px); }
-  25%, 35% { transform: translateX(0); }
-  45%, 50% { transform: translateX(-100px); }
-  60%, 75% { transform: translateX(0); }
-  85%, 100% { transform: translateX(-150px); }
+  0% { transform: translateX(0); }
+  5%, 15% { transform: translateX(-150px); }
+  20%, 25% { transform: translateX(0); }
+  30%, 42% { transform: translateX(-150px); }
+  47%, 52% { transform: translateX(0); }
+  57%, 63% { transform: translateX(-150px); }
+  68%, 73% { transform: translateX(0); }
+  78%, 100% { transform: translateX(-150px); }
 }
 
 .lemur-sprite {
