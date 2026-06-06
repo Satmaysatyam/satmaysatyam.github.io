@@ -121,8 +121,8 @@ const site = {
       logos: [
         { name: 'Wildlife Institute of India', abbr: 'WII', color: '#0b5d43', bg: '#f6f2ea', logoUrl: 'logos/wii.png' },
         { name: 'Indian Institute of Science', abbr: 'IISc', color: '#143559', bg: '#eef3ed', logoUrl: 'logos/iisc.png' },
-        { name: 'Chhattisgarh Forest Department', abbr: 'CG-FD', color: '#163126', bg: '#f4f8f6' },
-        { name: 'Haryana Forest Department', abbr: 'HR-FD', color: '#163126', bg: '#f4f8f6' },
+        { name: 'Chhattisgarh Forest Department', abbr: 'CG-FD', color: '#163126', bg: '#f4f8f6', logoUrl: 'logos/cgfd.png' },
+        { name: 'Haryana Forest Department', abbr: 'HR-FD', color: '#163126', bg: '#f4f8f6', logoUrl: 'logos/hrfd.png' },
         { name: 'WALMI Bhopal', abbr: 'WALMI', color: '#174f7b', bg: '#f0f5fa', logoUrl: 'logos/walmi.png' }
       ]
     },
@@ -184,7 +184,7 @@ const site = {
         { name: 'Wildlife and Nature Conservancy', abbr: 'WNC', color: '#174f7b', bg: '#f0f5fa', logoUrl: 'logos/wnc.png' },
         { name: 'Wildlife Research & Conservation Society', abbr: 'WRCS', color: '#8d5d3b', bg: '#f6f2ea', logoUrl: 'logos/wrcs.png' },
         { name: 'Centre for Wildlife Studies', abbr: 'CWS', color: '#0b5d43', bg: '#f6f2ea', logoUrl: 'logos/cws.png' },
-        { name: 'Madhya Pradesh Forest Department', abbr: 'MP-FD', color: '#163126', bg: '#f4f8f6' }
+        { name: 'Madhya Pradesh Forest Department', abbr: 'MP-FD', color: '#163126', bg: '#f4f8f6', logoUrl: 'logos/mpfd.png' }
       ]
     }
   ],
