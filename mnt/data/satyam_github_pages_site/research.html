@@ -874,6 +874,42 @@
             openLightbox(src, caption);
           });
         });
+
+        // Setup Carousel Interactions (Swipe & Auto-scroll)
+        const carousels = researchPanel.querySelectorAll('.research-carousel');
+        carousels.forEach(carousel => {
+          const inner = carousel.querySelector('.carousel-inner');
+          if (!inner) return;
+          const tabIdRaw = inner.id.replace('carouselInner-', '');
+          
+          let autoScrollInterval;
+          carousel.addEventListener('mouseenter', () => {
+            autoScrollInterval = setInterval(() => {
+              window.moveCarousel(tabIdRaw, 1);
+            }, 2000);
+          });
+          
+          carousel.addEventListener('mouseleave', () => {
+            clearInterval(autoScrollInterval);
+          });
+          
+          let touchStartX = 0;
+          let touchEndX = 0;
+          
+          carousel.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+          }, { passive: true });
+          
+          carousel.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 30) {
+              window.moveCarousel(tabIdRaw, 1);
+            }
+            if (touchEndX > touchStartX + 30) {
+              window.moveCarousel(tabIdRaw, -1);
+            }
+          }, { passive: true });
+        });
       }
 
       window.moveCarousel = function(tabId, dir) {
