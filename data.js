@@ -53,7 +53,7 @@ const site = {
         { src: 'Research/Amphibian8.jpeg', caption: 'Recording acoustic data in natural amphibian habitats' }
       ],
       logos: [
-        { name: 'Indian Institute of Science', abbr: 'IISc', color: '#143559', bg: '#eef3ed', logoUrl: 'logos/iisc.svg' },
+        { name: 'Indian Institute of Science', abbr: 'IISc', color: '#143559', bg: '#eef3ed', logoUrl: 'logos/iisc.png' },
         { name: 'Association for Tropical Biology & Conservation', abbr: 'ATBC', color: '#d9a441', bg: '#f6f2ea', logoUrl: 'logos/atbc.png' }
       ]
     },
@@ -78,7 +78,7 @@ const site = {
       ],
       logos: [
         { name: 'Pondicherry University', abbr: 'PU', color: '#0b5d43', bg: '#f6f2ea', logoUrl: 'logos/pu.png' },
-        { name: 'Indian Institute of Science', abbr: 'IISc', color: '#143559', bg: '#eef3ed', logoUrl: 'logos/iisc.svg' }
+        { name: 'Indian Institute of Science', abbr: 'IISc', color: '#143559', bg: '#eef3ed', logoUrl: 'logos/iisc.png' }
       ]
     },
     {
@@ -120,7 +120,7 @@ const site = {
       ],
       logos: [
         { name: 'Wildlife Institute of India', abbr: 'WII', color: '#0b5d43', bg: '#f6f2ea', logoUrl: 'logos/wii.png' },
-        { name: 'Indian Institute of Science', abbr: 'IISc', color: '#143559', bg: '#eef3ed', logoUrl: 'logos/iisc.svg' },
+        { name: 'Indian Institute of Science', abbr: 'IISc', color: '#143559', bg: '#eef3ed', logoUrl: 'logos/iisc.png' },
         { name: 'Chhattisgarh Forest Department', abbr: 'CG-FD', color: '#163126', bg: '#f4f8f6' },
         { name: 'Haryana Forest Department', abbr: 'HR-FD', color: '#163126', bg: '#f4f8f6' },
         { name: 'WALMI Bhopal', abbr: 'WALMI', color: '#174f7b', bg: '#f0f5fa', logoUrl: 'logos/walmi.png' }
