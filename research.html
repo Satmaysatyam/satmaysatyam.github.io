@@ -839,7 +839,10 @@
           <div class="panel-inner split">
             <div>
               <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 15px;">
-                <span class="badge" style="margin-bottom: 0;">${tab.emoji} ${tab.title}</span>
+                <div>
+                  <span class="badge" style="margin-bottom: 0;">${tab.emoji} ${tab.title}</span>
+                  ${tab.date ? `<div style="display:inline-block; margin-left: 8px; font-size: 0.85rem; font-weight: 600; color: var(--brand); background: rgba(11,93,67,0.06); padding: 4px 10px; border-radius: 99px;">📅 ${tab.date}</div>` : ''}
+                </div>
                 ${logosHtml}
               </div>
               <h3 style="margin-top:14px; font-size:1.6rem; font-weight:800; line-height:1.25;">${tab.intro}</h3>

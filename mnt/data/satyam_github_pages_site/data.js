@@ -13,6 +13,7 @@ const site = {
     {
       id: 'lemur',
       title: 'Lemur Collective Movement',
+      date: 'Starting Oct 2026',
       emoji: '🐒',
       intro: 'Multimodal Communication & Social Dynamics in the Coordination of Collective Movement',
       desc: 'Collective movement is a defining feature of group living and an ideal behavioural lens for investigating how individual decisions scale to coordinated group action. When groups travel together, they reduce predation risk, pool information about resources, and maintain cohesion; however, they must also resolve conflicts of interest regarding when to leave, where to go, and who to follow.',
@@ -32,6 +33,7 @@ const site = {
     {
       id: 'breeding',
       title: 'Amphibian Breeding Ecology',
+      date: '2024 - 2026',
       emoji: '🐸',
       intro: 'Amphibian Bioacoustics & Breeding Ecology in the Western Ghats',
       desc: 'Investigating acoustic communication, calling phenology, and microhabitat associations of endemic frogs in the evergreen forests of Sirsi, Western Ghats. Recipient of the ATBC Seed Research Grant (2025).',
@@ -58,6 +60,7 @@ const site = {
     {
       id: 'flock',
       title: 'MSF Flock Ecology',
+      date: 'Jan 2024 - May 2024',
       emoji: '🐦',
       intro: 'Symphony of Survival: Bioacoustics & Prey Dynamics in the Eastern Himalayas',
       desc: 'My Master\'s thesis research investigated vocal species centrality in mixed-species bird flocks (MSFs) in Eaglenest Wildlife Sanctuary, Arunachal Pradesh, India. This study combined bioacoustic network modeling of the dawn chorus with field sampling of insect/arthropod prey availability to examine how acoustic beacons and resource density influence group cohesion and foraging dynamics.',
@@ -81,6 +84,7 @@ const site = {
     {
       id: 'intern',
       title: 'Research Intern & Field Assistant',
+      date: '2020 - 2022',
       emoji: '🔬',
       intro: 'Field Assistantships & Professional Research Internships',
       desc: 'Professional research roles spanning marine biology, People’s Biodiversity Registers (PBR) documentation, spatial modeling, and elevational bird prey surveys across India.',
@@ -125,6 +129,7 @@ const site = {
     {
       id: 'volunteer',
       title: 'Volunteership',
+      date: '2020 - 2022',
       emoji: '🤝',
       intro: 'Wildlife Conservation Volunteerships',
       desc: 'Active participation in conservation-led field surveys, large-mammal occupancy camera-trapping, and wildlife census drives in collaboration with NGOs and State Forest Departments.',
