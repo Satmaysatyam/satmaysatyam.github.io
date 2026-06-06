@@ -26,7 +26,7 @@ const site = {
         { src: 'Research/lemur_multimodal_diagram.jpg', caption: 'Diagram demonstrating the role of visual and acoustic cues in coordinating collective movement' }
       ],
       logos: [
-        { name: 'Deutsches Primatenzentrum', abbr: 'DPZ', color: '#1a5c78', bg: '#f0f5f8' },
+        { name: 'Deutsches Primatenzentrum', abbr: 'DPZ', color: '#1a5c78', bg: '#f0f5f8', logoUrl: 'logos/dpz.png' },
         { name: 'Deutscher Akademischer Austauschdienst', abbr: 'DAAD', color: '#005b82', bg: '#f0f5f8', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/DAAD_Logo.svg' }
       ]
     },
@@ -813,7 +813,7 @@ const site = {
       amount: '₹35,000',
       year: '2025',
       note: 'Travel grant awarded for attending the International Ethological Congress in Kolkata, India.',
-      logo: 'https://upload.wikimedia.org/wikipedia/en/e/eb/Ashoka_University_Logo.svg'
+      logo: 'logos/ashoka.png'
     },
     {
       title: 'ATBC Seed Research Grant',
