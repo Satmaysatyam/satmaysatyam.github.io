@@ -26,8 +26,8 @@ const site = {
         { src: 'Research/lemur_multimodal_diagram.jpg', caption: 'Diagram demonstrating the role of visual and acoustic cues in coordinating collective movement' }
       ],
       logos: [
-        { name: 'Deutsches Primatenzentrum', abbr: 'DPZ', color: '#1a5c78', bg: '#f0f5f8', logoUrl: 'https://www.google.com/s2/favicons?domain=dpz.eu&sz=128' },
-        { name: 'Deutscher Akademischer Austauschdienst', abbr: 'DAAD', color: '#005b82', bg: '#f0f5f8', logoUrl: 'https://www.google.com/s2/favicons?domain=daad.de&sz=128' }
+        { name: 'Deutsches Primatenzentrum', abbr: 'DPZ', color: '#1a5c78', bg: '#f0f5f8' },
+        { name: 'Deutscher Akademischer Austauschdienst', abbr: 'DAAD', color: '#005b82', bg: '#f0f5f8', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/DAAD_Logo.svg' }
       ]
     },
     {
@@ -54,7 +54,7 @@ const site = {
       ],
       logos: [
         { name: 'Indian Institute of Science', abbr: 'IISc', color: '#143559', bg: '#eef3ed', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/4/46/IISc_logo%282%29.svg' },
-        { name: 'Association for Tropical Biology & Conservation', abbr: 'ATBC', color: '#d9a441', bg: '#f6f2ea', logoUrl: 'https://www.google.com/s2/favicons?domain=tropicalbiology.org&sz=128' }
+        { name: 'Association for Tropical Biology & Conservation', abbr: 'ATBC', color: '#d9a441', bg: '#f6f2ea' }
       ]
     },
     {
@@ -77,7 +77,7 @@ const site = {
         { src: 'Research/MSF4.JPG', caption: 'Mixed-Species Flock Observations' }
       ],
       logos: [
-        { name: 'Pondicherry University', abbr: 'PU', color: '#0b5d43', bg: '#f6f2ea', logoUrl: 'https://www.google.com/s2/favicons?domain=pondiuni.edu.in&sz=128' },
+        { name: 'Pondicherry University', abbr: 'PU', color: '#0b5d43', bg: '#f6f2ea', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/b/b5/Pondicherry_University_Logo.svg' },
         { name: 'Indian Institute of Science', abbr: 'IISc', color: '#143559', bg: '#eef3ed', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/4/46/IISc_logo%282%29.svg' }
       ]
     },
@@ -121,9 +121,9 @@ const site = {
       logos: [
         { name: 'Wildlife Institute of India', abbr: 'WII', color: '#0b5d43', bg: '#f6f2ea', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Logo_of_the_Wildlife_Institute_of_India.svg' },
         { name: 'Indian Institute of Science', abbr: 'IISc', color: '#143559', bg: '#eef3ed', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/4/46/IISc_logo%282%29.svg' },
-        { name: 'Chhattisgarh Forest Department', abbr: 'CG-FD', color: '#163126', bg: '#f4f8f6', logoUrl: 'https://www.google.com/s2/favicons?domain=cgforest.com&sz=128' },
-        { name: 'Haryana Forest Department', abbr: 'HR-FD', color: '#163126', bg: '#f4f8f6', logoUrl: 'https://www.google.com/s2/favicons?domain=haryanaforest.gov.in&sz=128' },
-        { name: 'WALMI Bhopal', abbr: 'WALMI', color: '#174f7b', bg: '#f0f5fa', logoUrl: 'https://www.google.com/s2/favicons?domain=walmibhopal.mp.gov.in&sz=128' }
+        { name: 'Chhattisgarh Forest Department', abbr: 'CG-FD', color: '#163126', bg: '#f4f8f6' },
+        { name: 'Haryana Forest Department', abbr: 'HR-FD', color: '#163126', bg: '#f4f8f6' },
+        { name: 'WALMI Bhopal', abbr: 'WALMI', color: '#174f7b', bg: '#f0f5fa' }
       ]
     },
     {
@@ -164,10 +164,10 @@ const site = {
         {
           groupName: 'Centre for Wildlife Studies (CWS)',
           images: [
-            { src: 'Research/CWS1.jpeg', caption: 'Conducting tourism preference surveys' },
-            { src: 'Research/CWS2.jpeg', caption: 'Interviewing stakeholders around protected areas' },
-            { src: 'Research/CWS3.jpeg', caption: 'Analyzing human dimensions of wildlife conservation' },
-            { src: 'Research/CWS4.jpeg', caption: 'Field data collection for socioeconomic studies' }
+            { src: 'Research/CWS1.jpg', caption: 'Nature viewing surveys with tourists' },
+            { src: 'Research/CWS2.jpeg', caption: 'Briefing volunteers before field assignments' },
+            { src: 'Research/CWS3.jpeg', caption: 'Conducting surveys in protected areas' },
+            { src: 'Research/CWS4.jpeg', caption: 'Coordinating with forest department staff' }
           ]
         },
         {
@@ -181,10 +181,9 @@ const site = {
         }
       ],
       logos: [
-        { name: 'World Wide Fund for Nature India', abbr: 'WWF', color: '#163126', bg: '#f4f8f6', logoUrl: 'https://upload.wikimedia.org/wikipedia/en/2/24/WWF_logo.svg' },
-        { name: 'Wildlife Research & Conservation Society', abbr: 'WRCS', color: '#8d5d3b', bg: '#f6f2ea', logoUrl: 'https://www.google.com/s2/favicons?domain=wrcsindia.org&sz=128' },
-        { name: 'Centre for Wildlife Studies', abbr: 'CWS', color: '#0b5d43', bg: '#f6f2ea', logoUrl: 'https://www.google.com/s2/favicons?domain=cwsindia.org&sz=128' },
-        { name: 'Madhya Pradesh Forest Department', abbr: 'MP-FD', color: '#163126', bg: '#f4f8f6', logoUrl: 'https://www.google.com/s2/favicons?domain=mpforest.gov.in&sz=128' }
+        { name: 'Wildlife Research & Conservation Society', abbr: 'WRCS', color: '#8d5d3b', bg: '#f6f2ea' },
+        { name: 'Centre for Wildlife Studies', abbr: 'CWS', color: '#0b5d43', bg: '#f6f2ea' },
+        { name: 'Madhya Pradesh Forest Department', abbr: 'MP-FD', color: '#163126', bg: '#f4f8f6' }
       ]
     }
   ],
@@ -797,7 +796,7 @@ const site = {
       amount: '€1,400 / month',
       year: '2026-29',
       note: 'Highly prestigious research grant awarded for pursuing doctoral research in Germany, supporting international academic exchange and scientific cooperation.',
-      logo: 'https://www.google.com/s2/favicons?domain=daad.de&sz=128'
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/DAAD_Logo.svg'
     },
     {
       title: 'ASAB Conference Attendance Grant',
@@ -805,7 +804,7 @@ const site = {
       amount: '£500',
       year: '2025',
       note: 'Travel grant awarded for attending the ASAB Winter Conference in Edinburgh, Scotland.',
-      logo: 'https://www.google.com/s2/favicons?domain=asab.org&sz=128'
+      logo: ''
     },
     {
       title: 'IEC Conference Attendance Grant',
@@ -813,7 +812,7 @@ const site = {
       amount: '₹35,000',
       year: '2025',
       note: 'Travel grant awarded for attending the International Ethological Congress in Kolkata, India.',
-      logo: 'https://www.google.com/s2/favicons?domain=ashoka.edu.in&sz=128'
+      logo: 'https://upload.wikimedia.org/wikipedia/en/e/eb/Ashoka_University_Logo.svg'
     },
     {
       title: 'ATBC Seed Research Grant',
@@ -821,15 +820,15 @@ const site = {
       amount: '$1,000',
       year: '2025',
       note: 'Awarded for the ongoing Amphibian Ecology project in the Western Ghats.',
-      logo: 'https://www.google.com/s2/favicons?domain=tropicalbiology.org&sz=128'
+      logo: ''
     },
     {
       title: 'DST INSPIRE Scholarship',
-      agency: 'Department of Science and Technology, Govt. of India',
+      agency: 'Department of Science and Technology',
       amount: '₹4,00,000',
       year: '2019 - 2024',
-      note: 'Prestigious national scholarship awarded for pursuing higher education in basic and natural sciences.',
-      logo: 'https://www.google.com/s2/favicons?domain=online-inspire.gov.in&sz=128'
+      note: 'Five-year national scholarship awarded for pursuing basic sciences.',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg'
     }
   ]
 };
