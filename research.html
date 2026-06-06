@@ -840,16 +840,13 @@
           <div class="panel-inner split">
             <div>
               <div style="display: flex; flex-direction: column; gap: 14px;">
-                <div>
-                  <span class="badge" style="margin-bottom: 0; display: inline-block;">${tab.emoji} ${tab.title}</span>
-                </div>
+                <h3 style="margin-bottom: 0; font-size:1.8rem; font-weight:800; line-height:1.25; color: var(--ink);">${tab.intro}</h3>
                 <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 15px;">
                   ${tab.date ? `<div style="display:inline-block; font-size: 0.85rem; font-weight: 600; color: var(--brand); background: rgba(11,93,67,0.06); padding: 6px 14px; border-radius: 99px;">📅 ${tab.date}</div>` : ''}
                   ${logosHtml}
                 </div>
               </div>
-              <h3 style="margin-top:20px; font-size:1.6rem; font-weight:800; line-height:1.25;">${tab.intro}</h3>
-              <p style="margin-top:12px; font-size:1.02rem; line-height:1.65; color:var(--muted);">${tab.desc}</p>
+              <p style="margin-top:16px; font-size:1.02rem; line-height:1.65; color:var(--muted);">${tab.desc}</p>
               <div class="divider"></div>
               <div class="timeline" style="margin-top:20px;">
                 ${tab.points.map(p => `
