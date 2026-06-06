@@ -16,11 +16,10 @@ const site = {
       date: 'Starting Oct 2026',
       emoji: '🐒',
       intro: 'Multimodal Communication & Social Dynamics in the Coordination of Collective Movement',
-      desc: 'Collective movement is a defining feature of group living and an ideal behavioural lens for investigating how individual decisions scale to coordinated group action. When groups travel together, they reduce predation risk, pool information about resources, and maintain cohesion; however, they must also resolve conflicts of interest regarding when to leave, where to go, and who to follow.',
+      desc: 'To understand how individual decisions scale into coordinated group action, our research investigates the collective movement of ring-tailed lemurs (<i>Lemur catta</i>) at Affenwald Park, Germany. While group travel offers vital survival benefits like reduced predation and shared resource knowledge, it requires complex, continuous negotiation over when, where, and whom to follow.',
       points: [
-        'Investigating how multimodal cues (acoustic and visual) and social relationships interact to shape the initiation and coordination of collective movement in ring-tailed lemurs (<i>Lemur catta</i>).',
-        'Deploying multi-sensor collars to synchronously record GPS, inertial movement (IMU), proximity, and on-animal acoustics across all members of a group.',
-        'Establishing a continuous, group-level view of communication, social context, and movement dynamics to study collective coordination at Affenwald Park, Germany.'
+        'By equipping entire lemur groups with multi-sensor collars that synchronously record GPS, inertial movement, proximity, and on-animal acoustics, we capture a real-time, comprehensive picture of their behavior.',
+        'This data allows us to explore exactly how multimodal communication—combining acoustic and visual cues—interacts with existing social relationships to drive and coordinate collective movement.'
       ],
       images: [
         { src: 'Research/lemur_multimodal_diagram.jpg', caption: 'Diagram demonstrating the role of visual and acoustic cues in coordinating collective movement' }
