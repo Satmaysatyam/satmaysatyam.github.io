@@ -5,7 +5,7 @@ const site = {
     { id: 'audio', label: 'Audio Bank', url: 'audio.html' },
     { id: 'photography', label: 'Photography', url: 'photography.html' },
     { id: 'art', label: 'Art', url: 'art.html' },
-    { id: 'cv', label: 'CV and Anti-CV', url: 'cv.html' },
+    { id: 'cv', label: 'CV', url: 'cv.html' },
     { id: 'contact', label: 'Contact', url: 'contact.html' },
     { id: 'giving', label: 'Giving Back', url: 'giving.html' }
   ],
