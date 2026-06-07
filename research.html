@@ -44,6 +44,7 @@
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
+      height: 100%;
     }
     
     .research-fig-card:hover {
@@ -55,8 +56,7 @@
     .fig-img-wrap {
       position: relative;
       width: 100%;
-      height: 0;
-      padding-bottom: 66.666%; /* strictly enforces 3:2 aspect ratio on all browsers */
+      aspect-ratio: 3 / 2;
       overflow: hidden;
       background: #f0ebe1;
     }
@@ -272,7 +272,9 @@
       overflow: hidden;
       margin-bottom: 30px;
       display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
+      grid-template-columns: 1fr 1fr !important;
+      padding: 22px;
+      gap: 18px;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
@@ -283,10 +285,10 @@
     }
     
     .pub-info {
-      padding: 30px;
+      padding: 0;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
     }
     
     .pub-header {
@@ -387,9 +389,7 @@
     .pub-visual {
       display: flex;
       flex-direction: column;
-      height: 100%;
-      border-left: 1px solid rgba(0,0,0,0.04);
-      background: #fafaf9;
+      justify-content: center;
     }
     
     .pub-card:hover .fig-img-wrap img.main-img {
@@ -645,6 +645,19 @@
       padding-top: 16px;
       border-top: 1px dashed rgba(22, 49, 38, 0.12);
     }
+      .panel-inner.split {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 40px;
+        align-items: flex-start;
+      }
+      
+      .research-visuals-col {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+      }
   </style>
 </head>
 <body>
@@ -996,13 +1009,17 @@
               </div>
             </div>
             <div class="pub-visual">
-              <div class="fig-img-wrap" style="flex-shrink: 0; border-radius: 0;">
-                <img src="${p.img}" class="bg-blur" alt="" aria-hidden="true">
-                <img src="${p.img}" class="main-img" alt="${p.title}" loading="lazy">
-              </div>
-              <div class="fig-caption" style="border-top: none; background: transparent; display: block; height: auto;">
-                <span style="font-weight: 700; color: var(--ink);">${p.id === 'bird_flocks' ? '📊' : '📸'} ${p.speciesName}</span>
-                ${p.imgCredit ? `<br><span class="pub-credit" style="font-size: 0.72rem; opacity: 0.8; font-weight: normal; margin-top: 4px; display: inline-block;">Photo: ${p.imgCredit}</span>` : ''}
+              <div class="research-fig-card" style="margin: 0;">
+                <div class="fig-img-wrap">
+                  <img src="${p.img}" class="bg-blur" alt="" aria-hidden="true">
+                  <img src="${p.img}" class="main-img" alt="${p.title}" loading="lazy">
+                </div>
+                <div class="fig-caption">
+                  <div>
+                    <span style="font-weight: 700; color: var(--ink);">${p.id === 'bird_flocks' ? '📊' : '📸'} ${p.speciesName}</span>
+                    ${p.imgCredit ? `<br><span class="pub-credit" style="font-size: 0.72rem; opacity: 0.8; font-weight: normal; margin-top: 4px; display: inline-block;">Photo: ${p.imgCredit}</span>` : ''}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
