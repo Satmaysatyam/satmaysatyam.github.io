@@ -7,9 +7,8 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     .art-grid-layout {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 32px;
+      column-count: 3;
+      column-gap: 24px;
       padding-top: 10px;
       margin-top: 20px;
     }
@@ -17,72 +16,43 @@
       position: relative;
       border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(13,33,25,0.04);
-      background: #fdfdfc;
-      border: 1px solid rgba(22, 49, 38, 0.08);
+      box-shadow: 0 10px 30px rgba(13,33,25,0.06);
+      background: transparent;
+      border: none;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      display: flex;
-      flex-direction: column;
+      display: inline-block; /* Crucial for CSS masonry to prevent breaking across columns */
+      width: 100%;
+      margin-bottom: 24px;
     }
     .art-card-new:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 48px rgba(13,33,25,0.12);
-      border-color: rgba(11, 93, 67, 0.15);
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 48px rgba(13,33,25,0.15);
+      z-index: 10;
     }
     .art-img-wrap {
       width: 100%;
-      aspect-ratio: 1 / 1; /* PERFECT SQUARE CROP */
       position: relative;
       overflow: hidden;
       background: #0d1a14;
+      border-radius: var(--radius);
     }
     .art-img-wrap img {
       width: 100%;
-      height: 100%;
+      height: auto;
       display: block;
-      object-fit: cover; /* CROPS TO FILL SQUARE */
       /* Aesthetic editing/filtering logic via CSS */
-      filter: contrast(1.1) saturate(1.15) brightness(0.95);
+      filter: contrast(1.05) saturate(1.1) brightness(0.98);
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
     }
     .art-card-new:hover .art-img-wrap img {
-      transform: scale(1.06);
-      filter: contrast(1.15) saturate(1.25) brightness(1.05);
-    }
-    .art-info {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-    .art-title {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--ink);
-      margin: 0 0 8px 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .art-medium {
-      font-size: 0.8rem;
-      color: var(--brand);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 12px;
-    }
-    .art-desc {
-      font-size: 0.95rem;
-      color: var(--muted);
-      line-height: 1.6;
-      margin: 0;
+      transform: scale(1.04);
+      filter: contrast(1.15) saturate(1.2) brightness(1.05);
     }
     @media(max-width: 1080px) {
-      .art-grid-layout { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; }
+      .art-grid-layout { column-count: 2; column-gap: 20px; }
     }
     @media(max-width: 600px) {
-      .art-grid-layout { grid-template-columns: 1fr; }
+      .art-grid-layout { column-count: 1; }
     }
   </style>
 </head>
@@ -115,11 +85,6 @@
         <div class="art-card-new">
           <div class="art-img-wrap">
             <img src="${a.src}" alt="${a.title}" loading="lazy">
-          </div>
-          <div class="art-info">
-            <h3 class="art-title">${a.emoji} ${a.title}</h3>
-            <div class="art-medium">${a.medium}</div>
-            <p class="art-desc">${a.note}</p>
           </div>
         </div>
       `).join('');
