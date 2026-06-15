@@ -52,6 +52,12 @@ while ($listener.IsListening) {
             $bytes = [System.IO.File]::ReadAllBytes($filePath)
             $response.ContentType = $contentType
             $response.ContentLength64 = $bytes.Length
+            
+            # Disable caching for development
+            $response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate")
+            $response.Headers.Add("Pragma", "no-cache")
+            $response.Headers.Add("Expires", "0")
+            
             if ($request.HttpMethod -ne "HEAD") {
                 $response.OutputStream.Write($bytes, 0, $bytes.Length)
             }
