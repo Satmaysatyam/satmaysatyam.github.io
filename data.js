@@ -13,9 +13,9 @@ const site = {
     {
       id: 'lemur',
       title: 'Lemur Collective Movement',
-      date: 'Starting Oct 2026',
+      date: 'Oct 2026 - Oct 2029',
       emoji: '🐒',
-      intro: 'Multimodal Communication & Social Dynamics in the Coordination of Collective Movement',
+      intro: 'Multimodal Communication & Social Dynamics in the Coordination of Collective Movement of Ring-tailed Lemur' ,
       desc: 'To understand how individual decisions scale into coordinated group action, our research investigates the collective movement of ring-tailed lemurs (<i>Lemur catta</i>) at Affenwald Park, Germany. While group travel offers vital survival benefits like reduced predation and shared resource knowledge, it requires complex, continuous negotiation over when, where, and whom to follow. By equipping entire lemur groups with multi-sensor collars that synchronously record GPS, inertial movement, proximity, and on-animal acoustics, we capture a real-time, comprehensive picture of their behavior. This data allows us to explore exactly how multimodal communication—combining acoustic and visual cues—interacts with existing social relationships to drive and coordinate collective movement.',
       points: [],
       images: [
@@ -23,24 +23,21 @@ const site = {
       ],
       logos: [
         { name: 'Deutsches Primatenzentrum', abbr: 'DPZ', color: '#1a5c78', bg: '#f0f5f8', logoUrl: 'logos/dpz.png' },
-        { name: 'Deutscher Akademischer Austauschdienst', abbr: 'DAAD', color: '#005b82', bg: '#f0f5f8', logoUrl: 'logos/daad.png' }
+        { name: 'Deutscher Akademischer Austauschdienst', abbr: 'DAAD', color: '#005b82', bg: '#f0f5f8', logoUrl: 'logos/daad.png' },
+        { name: 'Georg-August-Universität Göttingen', abbr: 'GAUG', color: '#003152', bg: '#eef3f7', logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnxqI26s3fy-ELqldG79ORxp01FOgzRe8A-80sl5f_oUn07Qa1WBpogMyL&s=10' }
       ]
     },
     {
       id: 'breeding',
       title: 'Amphibian Breeding Ecology',
-      date: '2024 - 2026',
+      intro: 'Evolution and Ecology of Winter Breeding Frogs in Western Ghats',
+      date: 'Aug 2024 - June 2026',
       emoji: '🐸',
-      intro: 'Amphibian Bioacoustics & Breeding Ecology in the Western Ghats',
-      desc: 'Investigating acoustic communication, calling phenology, and microhabitat associations of endemic frogs in the evergreen forests of Sirsi, Western Ghats. Recipient of the ATBC Seed Research Grant (2025).',
-      points: [
-        'Deploying passive acoustic monitoring (PAM) using Audiomoth recorders to track vocal active times.',
-        'Studying acoustic eavesdropping by mosquitoes on anuran calls in the Western Ghats.',
-        'Analyzing call structural variations of endemic tree and bush frogs relative to microclimate.'
-      ],
+      desc: 'In this project, I investigated the fascinating evolutionary and ecological dynamics of winter-breeding amphibians in the Western Ghats. This research took a comprehensive, multi-tiered approach to understand this rare reproductive strategy, focusing primarily on the Indian Golden-back Frog (<i>Hylarana indica</i>).<br><br>My work investigated this breeding ecology across five distinct dimensions:<br><ul style="margin: 10px 0 20px; padding-left: 20px; list-style-type: disc; display: grid; gap: 8px;"><li><b>Evolutionary Origins:</b> Traced the deep evolutionary roots of winter breeding using phylogenetic analysis to map how and why this strategy evolved across amphibian lineages.</li><li><b>Ecological Advantages:</b> Explored how this unique timing provides ecological benefits in the field, assessing habitat stability and targeted adaptation.</li><li><b>Bioacoustics & Competition:</b> Deployed Audiomoth recorders for long-term passive monitoring and shotgun microphones for species-level active acoustic sampling to assess if winter breeding reduces acoustic competition.</li><li><b>Acoustic Parasitism:</b> Investigated the trade-offs of acoustic communication by sampling eavesdropping mosquitoes, testing if the winter season shields frogs from acoustic predators.</li><li><b>Individual Fitness:</b> Conducted long-term individual monitoring using Visual Implant Elastomer (VIE) tags to measure how traits like body size influence competitiveness and reproductive success.</li></ul>',
+      points: [],
       images: [
-        { src: 'Research/Amphibian1.jpg', caption: 'Taking morphometric measurements (SVL and weight) of a bush frog' },
-        { src: 'Research/Amphibian2.jpg', caption: 'Nocturnal survey and snake capture during herpetological indexing' },
+        { src: 'Research/Amphibian1.jpg', caption: 'Active Acoustic Sampling of Cricket Frogs' },
+        { src: 'Research/Amphibian2.jpg', caption: 'Morphometric measurement of sampled frogs' },
         { src: 'Research/Amphibian3.jpg', caption: 'Observing amphibians in their natural habitat' },
         { src: 'Research/Amphibian4.jpeg', caption: 'Dense forest stream habitat for amphibian surveys' },
         { src: 'Research/Amphibian5.jpeg', caption: 'Searching for vocalizing amphibians in the undergrowth' },
@@ -55,19 +52,13 @@ const site = {
     },
     {
       id: 'flock',
-      title: 'MSF Flock Ecology',
+      title: 'Mixed-Species Flock Ecology',
       date: 'Jan 2024 - May 2024',
       emoji: '🐦',
-      intro: 'Symphony of Survival: Bioacoustics & Prey Dynamics in the Eastern Himalayas',
-      desc: 'My Master\'s thesis research investigated vocal species centrality in mixed-species bird flocks (MSFs) in Eaglenest Wildlife Sanctuary, Arunachal Pradesh, India. This study combined bioacoustic network modeling of the dawn chorus with field sampling of insect/arthropod prey availability to examine how acoustic beacons and resource density influence group cohesion and foraging dynamics.',
-      points: [
-        'Conducted bioacoustic recordings of mixed-species understory bird flocks during the dawn chorus in the Eastern Himalayas.',
-        'Modeled social network centrality to demonstrate how highly vocal species act as acoustic beacons to maintain flock cohesion.',
-        'Estimated insect/arthropod prey availability across an elevational gradient to analyze how understory bird prey biomass affects flock movement and species composition.',
-        'Conducted extensive understory arthropod sampling using foliage-sweeping and trunk-bark search methods.'
-      ],
+      intro: 'Symphony of Survival: Bioacoustics Approach to understanding Mixed Species Bird Flocks in the Eastern Himalayas',
+      desc: 'For my Master’s research project, I set out to solve a captivating puzzle in behavioral ecology: how do the complex, mixed-species bird flocks of the Eastern Himalayas actually assemble? By merging bioacoustics with social network analysis, my colleagues and I discovered that the forest wakes up differently depending on where you look. In the shadowy lower understory, we uncovered a powerful relationship between a bird\'s voice and its social status: <b>calling frequency directly predicts network centrality</b>.<br><br>We found that highly vocal birds, like the Yellow-throated Fulvetta, act as essential "acoustic beacons." Because they call so frequently during the dawn chorus, they establish themselves as highly central "hubs" within the social network. Their constant vocalizations serve as a rallying cry, actively drawing other species together and driving the cohesion of the flock. However, when we analyzed the upper forest canopy, this acoustic dynamic completely vanished. Despite forming massive, diverse groups, canopy birds showed no synchronized morning vocalizations, and the crucial link between how often they called and their social centrality was entirely absent. Ultimately, this study reveals that the early morning isn\'t just a time for birdsong—it is a critical, strategic window where key species use the sheer frequency of their calls to architect stable, multi-species communities.',
       images: [
-        { src: 'Research/MSF1.JPG', caption: 'Vocal Centrality Network Plot representing social structure' },
+        { src: 'Research/MSF1.JPG', caption: 'Mixed-Species Flock Observations' },
         { src: 'Research/MSF2.JPG', caption: 'Conducting bioacoustic recordings in Eaglenest Wildlife Sanctuary' },
         { src: 'Research/MSF3.JPG', caption: 'Fieldwork in the Eastern Himalayas' },
         { src: 'Research/MSF4.JPG', caption: 'Mixed-Species Flock Observations' }
@@ -79,7 +70,7 @@ const site = {
     },
     {
       id: 'intern',
-      title: 'Research Intern & Field Assistant',
+      title: 'Research Internship & Field Assistantship',
       date: '2020 - 2022',
       emoji: '🔬',
       intro: 'Field Assistantships & Professional Research Internships',

@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIE Tagging in Amphibian Research | Giving Back | Satyam Gupta</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --glass-bg: rgba(255, 255, 255, 0.85);
+      --glass-border: rgba(255, 255, 255, 0.5);
+      --glass-shadow: 0 20px 40px rgba(11, 93, 67, 0.08);
+      --gradient-brand: linear-gradient(135deg, #0f7655 0%, #1ea37b 100%);
+      --gradient-alert: linear-gradient(135deg, #e63946 0%, #ff4d4d 100%);
+      --ink: #1a202c;
+      --muted: #4a5568;
+      --brand: #17a278;
+      --bg-color: #f0f4f3;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      background-image: 
+        radial-gradient(circle at top left, rgba(23,162,120,0.08), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(15,118,85,0.08), transparent 40%),
+        linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+      color: var(--ink);
+    }
+
+    h1, h2, h3, h4, .article-title, .step-number {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .article-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 30px;
+      padding: 60px;
+      box-shadow: var(--glass-shadow);
+      position: relative;
+    }
+
+    .article-container::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 10px;
+      background: var(--gradient-brand);
+      border-radius: 30px 30px 0 0;
+    }
+
+    .article-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .article-title {
+      font-size: 3.2rem;
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .article-subtitle {
+      font-size: 1.2rem;
+      color: var(--muted);
+      font-weight: 500;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    /* Quick Summary (TL;DR) Card */
+    .tldr-card {
+      background: rgba(23, 162, 120, 0.08);
+      border: 1px solid rgba(23, 162, 120, 0.2);
+      border-radius: 20px;
+      padding: 30px 35px;
+      margin: 0 0 50px 0;
+      display: flex;
+      gap: 25px;
+      align-items: flex-start;
+      box-shadow: inset 0 0 20px rgba(255,255,255,0.5);
+    }
+
+    .tldr-icon {
+      font-size: 3rem;
+      line-height: 1;
+      filter: drop-shadow(0 4px 6px rgba(23,162,120,0.3));
+    }
+
+    .tldr-content h3 {
+      margin: 0 0 12px 0;
+      color: var(--brand);
+      font-weight: 800;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .tldr-content p {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    .article-image {
+      width: 60%;
+      max-width: 450px;
+      display: block;
+      margin: 40px auto 15px auto;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(11, 93, 67, 0.15);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+      border: 4px solid white;
+    }
+
+    .article-image:hover {
+      transform: scale(1.05) translateY(-8px);
+      box-shadow: 0 20px 45px rgba(11, 93, 67, 0.2);
+    }
+
+    .image-credit {
+      font-size: 0.9rem;
+      color: #718096;
+      text-align: center;
+      margin-bottom: 50px;
+      display: block;
+      font-style: italic;
+    }
+
+    /* Headings */
+    .article-content h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 60px 0 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid rgba(23,162,120,0.1);
+    }
+
+    .article-content h2 .icon-bounce {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 4px rgba(11,93,67,0.2));
+      font-size: 2.5rem;
+    }
+
+    .article-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+
+    /* Step Cards */
+    .step-card {
+      background: #ffffff;
+      border: 1px solid rgba(11, 93, 67, 0.06);
+      border-radius: 20px;
+      padding: 35px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .step-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0; width: 6px;
+      background: var(--brand);
+    }
+
+    .step-card:hover {
+      box-shadow: 0 15px 35px rgba(11, 93, 67, 0.08);
+      transform: translateY(-4px);
+    }
+
+    .step-card h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0 0 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .step-number {
+      background: var(--brand);
+      color: white;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(23,162,120,0.3);
+    }
+
+    .step-card p {
+      margin: 0 0 15px 0;
+      font-size: 1.05rem;
+    }
+    
+    .step-card p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .step-card ul, .step-card ol {
+      margin: 15px 0 0 0;
+      padding-left: 25px;
+    }
+
+    .step-card li {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    
+    .step-card li::marker {
+      color: var(--brand);
+      font-weight: bold;
+    }
+
+    /* Golden Rule Alert */
+    .alert-box {
+      background: linear-gradient(135deg, rgba(230, 57, 70, 0.05), rgba(255, 77, 77, 0.08));
+      border: 1px solid rgba(230, 57, 70, 0.2);
+      border-left: 6px solid #e63946;
+      padding: 30px;
+      border-radius: 0 20px 20px 0;
+      margin: 50px 0;
+      position: relative;
+    }
+
+    .alert-box strong {
+      color: #e63946;
+      font-size: 1.3rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-family: 'Outfit', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .alert-box strong::before {
+      content: '';
+      display: block;
+      width: 12px;
+      height: 12px;
+      background: #e63946;
+      border-radius: 50%;
+      animation: pulseRed 1.5s infinite;
+      box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7);
+    }
+
+    @keyframes pulseRed {
+      0% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7); }
+      70% { box-shadow: 0 0 0 12px rgba(230, 57, 70, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0); }
+    }
+
+    /* Workflow Graphic */
+    .workflow-graphic {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f8faf9;
+      padding: 40px;
+      border-radius: 24px;
+      margin: 50px 0;
+      gap: 20px;
+      border: 1px solid rgba(11, 93, 67, 0.08);
+      box-shadow: inset 0 0 30px rgba(11,93,67,0.02);
+    }
+
+    .workflow-step-box {
+      flex: 1;
+      text-align: center;
+      background: #ffffff;
+      padding: 25px 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(13,33,25,0.05);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      color: var(--ink);
+      font-size: 1.1rem;
+      border: 1px solid rgba(22, 49, 38, 0.04);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .workflow-step-box:hover {
+      transform: translateY(-10px);
+      border-color: var(--brand);
+      color: var(--brand);
+      box-shadow: 0 15px 35px rgba(11,93,67,0.12);
+    }
+
+    .workflow-step-box span {
+      display: block;
+      font-size: 2.5rem;
+      margin-top: 15px;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    }
+
+    .workflow-arrow {
+      color: var(--brand);
+      font-size: 2rem;
+      font-weight: 900;
+      animation: bounceRight 2s infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes bounceRight {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(10px); }
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 40px 0;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(13,33,25,0.06);
+      border: 1px solid rgba(11, 93, 67, 0.08);
+    }
+
+    th, td {
+      padding: 25px;
+      text-align: left;
+      border-bottom: 1px solid rgba(22, 49, 38, 0.05);
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    th {
+      background-color: rgba(11, 93, 67, 0.03);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      color: var(--ink);
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+    }
+    
+    td strong {
+      color: var(--ink);
+    }
+
+    /* Staggered Animations */
+    .animate-block {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .icon-bounce {
+      display: inline-block;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    h2:hover .icon-bounce {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--brand);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      margin-bottom: 40px;
+      padding: 12px 25px;
+      background: white;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(11,93,67,0.08);
+      transition: all 0.3s;
+      border: 1px solid rgba(23,162,120,0.1);
+    }
+    
+    .back-link:hover {
+      transform: translateX(-5px);
+      box-shadow: 0 8px 25px rgba(11,93,67,0.15);
+      background: var(--brand);
+      color: white;
+    }
+
+    .glow-pulse {
+      animation: glowText 2s infinite alternate;
+      color: #7b2cbf;
+      font-weight: 800;
+      text-decoration: none;
+      border-bottom: 2px dashed #7b2cbf;
+      padding-bottom: 2px;
+      transition: all 0.3s;
+    }
+    
+    .glow-pulse:hover {
+      background: rgba(123, 44, 191, 0.1);
+    }
+    
+    @keyframes glowText {
+      from { text-shadow: 0 0 5px rgba(123, 44, 191, 0.1); }
+      to { text-shadow: 0 0 15px rgba(123, 44, 191, 0.6); }
+    }
+    
+    .article-note {
+      padding: 35px;
+      border-radius: 20px;
+      border-left: 6px solid;
+      margin: 50px 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    }
+
+    @media (max-width: 768px) {
+      .article-container { padding: 40px 25px; border-radius: 20px; }
+      .article-title { font-size: 2.2rem; }
+      .workflow-graphic { flex-direction: column; }
+      .workflow-arrow { transform: rotate(90deg); animation: bounceDown 2s infinite; }
+      @keyframes bounceDown {
+        0%, 100% { transform: rotate(90deg) translateX(0); }
+        50% { transform: rotate(90deg) translateX(10px); }
+      }
+    }
+    
+    .references {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 2px dashed rgba(22, 49, 38, 0.1);
+    }
+
+    .reference-item {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 20px;
+      padding-left: 25px;
+      text-indent: -25px;
+    }
+    
+    /* Color Palette */
+    .color-palette {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 15px;
+      margin-bottom: 25px;
+      background: rgba(255,255,255,0.4);
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px dashed rgba(11, 93, 67, 0.15);
+    }
+    
+    .palette-group h4 {
+      margin: 0 0 10px 0;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      border-bottom: 1px dashed rgba(22, 49, 38, 0.1);
+      padding-bottom: 5px;
+    }
+    
+    .color-swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .swatch {
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: default;
+      transition: all 0.3s;
+    }
+
+    .plain-swatch {
+      opacity: 0.85;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    .uv-swatch {
+      background: var(--base-color);
+      color: white;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      animation: uvPulse 2s infinite alternate;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    @keyframes uvPulse {
+      0% {
+        box-shadow: 0 0 5px var(--glow-color);
+        transform: scale(1);
+      }
+      100% {
+        box-shadow: 0 0 15px var(--glow-color), 0 0 30px var(--glow-color);
+        transform: scale(1.05);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <!-- Header dynamically injected by navigation.js -->
+
+    <main class="section-wrap">
+      <section class="page" style="padding-top: 40px;">
+        <a href="giving.html" class="back-link">← Back to Giving Back</a>
+        
+        <article class="article-container">
+          <header class="article-header animate-block">
+            <h1 class="article-title">VIE Tagging in Amphibian Research</h1>
+            <div class="article-subtitle">A Complete Resource Guide for Field Methodologies & Best Practices</div>
+          </header>
+          
+          <div class="article-content">
+            
+            <div class="tldr-card animate-block" style="animation-delay: 0.1s;">
+              <div class="tldr-icon">💡</div>
+              <div class="tldr-content">
+                <h3>Giving Back to the Field</h3>
+                <p>As field biologists, the reliability of our data hinges entirely on the ethics and precision of our field methods. Visible Implant Elastomer (VIE) tagging is an exceptional tool for marking small, delicate, or nocturnal amphibians, but it comes with a steep learning curve. To save early-career researchers time, minimize material waste, and—most importantly—ensure animal welfare, I have compiled this comprehensive, step-by-step guide based on extensive field experience.</p>
+              </div>
+            </div>
+
+            <img src="VIE/tagged_frog.jpeg" alt="Tagged individual" class="article-image animate-block" style="animation-delay: 0.2s;" loading="lazy">
+            <span class="image-credit animate-block" style="animation-delay: 0.2s;">A properly positioned VIE tag reflecting color codes for positive identification. <strong>(Photo: Satyam Gupta)</strong></span>
+
+            <h2 class="animate-block" style="animation-delay: 0.3s;"><span class="icon-bounce">🔬</span> What is VIE & Why Use It?</h2>
+            <p class="animate-block" style="animation-delay: 0.3s;"><strong>Visible Implant Elastomer (VIE)</strong>, developed and manufactured officially by <strong><a href="https://www.nmt.us" target="_blank" style="color: var(--brand); font-weight: 700;">Northwest Marine Technology (NMT)</a></strong>, is a medical-grade, two-part silicone-based material. When the elastomer base is mixed with a curing agent, it cures into a flexible, biocompatible, and permanent rubber-like solid. It is injected into animals as a liquid or gel but quickly solidifies into a stable mark underneath transparent or translucent tissue.</p>
+
+            <div class="step-card animate-block" style="animation-delay: 0.3s; border-left-color: #3b82f6;">
+              <h3><div class="step-number" style="background:#3b82f6;">✓</div> Key Technical Attributes</h3>
+              <ul>
+                <li><strong>Biocompatibility:</strong> Formulated strictly to be non-toxic and inert <strong>(Moffatt, 2013)</strong>; causing minimal physiological tissue reaction or behavioral alterations when placed correctly <strong>(Antwis et al., 2014)</strong>.</li>
+                <li><strong>Fluorescence Under UV Light:</strong> Ten colors are available from NMT, six of which are highly fluorescent under UV or deep blue excitation light. This makes it a gold standard for studying cryptic, small-bodied, or nocturnal wildlife.</li>
+                <li><strong>An Alternative to Destructive Marking:</strong> For decades, amphibian mark-recapture studies relied on toe-clipping or branding. VIE offers a fundamentally less invasive, more ethical, and high-retention alternative—especially for tracking population dynamics, individual home ranges, and calling behavior across metamorphic life stages <strong>(Sapsford et al., 2014)</strong>.</li>
+              </ul>
+            </div>
+
+
+
+            <img src="VIE/Tagging_closeup.jpeg" alt="VIE Tagging Close-up" class="article-image animate-block" style="animation-delay: 0.35s;" loading="lazy">
+            <span class="image-credit animate-block" style="animation-delay: 0.35s;">A detailed close-up of a fluorescent VIE tag under the skin. <strong>(Photo: Satyam Gupta)</strong></span>
+
+            <div class="alert-box animate-block" style="animation-delay: 0.4s;">
+              <strong>The Golden Rule: Time & Temperature Management</strong>
+              <p style="margin:0; color: #a82734;">Once the elastomer base is mixed with the curing agent, a chemical reaction begins. It will gradually cure into a useless, rubbery solid. In warm or humid tropical field environments, this window shrinks drastically. <strong>Every step of your workflow must be designed to maximize your useful application time.</strong></p>
+            </div>
+
+            <h2 class="animate-block" style="animation-delay: 0.5s;"><span class="icon-bounce">📋</span> Phase 1: Pre-Field Planning & Experimental Design</h2>
+            
+            <div class="step-card animate-block" style="animation-delay: 0.5s;">
+              <h3><div class="step-number">1</div> Master Your Color Combinations & Codes</h3>
+              <p>Before entering the field, construct a precise spreadsheet of unique color combinations based on your available tag colors and chosen body locations <strong>(MacNeil et al., 2011)</strong>.</p>
+              
+              <div class="color-palette">
+                <div class="palette-group">
+                  <h4>Fluorescent Colors (UV Reactive)</h4>
+                  <div class="color-swatches">
+                    <span class="swatch uv-swatch" style="--base-color: #ff3366; --glow-color: rgba(255,51,102,0.8);">Pink</span>
+                    <span class="swatch uv-swatch" style="--base-color: #ff2200; --glow-color: rgba(255,34,0,0.8);">Red</span>
+                    <span class="swatch uv-swatch" style="--base-color: #ff8c00; --glow-color: rgba(255,140,0,0.8);">Orange</span>
+                    <span class="swatch uv-swatch" style="--base-color: #ffcc00; --glow-color: rgba(255,204,0,0.8); color: #333; text-shadow: none;">Yellow</span>
+                    <span class="swatch uv-swatch" style="--base-color: #00e600; --glow-color: rgba(0,230,0,0.8); color: #111; text-shadow: none;">Green</span>
+                    <span class="swatch uv-swatch" style="--base-color: #00bbff; --glow-color: rgba(0,187,255,0.8);">Blue</span>
+                  </div>
+                </div>
+                <div class="palette-group">
+                  <h4>Non-Fluorescent Colors</h4>
+                  <div class="color-swatches">
+                    <span class="swatch plain-swatch" style="background: #ffffff; color: #000; border: 1px solid #ddd;">White</span>
+                    <span class="swatch plain-swatch" style="background: #333333; color: #fff;">Black</span>
+                    <span class="swatch plain-swatch" style="background: #8b4513; color: #fff;">Brown</span>
+                    <span class="swatch plain-swatch" style="background: #800080; color: #fff;">Purple</span>
+                  </div>
+                </div>
+              </div>
+              <ul>
+                <li><strong>Accounting for 'No Tags':</strong> Decide if your matrix will include combinations where a specific body zone is left empty (an "NA" tag). <em>Note: While this increases potential combinations, relying heavily on "NA" can backfire if a true tag is later lost or migrates, causing you to misidentify the individual. It is highly recommended to use actual tags across all chosen body locations whenever possible.</em></li>
+                <li><strong>Avoid UV Ambiguity:</strong> Do <strong>not</strong> use colors that fluoresce identically under field conditions. For instance, <strong>Red and Pink look remarkably similar under a UV torch</strong>. Avoid using them across your study, or at the very absolute least, never use them on the same individual. Always prioritize distinct, highly fluorescent colors.</li>
+                <li><strong>Incorporate Metadata:</strong> Always record the exact tagging locations alongside individual morphometric data. If a tag ever becomes ambiguous, this metadata acts as a vital fail-safe to cross-verify the individual's identity <strong>(Hohn, 2013)</strong>.</li>
+              </ul>
+            </div>
+
+            <div class="step-card animate-block" style="animation-delay: 0.5s;">
+              <h3><div class="step-number">2</div> Tailor Tag Locations to Species Behavior & Diel Activity</h3>
+              <p>Choose injection sites that match both how you intend to observe the animal and how it interacts with its environment to minimize predation risks.</p>
+              <ul>
+                <li><strong>Nocturnal Species (Minimal Disturbance):</strong> If you are monitoring nocturnal frogs and want to identify them via capture-mark-recapture <em>without physically handling them every time</em>, choose the <strong>upper areas of the thigh and wrist</strong>. Because these frogs are active in the dark, this positioning allows you to spot-check their unique codes safely from above using a high-powered UV torch, keeping stress to an absolute minimum.</li>
+                <li><strong>Diurnal Species (Camouflage Preservation):</strong> For species active during the day, tags should strictly be placed on the <strong>ventral surface</strong> (the underside). Placing tags on dorsal or highly visible upper surfaces can drastically increase their detectability to visual predators like birds or snakes under daylight, compromising their natural camouflage. Keeping the elastomer on the ventral side ensures they stay protected while resting or moving.</li>
+              </ul>
+            </div>
+            
+            <div class="step-card animate-block" style="animation-delay: 0.5s;">
+              <h3><div class="step-number">3</div> Determine Sample Size & Proportions</h3>
+              <p>Plan exactly how many individuals you aim to tag per shift and calculate the proportion of each VIE color color-code required. Pack accordingly to prevent running out of a single color mid-field-session.</p>
+            </div>
+
+            <img src="VIE/Camp.jpeg" alt="Field Camp Setting" class="article-image animate-block" style="animation-delay: 0.55s;" loading="lazy">
+            <span class="image-credit animate-block" style="animation-delay: 0.55s;">Field camp setup for night-time tagging operations. <strong>(Photo: Satyam Gupta)</strong></span>
+
+            <h2 class="animate-block" style="animation-delay: 0.6s;"><span class="icon-bounce">⛺</span> Phase 2: Field Station Setup & Logistics</h2>
+
+            <div class="step-card animate-block" style="animation-delay: 0.6s;">
+              <h3><div class="step-number">1</div> Ergonomics: Do Not Underrate Comfort</h3>
+              <p>Tagging requires extreme precision and can take significantly longer than you anticipate. When you begin, tagging a single individual across 4 locations can easily take <strong>20 to 40 minutes</strong>. While experience will eventually drop this down to just <strong>5 minutes</strong>, do not lose hope—and do not compromise your body in the meantime.</p>
+              <ul>
+                <li><strong>The Mobile Lab:</strong> Bring a <strong>portable trekking table and chair</strong>. Attempting to hunch over on the ground for hours will cause intense body aches, severe fatigue, and a drastic drop in your technical productivity and accuracy. Do not take this step lightly.</li>
+              </ul>
+            </div>
+
+            <div class="step-card animate-block" style="animation-delay: 0.6s;">
+              <h3><div class="step-number">2</div> The Gear Checklist</h3>
+              <p>Pack only the raw material needed for a single shift. Keep the elastomer bases, curing agents, and mixed syringes inside an insulated box packed tightly with <strong>deep-frozen ice packs</strong> to stall the curing process.</p>
+              <ul>
+                <li><strong>Essential Kit:</strong> Mixing syringes, manual elastomer ejector/injector kit, tissue paper, nitrile gloves, medical sanitizers, concentrated alcohol, and heavy-duty zip-lock bags.</li>
+                <li><strong>Injectors vs. Manual Syringes:</strong> It is highly recommended to purchase the official <strong><a href="https://www.nmt.us/visible-implant-elastomer/" target="_blank" style="color: var(--brand); font-weight: 600;">Northwest Marine Technology VIE Kit</a></strong> along with their dedicated manual elastomer injectors. Attempting to use standard manual syringes for the actual injection reduces accuracy, increases volume inconsistency, and decreases overall efficiency significantly.</li>
+              </ul>
+            </div>
+
+            <img src="VIE/tagging_setup.jpeg" alt="Tagging Field Setup" class="article-image animate-block" style="animation-delay: 0.65s;" loading="lazy">
+            <span class="image-credit animate-block" style="animation-delay: 0.65s;">A well-organized, ergonomic tagging station in the field. <strong>(Photo: Satyam Gupta)</strong></span>
+
+            <h2 class="animate-block" style="animation-delay: 0.7s;"><span class="icon-bounce">🤝</span> Phase 3: The Sterile Team Workflow</h2>
+            <p class="animate-block" style="animation-delay: 0.7s;">Working with a team is always preferred. Divide responsibilities into a highly coordinated assembly line:</p>
+            
+            <div class="workflow-graphic animate-block" style="animation-delay: 0.7s;">
+              <div class="workflow-step-box">1. Capture & Prep<span>🐸</span></div>
+              <div class="workflow-arrow">→</div>
+              <div class="workflow-step-box">2. Direct Mixing & Injection<span>💉</span></div>
+              <div class="workflow-arrow">→</div>
+              <div class="workflow-step-box">3. Observe & Release<span>🌿</span></div>
+            </div>
+
+            <img src="VIE/tagging_process.jpeg" alt="Tagging Process" class="article-image animate-block" style="animation-delay: 0.7s;" loading="lazy">
+            <span class="image-credit animate-block" style="animation-delay: 0.7s;">Team members coordinating during the tagging process. <strong>(Photo: Satyam Gupta)</strong></span>
+            
+            <div class="step-card animate-block" style="animation-delay: 0.75s;">
+              <h3><div class="step-number">1</div> Capture and Housing</h3>
+              <ul>
+                <li><strong>Sterile Zip-Locks:</strong> Team members should capture amphibians in individual, sterilized zip-lock bags. <strong>Crucial:</strong> Prior to the trip, use a standard paper punching machine to puncture the bags at multiple locations to ensure proper ventilation and breathing.</li>
+                <li><strong>The Holding Box:</strong> Place the individual zip-lock bags into large, sterile plastic boxes with the covers kept partially open.</li>
+                <li><strong>Time & Positioning Limits:</strong> <strong>Never hold an amphibian upside down.</strong> Additionally, ensure individuals are not kept in the capture bags for more than <strong>30 minutes</strong> before processing to minimize stress and prevent mortality.</li>
+                <li><strong>Eco-Friendly Reuse:</strong> To remain economical and environmentally conscious, reuse these zip-lock bags for future sessions by washing them thoroughly with soap and sterilizing them completely with alcohol swabs between outings.</li>
+              </ul>
+            </div>
+
+            <div class="step-card animate-block" style="animation-delay: 0.75s; border-left-color: #8e44ad;">
+              <h3><div class="step-number" style="background:#8e44ad;">💡</div> Pro-Tip: Direct Syringe Mixing (Zero Material Waste)</h3>
+              <p>The standard kit instructs you to use a toothpick to mix the elastomer and curing agent on a separate surface. <strong>Do not do this.</strong> It wastes immense time and traps material during the transfer from the surface to a filling syringe, and finally into an insulin syringe.</p>
+              <p>Instead, follow this direct-loading method:</p>
+              <ol>
+                <li><strong>Direct Deposit:</strong> Deposit the required amount of raw elastomer directly into a large filling syringe.</li>
+                <li><strong>Precise Curing Ratio:</strong> Add the curing agent at an exact <strong>1:10 ratio</strong> directly into the same syringe. <em>This proportion is non-negotiable:</em> increasing the curing agent causes the mix to dry prematurely; decreasing it prevents the elastomer from solidifying properly underneath the amphibian's skin.</li>
+                <li><strong>The Copper Wire Method:</strong> Insert a thin, long piece of <strong>peeled copper wire</strong> directly inside the filling syringe barrel and stir thoroughly until completely mixed.</li>
+                <li><strong>Direct Transfer:</strong> Express the perfectly mixed elastomer directly from the filling syringe into clean, sterile insulin syringes designated for tagging.</li>
+                <li><strong>Fresh Batches Only:</strong> Always use a brand-new insulin syringe whenever you mix a fresh batch of elastomer. If you accidentally mix an old residual batch with a new batch inside the same syringe, they will cure at different rates, ruining the entire mixture.</li>
+              </ol>
+            </div>
+
+            <h2 class="animate-block" style="animation-delay: 0.8s;"><span class="icon-bounce">🎯</span> Phase 4: Ethical & Precise Injection Technique</h2>
+
+            <img src="VIE/Tagging1.jpeg" alt="Injection Technique" class="article-image animate-block" style="animation-delay: 0.8s;" loading="lazy">
+            <span class="image-credit animate-block" style="animation-delay: 0.8s;">Demonstrating the shallow angle and pocket creation technique during injection. <strong>(Photo: Satyam Gupta)</strong></span>
+
+            <div class="step-card animate-block" style="animation-delay: 0.8s;">
+              <h3><div class="step-number">1</div> Processing and Coding</h3>
+              <p>Once the target captures for the night are gathered, match each individual to a pre-determined color code from your matrix sheet. Use a permanent marker to <strong>write the assigned color code directly on the individual's zip-lock bag</strong> to avoid any potential mix-ups. Carefully record all required morphometric measurements (SVL, weight) before starting.</p>
+            </div>
+
+            <div class="step-card animate-block" style="animation-delay: 0.8s;">
+              <h3><div class="step-number">2</div> Restraint and Injection Setup</h3>
+              <p>Amphibians must remain completely still during the process to avoid self-injury or a failed mark.</p>
+              <ul>
+                <li><strong>The Zip-Lock Restraint:</strong> Keep the individual inside their ventilated zip-lock bag. Gently guide them into one of the bottom corners of the bag so they are snugly restricted and unable to move.</li>
+                <li>You can <strong>directly prick and inject the individual through the plastic of the zip-lock bag</strong> into the target area to maintain perfect restraint and sterility.</li>
+              </ul>
+            </div>
+
+            <div class="step-card animate-block" style="animation-delay: 0.8s;">
+              <h3><div class="step-number">3</div> The Injection Execution</h3>
+              <ol>
+                <li><strong>Sterilization:</strong> Sterilize the injection site, your gloved hands, and the needle apparatus with alcohol before processing every single individual. Always use fresh needles for fresh batches.</li>
+                <li><strong>Shallow Angle:</strong> Gently prick the skin at your target area (e.g., the wrist). The moment you feel the needle has pierced the translucent skin layer, <strong>stop</strong>. Do not push deeper into the underlying muscle tissue. <em>Deep injections obscure the elastomer, rendering it faint and virtually unreadable under UV light.</em></li>
+                <li><strong>Create the Pocket:</strong> Gently move the tip of the syringe needle in a micro-circular fashion underneath the skin layer to create a tiny pocket of a few millimeters.</li>
+                <li><strong>Deposit and Steady:</strong> Slowly deposit the elastomer. <strong>Do not move the syringe back and forth excessively while injecting.</strong> Needle over-movement is the primary cause of unintended tag migration reported in historical literature.</li>
+              </ol>
+            </div>
+
+            <h2 class="animate-block" style="animation-delay: 0.9s;"><span class="icon-bounce">⏱️</span> Phase 5: Post-Marking Care, Curing, and Monitoring</h2>
+            
+            <div class="step-card animate-block" style="animation-delay: 0.9s;">
+              <h3><div class="step-number">1</div> The 15–20 Minute Rule</h3>
+              <p>Do not release the animal immediately. Monitor each individual in a calm, dark container for at least <strong>15 to 20 minutes</strong> post-tagging. Releasing them into the wild prematurely increases tag loss and migration due to immediate high-velocity movements and water exposure. This window allows the elastomer to fully solidify and cure inside the skin pocket.</p>
+            </div>
+            
+            <div class="step-card animate-block" style="animation-delay: 0.9s;">
+              <h3><div class="step-number">2</div> Final Sterilization</h3>
+              <p>After the session concludes, sterilize all field equipment, tables, and tools with highly concentrated alcohol to prevent the transmission of wildlife pathogens (such as chytrid fungus) between populations, and wear gloves to prevent spreading diseases between humans and amphibians.</p>
+            </div>
+
+            <img src="VIE/tagged_frog2.jpeg" alt="Frog Post-tagging" class="article-image animate-block" style="animation-delay: 0.9s;" loading="lazy">
+            <span class="image-credit animate-block" style="animation-delay: 0.9s;">A tagged amphibian safely resting post-injection, ensuring the VIE cures completely before release. <strong>(Photo: Satyam Gupta)</strong></span>
+
+            <h2 class="animate-block" style="animation-delay: 1.0s;"><span class="icon-bounce">🔦</span> Field Identification: Upgrading Your UV Kit</h2>
+            <p class="animate-block" style="animation-delay: 1.0s;">While some commercial VIE kits come with a basic UV light, they often lack the range and output power required for long-term population monitoring in dense field conditions.</p>
+            
+            <table class="animate-block" style="animation-delay: 1.0s;">
+              <thead>
+                <tr>
+                  <th>Equipment Type</th>
+                  <th>Recommendation</th>
+                  <th>Why It Matters</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>The UV Torch</strong></td>
+                  <td><a href="https://uvbeast.com" target="_blank" class="glow-pulse">UVbeast V2 (365nm)</a></td>
+                  <td>Offers vastly superior range, beam crispness, and power. Essential for spotting tagged individuals from a distance without disturbing them.</td>
+                </tr>
+                <tr>
+                  <td><strong>Eye Safety</strong></td>
+                  <td>UV Protection Goggles</td>
+                  <td><strong>Mandatory.</strong> Prolonged exposure to high-output UV beams causes severe eye strain and long-term optical damage. <em>I learned this the hard way—never track fluorescence without eye protection.</em></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h2 class="animate-block" style="animation-delay: 1.1s;"><span class="icon-bounce">📊</span> Technical Insights & Best Practices (NMT Specs)</h2>
+            <p class="animate-block" style="animation-delay: 1.1s;">To maximize project success and understand biological limitations when deploying the <a href="https://www.nmt.us/visible-implant-elastomer/" target="_blank" style="color: var(--brand); font-weight: 600;">Official NMT VIE Tracking System</a>, prioritize these fundamental parameters derived from laboratory guidelines and extensive field peer reviews:</p>
+            <ul class="animate-block" style="animation-delay: 1.1s;">
+              <li><strong>Healing and Tissue Settlement Window:</strong> After needle penetration, tissue takes several days to completely close and form a fibrous wall around the setting polymer. It is standard protocol to <strong>avoid any physical handling or recapture stress for at least 10 days post-injection</strong>. This preserves tag structural orientation and allows micro-wounds to heal cleanly without contamination risks.</li>
+              <li><strong>The Mechanics of Tag Migration:</strong> Research confirms that if VIE is placed too deep or within spaces near highly active, vascularized tissue, fragments can break apart over time. In severe cases, microscopic pieces can slowly accumulate in filtering organs like the kidneys, inciting minor local granulomatous inflammation. Ensuring a strictly subcutaneous placement parallel to the skin layer keeps the tag completely superficial and away from systemic pathways <strong>(Cabot et al., 2021)</strong>.</li>
+              <li><strong>Metamorphic Success Rate:</strong> If you are managing life-history studies spanning from early larval stages to adulthood, be prepared for shifting observation probabilities. While larval tagging (even in tiny specimens under 0.2g) yields high detection rates (~81%) during the first month, rapid cellular shifting during metamorphosis can obscure or scatter older tags. A localized pilot trial is essential to map retention curves across your target species' life transitions <strong>(Fouilloux et al., 2020)</strong>.</li>
+            </ul>
+
+            <h2 class="animate-block" style="animation-delay: 1.1s;"><span class="icon-bounce">📈</span> A Note on Scaling Up</h2>
+            <p class="animate-block" style="animation-delay: 1.1s;">Before launching a massive field campaign, <strong>always conduct a localized pilot study</strong>.</p>
+            <ul class="animate-block" style="animation-delay: 1.1s;">
+              <li>Use the absolute minimum number of individuals required, determined strictly by a statistical power analysis and preliminary pilot data.</li>
+              <li><strong>Practice before live subjects:</strong> If you are new to the technique, practice your mixing, volume control, and depth delivery on <strong>silicone pads</strong> or opportunistic dead museum specimens before working with live, wild populations.</li>
+            </ul>
+
+            <div class="article-note animate-block" style="animation-delay: 1.2s; background: rgba(11, 93, 67, 0.03); border-color: #0b5d43;">
+              <strong style="color: #0b5d43; font-size: 1.2rem;">💬 Let's Collaborate & Refine</strong>
+              Methodologies should always evolve with collective field experience. If you are a student setting up a pilot project, facing unique challenges with a specific target species, or want to share notes on retention rates, please reach out via my <a href="index.html#page-contact" style="color: var(--brand); font-weight: 600;">Contact Page</a>. I am always happy to look over protocols or discuss troubleshooting strategies.
+            </div>
+
+            <div class="references animate-block" style="animation-delay: 1.2s;">
+              <h2><span class="icon-bounce">📚</span> References</h2>
+              <div class="reference-item">
+                <strong style="color: var(--ink);">Antwis, R. E., Purcell, R., Walker, S. L., Fidgett, A. L., & Preziosi, R. F. (2014).</strong> Effects of visible implanted elastomer marking on physiological traits of frogs. <em>Conservation Physiology</em>, <em>2</em>(1), cou042.
+              </div>
+              <div class="reference-item">
+                <strong style="color: var(--ink);">Cabot, M. L., Troan, B. V., Ange-van Heugten, K., Schnellbacher, R. W., Smith, D., Ridgley, F., & Minter, L. J. (2021).</strong> Migration and Histologic Effects of Visible Implant Elastomer (VIE) and Passive Integrated Transponder (PIT) Tags in the Marine Toad (Rhinella marina). <em>Animals</em>, <em>11</em>(11), 3255.
+              </div>
+              <div class="reference-item">
+                <strong style="color: var(--ink);">Fouilloux, C., Garcia-Costoya, G., & Rojas, B. (2020).</strong> Visible implant elastomer (VIE) success in early larval stages of a tropical amphibian species. <em>bioRxiv</em>.
+              </div>
+              <div class="reference-item">
+                <strong style="color: var(--ink);">Hohn, C. (2013).</strong> Evaluation of visible implant elastomer tags in zebrafish (Danio rerio). <em>Journal of the American Association for Laboratory Animal Science</em>, <em>52</em>(PMC3863425).
+              </div>
+              <div class="reference-item">
+                <strong style="color: var(--ink);">MacNeil, J. E., et al. (2011).</strong> SalaMarker: A Code Generator and Standardized Marking System for Use with Visible Implant Elastomers. <em>Herpetological Conservation and Biology</em>, <em>6</em>(2), 260-268.
+              </div>
+              <div class="reference-item">
+                <strong style="color: var(--ink);">Moffatt, C. (2013).</strong> Using Visible Implant Elastomer to tag insects across life stages: a preliminary investigation with blow flies (Diptera: Calliphoridae). <em>The Canadian Entomologist</em>, <em>145</em>(4), 466-470.
+              </div>
+              <div class="reference-item">
+                <strong style="color: var(--ink);">Sapsford, S. J., Roznik, E. A., Alford, R. A., & Schwarzkopf, L. (2014).</strong> Visible Implant Elastomer Marking Does Not Affect Short-term Movements or Survival Rates of the Treefrog Litoria rheocola. <em>Herpetological</em>, <em>70</em>(1), 23-33.
+              </div>
+            </div>
+
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+  <script src="data.js"></script>
+  <script src="navigation.js"></script>
+</body>
+</html>

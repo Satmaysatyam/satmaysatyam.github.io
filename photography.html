@@ -430,6 +430,9 @@
     }
     
     @media (max-width: 760px) {
+      .card-carousel-nav {
+        opacity: 1;
+      }
       .gallery-grid {
         grid-template-columns: 1fr;
       }
@@ -534,6 +537,7 @@
       
       let activeGroup = 'all';
       let filteredPhotos = [...site.photos];
+      let activeIntervals = [];
       
       // State for lightbox
       let currentSpeciesIndex = 0;
@@ -541,6 +545,10 @@
       
       // Render Gallery
       function renderGallery() {
+        // Clear all active intervals first
+        activeIntervals.forEach(id => clearInterval(id));
+        activeIntervals = [];
+
         filteredPhotos = activeGroup === 'all' 
           ? site.photos 
           : site.photos.filter(p => p.group === activeGroup);
@@ -607,7 +615,7 @@
           const p = filteredPhotos[speciesIdx];
           const hasMultiple = p.srcs.length > 1;
           
-          let intervalId = null;
+          let autoScrollInterval = null;
           
           function setActiveImage(imgIdx) {
             item.setAttribute('data-active-img-index', imgIdx);
@@ -633,6 +641,25 @@
             }
           }
           
+          function startAutoScroll() {
+            stopAutoScroll();
+            autoScrollInterval = setInterval(() => {
+              let current = parseInt(item.getAttribute('data-active-img-index'), 10);
+              let nextIdx = current + 1;
+              if (nextIdx >= p.srcs.length) nextIdx = 0;
+              setActiveImage(nextIdx);
+            }, 2500);
+            activeIntervals.push(autoScrollInterval);
+          }
+          
+          function stopAutoScroll() {
+            if (autoScrollInterval) {
+              clearInterval(autoScrollInterval);
+              activeIntervals = activeIntervals.filter(x => x !== autoScrollInterval);
+              autoScrollInterval = null;
+            }
+          }
+          
           // Setup manual control events
           if (hasMultiple) {
             const prevBtn = item.querySelector('.card-carousel-nav.prev');
@@ -645,6 +672,7 @@
               let prevIdx = current - 1;
               if (prevIdx < 0) prevIdx = p.srcs.length - 1;
               setActiveImage(prevIdx);
+              if (autoScrollInterval) startAutoScroll();
             });
             
             nextBtn.addEventListener('click', (e) => {
@@ -653,31 +681,48 @@
               let nextIdx = current + 1;
               if (nextIdx >= p.srcs.length) nextIdx = 0;
               setActiveImage(nextIdx);
+              if (autoScrollInterval) startAutoScroll();
             });
             
             dots.forEach((dot, idx) => {
               dot.addEventListener('click', (e) => {
                 e.stopPropagation();
                 setActiveImage(idx);
+                if (autoScrollInterval) startAutoScroll();
               });
             });
             
             // Auto-play on hover (Auto sliding)
-            item.addEventListener('mouseenter', () => {
-              intervalId = setInterval(() => {
+            item.addEventListener('mouseenter', startAutoScroll);
+            item.addEventListener('mouseleave', stopAutoScroll);
+            
+            // Touch swiping support
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            item.addEventListener('touchstart', e => {
+              touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            item.addEventListener('touchend', e => {
+              touchEndX = e.changedTouches[0].screenX;
+              if (touchEndX < touchStartX - 30) {
+                // Swipe left -> Next
                 let current = parseInt(item.getAttribute('data-active-img-index'), 10);
                 let nextIdx = current + 1;
                 if (nextIdx >= p.srcs.length) nextIdx = 0;
                 setActiveImage(nextIdx);
-              }, 2500);
-            });
-            
-            item.addEventListener('mouseleave', () => {
-              if (intervalId) {
-                clearInterval(intervalId);
-                intervalId = null;
+                if (autoScrollInterval) startAutoScroll();
               }
-            });
+              if (touchEndX > touchStartX + 30) {
+                // Swipe right -> Prev
+                let current = parseInt(item.getAttribute('data-active-img-index'), 10);
+                let prevIdx = current - 1;
+                if (prevIdx < 0) prevIdx = p.srcs.length - 1;
+                setActiveImage(prevIdx);
+                if (autoScrollInterval) startAutoScroll();
+              }
+            }, { passive: true });
           }
           
           // Lightbox click triggers

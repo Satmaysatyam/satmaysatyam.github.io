@@ -19,14 +19,24 @@
       box-shadow: 0 10px 30px rgba(13,33,25,0.06);
       background: transparent;
       border: none;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       display: inline-block; /* Crucial for CSS masonry to prevent breaking across columns */
       width: 100%;
       margin-bottom: 24px;
+      cursor: pointer;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     .art-card-new:hover {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 20px 48px rgba(13,33,25,0.15);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 24px 50px rgba(13,33,25,0.2);
       z-index: 10;
     }
     .art-img-wrap {
@@ -41,18 +51,103 @@
       height: auto;
       display: block;
       /* Aesthetic editing/filtering logic via CSS */
-      filter: contrast(1.05) saturate(1.1) brightness(0.98);
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+      filter: contrast(1.02) saturate(1.05) brightness(0.98);
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
     }
     .art-card-new:hover .art-img-wrap img {
-      transform: scale(1.04);
-      filter: contrast(1.15) saturate(1.2) brightness(1.05);
+      transform: scale(1.08);
+      filter: contrast(1.1) saturate(1.15) brightness(1.05);
     }
+    .art-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13, 33, 25, 0.8), rgba(13, 33, 25, 0.2));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .art-card-new:hover .art-overlay {
+      opacity: 1;
+    }
+    .art-overlay-icon {
+      color: #fff;
+      transform: translateY(20px);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .art-card-new:hover .art-overlay-icon {
+      transform: translateY(0);
+    }
+    
+    /* Lightbox Styles */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 15, 11, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      transform: scale(0.95);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .lightbox.active .lightbox-content {
+      transform: scale(1);
+    }
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: var(--radius);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: #fff;
+      font-size: 2.5rem;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      background: none;
+      border: none;
+      padding: 0;
+      line-height: 1;
+    }
+    .lightbox-close:hover {
+      color: var(--accent);
+    }
+    
     @media(max-width: 1080px) {
       .art-grid-layout { column-count: 2; column-gap: 20px; }
     }
     @media(max-width: 600px) {
       .art-grid-layout { column-count: 1; }
+      .lightbox-close { top: -50px; right: 0px; }
     }
   </style>
 </head>
@@ -75,19 +170,82 @@
 
     <!-- Footer dynamically injected by navigation.js -->
   </div>
+  
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose">&times;</button>
+      <img src="" alt="Artwork" id="lightboxImg">
+    </div>
+  </div>
 
   <script src="data.js"></script>
   <script src="navigation.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const artGrid = document.getElementById('artGrid');
-      artGrid.innerHTML = site.art.map(a => `
-        <div class="art-card-new">
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxClose = document.getElementById('lightboxClose');
+      
+      // Render Art Grid with staggered animation delay
+      artGrid.innerHTML = site.art.map((a, index) => {
+        const delay = (index * 0.1) % 1; // max 1s delay
+        return `
+        <div class="art-card-new" style="animation-delay: ${delay}s" data-img-src="${a.src}">
           <div class="art-img-wrap">
-            <img src="${a.src}" alt="${a.title}" loading="lazy">
+            <img src="${a.src}" alt="${a.title || 'Artwork'}" loading="lazy">
+            <div class="art-overlay">
+              <div class="art-overlay-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
-      `).join('');
+        `;
+      }).join('');
+      
+      // Lightbox Logic
+      function openLightbox(src) {
+        lightboxImg.src = src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+      }
+
+      // Event Delegation for Lightbox Clicks
+      document.body.addEventListener('click', (e) => {
+        const card = e.target.closest('.art-card-new');
+        if (card) {
+          const src = card.getAttribute('data-img-src');
+          if (src) {
+            openLightbox(src);
+          }
+        }
+      });
+      
+      const closeLightbox = () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+      
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+      
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
     });
   </script>
 </body>

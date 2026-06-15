@@ -76,9 +76,12 @@
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
         z-index: 1;
         transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .fig-img-wrap img.main-img.contain {
+        object-fit: contain;
       }
       
       .research-fig-card:hover .fig-img-wrap img.main-img {
@@ -144,6 +147,7 @@
       position: relative;
       transform: translateY(20px) scale(0.95);
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 105;
     }
     
     .lightbox.visible .lightbox-content-wrap {
@@ -261,6 +265,62 @@
     .carousel-btn:hover {
       background: white;
       transform: scale(1.1);
+    }
+    /* Carousel thumbnails grid */
+    .carousel-thumbnails {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 4px 2px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
+    .carousel-thumbnails::-webkit-scrollbar {
+      height: 6px;
+    }
+    .carousel-thumbnails::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.02);
+      border-radius: 3px;
+    }
+    .carousel-thumbnails::-webkit-scrollbar-thumb {
+      background: rgba(11, 93, 67, 0.2);
+      border-radius: 3px;
+    }
+    .carousel-thumb {
+      flex: 0 0 68px;
+      aspect-ratio: 3 / 2;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      background: #f0ebe1;
+      box-shadow: 0 2px 6px rgba(13, 33, 25, 0.05);
+    }
+    .carousel-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .carousel-thumb:hover {
+      opacity: 0.95;
+      transform: translateY(-2px);
+    }
+    .carousel-thumb:hover img {
+      transform: scale(1.05);
+    }
+    .carousel-thumb.active {
+      border-color: var(--brand);
+      opacity: 1;
+      box-shadow: 0 6px 16px rgba(11, 93, 67, 0.2);
+      transform: translateY(-2px) scale(1.02);
     }
 
     /* --- Publications Section Styling --- */
@@ -651,6 +711,15 @@
         gap: 40px;
         align-items: flex-start;
       }
+      .panel-inner.split > div {
+        min-width: 0;
+      }
+      @media (max-width: 900px) {
+        .panel-inner.split {
+          grid-template-columns: 1fr !important;
+          gap: 24px;
+        }
+      }
       
       .research-visuals-col {
         display: flex;
@@ -763,64 +832,69 @@
       const lightboxClose = document.getElementById('lightboxClose');
       
       let activeResearch = 'lemur';
+      let activeIntervals = [];
 
       function renderResearch() {
+        // Clear all active intervals first
+        activeIntervals.forEach(id => clearInterval(id));
+        activeIntervals = [];
+
         researchTabs.innerHTML = site.researchTabs.map(tab => `
           <button class="tab ${tab.id === activeResearch ? 'active' : ''}" data-tab="${tab.id}">${tab.emoji} ${tab.title}</button>
         `).join('');
         
         const tab = site.researchTabs.find(t => t.id === activeResearch);
         
-        let imagesHtml = '';
+        let carouselImages = [];
         if (tab.imageGroups) {
-          imagesHtml = tab.imageGroups.map((group, groupIdx) => `
-            <div style="margin-bottom: 30px;">
-              <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--ink); border-bottom: 2px solid var(--brand); display: inline-block; padding-bottom: 4px;">${group.groupName}</h4>
-              <div class="research-carousel">
-                <div class="carousel-inner" id="carouselInner-${tab.id}-${groupIdx}">
-                  ${group.images.map((img, idx) => `
-                    <div class="carousel-item ${idx === 0 ? 'active' : ''}" data-idx="${idx}">
-                      <div class="research-fig-card" data-img-src="${img.src}" data-img-caption="${img.caption}">
-                          <div class="fig-img-wrap">
-                            <img src="${img.src}" class="bg-blur" alt="" aria-hidden="true">
-                            <img src="${img.src}" class="main-img" alt="${img.caption}" loading="lazy">
-                            <span class="fig-badge" style="z-index:2;">Figure ${idx + 1} of ${group.images.length}</span>
-                          </div>
-                        <div class="fig-caption">${img.caption}</div>
-                      </div>
-                    </div>
-                  `).join('')}
-                </div>
-                ${group.images.length > 1 ? `
-                <div class="carousel-controls">
-                  <button class="carousel-btn prev-btn" onclick="moveCarousel('${tab.id}-${groupIdx}', -1)">❮</button>
-                  <button class="carousel-btn next-btn" onclick="moveCarousel('${tab.id}-${groupIdx}', 1)">❯</button>
-                </div>
-                ` : ''}
-              </div>
-            </div>
-          `).join('');
-        } else if (tab.images && tab.images.length > 0) {
+          tab.imageGroups.forEach(group => {
+            group.images.forEach(img => {
+              carouselImages.push({
+                src: img.src,
+                caption: img.caption,
+                groupName: group.groupName
+              });
+            });
+          });
+        } else if (tab.images) {
+          carouselImages = tab.images;
+        }
+
+        let imagesHtml = '';
+        if (carouselImages.length > 0) {
           imagesHtml = `
             <div class="research-carousel">
               <div class="carousel-inner" id="carouselInner-${tab.id}">
-                ${tab.images.map((img, idx) => `
-                  <div class="carousel-item ${idx === 0 ? 'active' : ''}" data-idx="${idx}">
-                    <div class="research-fig-card" data-img-src="${img.src}" data-img-caption="${img.caption}">
-                      <div class="fig-img-wrap">
-                        <img src="${img.src}" class="bg-blur" alt="" aria-hidden="true">
-                        <img src="${img.src}" class="main-img" alt="${img.caption}" loading="lazy">
-                        <span class="fig-badge" style="z-index:2;">Figure ${idx + 1} of ${tab.images.length}</span>
+                ${carouselImages.map((img, idx) => {
+                  const isContain = img.src.toLowerCase().includes('diagram') || img.src.toLowerCase().includes('plot');
+                  const badgeText = img.groupName 
+                    ? `${img.groupName} • Figure ${idx + 1} of ${carouselImages.length}`
+                    : `Figure ${idx + 1} of ${carouselImages.length}`;
+                  return `
+                    <div class="carousel-item ${idx === 0 ? 'active' : ''}" data-idx="${idx}">
+                      <div class="research-fig-card" data-img-src="${img.src}" data-img-caption="${img.caption}">
+                        <div class="fig-img-wrap">
+                          <img src="${img.src}" class="bg-blur" alt="" aria-hidden="true">
+                          <img src="${img.src}" class="main-img ${isContain ? 'contain' : ''}" alt="${img.caption}" loading="lazy">
+                          <span class="fig-badge" style="z-index:2;">${badgeText}</span>
+                        </div>
+                        <div class="fig-caption">${img.caption}</div>
                       </div>
-                      <div class="fig-caption">${img.caption}</div>
                     </div>
+                  `;
+                }).join('')}
+              </div>
+              ${carouselImages.length > 1 ? `
+              <div class="carousel-controls">
+                <button class="carousel-btn prev-btn">❮</button>
+                <button class="carousel-btn next-btn">❯</button>
+              </div>
+              <div class="carousel-thumbnails">
+                ${carouselImages.map((img, idx) => `
+                  <div class="carousel-thumb ${idx === 0 ? 'active' : ''}" data-thumb-idx="${idx}">
+                    <img src="${img.src}" alt="${img.caption}" loading="lazy">
                   </div>
                 `).join('')}
-              </div>
-              ${tab.images.length > 1 ? `
-              <div class="carousel-controls">
-                <button class="carousel-btn prev-btn" onclick="moveCarousel('${tab.id}', -1)">❮</button>
-                <button class="carousel-btn next-btn" onclick="moveCarousel('${tab.id}', 1)">❯</button>
               </div>
               ` : ''}
             </div>
@@ -879,33 +953,84 @@
           </div>
         `;
 
-        // Add lightbox click event listeners to new cards
-        const figCards = researchPanel.querySelectorAll('.research-fig-card');
-        figCards.forEach(card => {
-          card.addEventListener('click', () => {
-            const src = card.getAttribute('data-img-src');
-            const caption = card.getAttribute('data-img-caption');
-            openLightbox(src, caption);
-          });
-        });
 
-        // Setup Carousel Interactions (Swipe & Auto-scroll)
+
+        // Setup Carousel Interactions (Swipe, Thumbnails & Auto-scroll)
         const carousels = researchPanel.querySelectorAll('.research-carousel');
         carousels.forEach(carousel => {
           const inner = carousel.querySelector('.carousel-inner');
           if (!inner) return;
           const tabIdRaw = inner.id.replace('carouselInner-', '');
           
-          let autoScrollInterval;
-          carousel.addEventListener('mouseenter', () => {
-            autoScrollInterval = setInterval(() => {
-              window.moveCarousel(tabIdRaw, 1);
-            }, 2000);
-          });
+          let autoScrollInterval = null;
           
-          carousel.addEventListener('mouseleave', () => {
-            clearInterval(autoScrollInterval);
+          function startAutoScroll() {
+            stopAutoScroll();
+            autoScrollInterval = setInterval(() => {
+              window.moveCarousel(tabIdRaw, 'next');
+            }, 2500);
+            activeIntervals.push(autoScrollInterval);
+          }
+          
+          function stopAutoScroll() {
+            if (autoScrollInterval) {
+              clearInterval(autoScrollInterval);
+              activeIntervals = activeIntervals.filter(x => x !== autoScrollInterval);
+              autoScrollInterval = null;
+            }
+          }
+          
+          // Connect controls in JS
+          const prevBtn = carousel.querySelector('.prev-btn');
+          const nextBtn = carousel.querySelector('.next-btn');
+          if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              window.moveCarousel(tabIdRaw, 'prev');
+              if (autoScrollInterval) {
+                startAutoScroll(); // reset timer on manual click
+              }
+            });
+          }
+          if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              window.moveCarousel(tabIdRaw, 'next');
+              if (autoScrollInterval) {
+                startAutoScroll(); // reset timer on manual click
+              }
+            });
+          }
+          
+          // Connect thumbnails in JS
+          const thumbs = carousel.querySelectorAll('.carousel-thumb');
+          thumbs.forEach(thumb => {
+            const thumbIdx = parseInt(thumb.getAttribute('data-thumb-idx'), 10);
+            
+            thumb.addEventListener('mouseenter', (e) => {
+              e.stopPropagation();
+              window.moveCarousel(tabIdRaw, thumbIdx);
+              stopAutoScroll(); // pause auto scroll
+            });
+            
+            thumb.addEventListener('mouseleave', (e) => {
+              e.stopPropagation();
+              if (carousel.matches(':hover')) {
+                startAutoScroll();
+              }
+            });
+            
+            thumb.addEventListener('click', (e) => {
+              e.stopPropagation();
+              window.moveCarousel(tabIdRaw, thumbIdx);
+              if (autoScrollInterval) {
+                startAutoScroll();
+              }
+            });
           });
+
+          carousel.addEventListener('mouseenter', startAutoScroll);
+          carousel.addEventListener('mouseleave', stopAutoScroll);
           
           let touchStartX = 0;
           let touchEndX = 0;
@@ -917,23 +1042,52 @@
           carousel.addEventListener('touchend', e => {
             touchEndX = e.changedTouches[0].screenX;
             if (touchEndX < touchStartX - 30) {
-              window.moveCarousel(tabIdRaw, 1);
+              window.moveCarousel(tabIdRaw, 'next');
+              if (autoScrollInterval) startAutoScroll();
             }
             if (touchEndX > touchStartX + 30) {
-              window.moveCarousel(tabIdRaw, -1);
+              window.moveCarousel(tabIdRaw, 'prev');
+              if (autoScrollInterval) startAutoScroll();
             }
           }, { passive: true });
         });
       }
 
-      window.moveCarousel = function(tabId, dir) {
+      window.moveCarousel = function(tabId, dirOrIdx) {
         const inner = document.getElementById(`carouselInner-${tabId}`);
+        if (!inner) return;
         const items = inner.querySelectorAll('.carousel-item');
+        if (items.length === 0) return;
+        
         let activeIdx = Array.from(items).findIndex(item => item.classList.contains('active'));
+        if (activeIdx === -1) activeIdx = 0;
+        
         items[activeIdx].classList.remove('active');
-        activeIdx = (activeIdx + dir + items.length) % items.length;
+        
+        if (dirOrIdx === 'next') {
+          activeIdx = (activeIdx + 1) % items.length;
+        } else if (dirOrIdx === 'prev') {
+          activeIdx = (activeIdx - 1 + items.length) % items.length;
+        } else {
+          activeIdx = parseInt(dirOrIdx, 10);
+        }
+        
         items[activeIdx].classList.add('active');
         inner.style.transform = `translateX(-${activeIdx * 100}%)`;
+        
+        // Sync active thumbnail
+        const carousel = inner.closest('.research-carousel');
+        if (carousel) {
+          const thumbs = carousel.querySelectorAll('.carousel-thumb');
+          thumbs.forEach((thumb, idx) => {
+            if (idx === activeIdx) {
+              thumb.classList.add('active');
+              thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            } else {
+              thumb.classList.remove('active');
+            }
+          });
+        }
       };
 
       // Lightbox functions
@@ -987,43 +1141,46 @@
       }
       
       function renderPublications() {
-        pubList.innerHTML = site.publications.map((p, idx) => `
-          <div class="pub-card">
-            <div class="pub-info">
-              <div>
-                <div class="pub-header">
-                  <span class="pub-year-badge">${p.year}</span>
-                  <span class="pub-journal">${p.journal} • ${p.volume}</span>
+        pubList.innerHTML = site.publications.map((p, idx) => {
+          const isPubContain = p.img.toLowerCase().includes('diagram') || p.img.toLowerCase().includes('plot');
+          return `
+            <div class="pub-card">
+              <div class="pub-info">
+                <div>
+                  <div class="pub-header">
+                    <span class="pub-year-badge">${p.year}</span>
+                    <span class="pub-journal">${p.journal} • ${p.volume}</span>
+                  </div>
+                  <h3 class="pub-title">${p.title}</h3>
+                  <div class="pub-authors">${highlightAuthor(p.authors)}</div>
+                  <p class="pub-note">${p.note}</p>
                 </div>
-                <h3 class="pub-title">${p.title}</h3>
-                <div class="pub-authors">${highlightAuthor(p.authors)}</div>
-                <p class="pub-note">${p.note}</p>
-              </div>
-              <div class="pub-actions">
-                <a href="${p.url}" target="_blank" class="btn-link primary">
-                  View Publisher (DOI)
-                </a>
-                <button class="btn-link secondary cite-trigger" data-id="${p.id}">
-                  📋 Cite Paper
-                </button>
-              </div>
-            </div>
-            <div class="pub-visual">
-              <div class="research-fig-card" style="margin: 0;">
-                <div class="fig-img-wrap">
-                  <img src="${p.img}" class="bg-blur" alt="" aria-hidden="true">
-                  <img src="${p.img}" class="main-img" alt="${p.title}" loading="lazy">
+                <div class="pub-actions">
+                  <a href="${p.url}" target="_blank" class="btn-link primary">
+                    View Publisher (DOI)
+                  </a>
+                  <button class="btn-link secondary cite-trigger" data-id="${p.id}">
+                    📋 Cite Paper
+                  </button>
                 </div>
-                <div class="fig-caption">
-                  <div>
-                    <span style="font-weight: 700; color: var(--ink);">${p.id === 'bird_flocks' ? '📊' : '📸'} ${p.speciesName}</span>
-                    ${p.imgCredit ? `<br><span class="pub-credit" style="font-size: 0.72rem; opacity: 0.8; font-weight: normal; margin-top: 4px; display: inline-block;">Photo: ${p.imgCredit}</span>` : ''}
+              </div>
+              <div class="pub-visual">
+                <div class="research-fig-card" data-img-src="${p.img}" data-img-caption="${p.title}" style="margin: 0;">
+                  <div class="fig-img-wrap">
+                    <img src="${p.img}" class="bg-blur" alt="" aria-hidden="true">
+                    <img src="${p.img}" class="main-img ${isPubContain ? 'contain' : ''}" alt="${p.title}" loading="lazy">
+                  </div>
+                  <div class="fig-caption">
+                    <div>
+                      <span style="font-weight: 700; color: var(--ink);">${p.id === 'bird_flocks' ? '📊' : '📸'} ${p.speciesName}</span>
+                      ${p.imgCredit ? `<br><span class="pub-credit" style="font-size: 0.72rem; opacity: 0.8; font-weight: normal; margin-top: 4px; display: inline-block;">Photo: ${p.imgCredit}</span>` : ''}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        `).join('');
+          `;
+        }).join('');
         
         const triggers = pubList.querySelectorAll('.cite-trigger');
         triggers.forEach(trig => {
@@ -1135,6 +1292,22 @@
 
       renderPublications();
       renderGrants();
+
+      // Event Delegation for Lightbox Clicks on all research figures
+      document.body.addEventListener('click', (e) => {
+        const card = e.target.closest('.research-fig-card');
+        if (card) {
+          // Prevent lightbox from opening if clicking interactive elements inside
+          if (e.target.closest('.carousel-btn') || e.target.closest('.carousel-thumb') || e.target.closest('.cite-trigger') || e.target.closest('.btn-link')) {
+            return;
+          }
+          const src = card.getAttribute('data-img-src') || (card.querySelector('img.main-img') && card.querySelector('img.main-img').src);
+          const caption = card.getAttribute('data-img-caption') || '';
+          if (src) {
+            openLightbox(src, caption);
+          }
+        }
+      });
     });
   </script>
 </body>
