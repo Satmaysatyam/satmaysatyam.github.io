@@ -414,6 +414,20 @@ const site = {
       group: 'Amphibians'
     },
     {
+      id: 'kempholeyensis',
+      name: 'Kempholey Night Frog',
+      scientific: 'Nyctibatrachus kempholeyensis',
+      habitat: 'Western Ghats',
+      voice: 'croak',
+      emoji: '🐸',
+      src: 'Audio Bank/N.kempholeyensis_09 (mp3cut.net).wav',
+      img: 'Audio Bank/N_kempholeyensis.jpg',
+      bgPosition: '15% center',
+      imgCredit: 'Wikimedia Commons',
+      audioCredit: 'Satyam Gupta',
+      group: 'Amphibians'
+    },
+    {
       id: 'soundscape',
       name: 'Canopy Mixed-Species Flock (MSF)',
       scientific: 'Dawn Chorus / Bioacoustics',
@@ -478,14 +492,14 @@ const site = {
       emoji: '🐸'
     },
     {
-      id: 'wtf',
-      title: 'Wayanad Torrent Frog',
-      scientific: 'Micrixalus wynaadensis',
+      id: 'indian_tree_frog',
+      title: 'Indian Tree Frog',
+      scientific: 'Polypedates maculatus',
       group: 'Amphibians',
       srcs: ['Photography/WTF1.png', 'Photography/WTF2.png'],
       captions: [
-        'A dancing frog species that performs foot-flagging displays to communicate over the roar of rushing streams.',
-        'Positioned on a mossy boulder in the splash zone of a forest torrent.'
+        'A Common Indian Tree Frog showcasing its variable brownish-yellow body and adhesive toe pads suited for climbing.',
+        'Captured on a mossy branch, highlighting the dark temporal region on the side of its head.'
       ],
       emoji: '🐸'
     },
@@ -502,13 +516,13 @@ const site = {
     },
     {
       id: 'idf',
-      title: 'Indian Drip Frog',
-      scientific: 'Indirana semipalmata',
+      title: 'Indian Dot Frog',
+      scientific: 'Uperodon mormorata',
       group: 'Amphibians',
       srcs: ['Photography/IDF1.png', 'Photography/IDF2.png'],
       captions: [
-        'A specialized leap frog adapted to moist, vertical rock surfaces trickling with water.',
-        'Concealed near a dripping stream seep, blending in with wet leaf debris.'
+        'A beautifully patterned narrow-mouthed frog endemic to the Western Ghats of India.',
+        'Often found in tree holes or under forest floor leaf litter.'
       ],
       emoji: '🐸'
     },

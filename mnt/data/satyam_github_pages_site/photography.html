@@ -238,7 +238,7 @@
       z-index: 1000;
       background: rgba(8, 18, 14, 0.97);
       backdrop-filter: blur(16px);
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       opacity: 0;
@@ -756,6 +756,8 @@
         currentImageIndex = imgIdx;
         resetZoom();
         updateLightboxContent();
+        lightbox.style.display = 'flex';
+        lightbox.offsetHeight; // force reflow
         lightbox.classList.add('visible');
         document.body.style.overflow = 'hidden';
       }
@@ -764,6 +766,11 @@
         lightbox.classList.remove('visible');
         document.body.style.overflow = '';
         resetZoom();
+        setTimeout(() => {
+          if (!lightbox.classList.contains('visible')) {
+            lightbox.style.display = 'none';
+          }
+        }, 350);
       }
       
       // Zoom and Pan Handlers
@@ -783,7 +790,7 @@
       });
       
       function updateZoomOrigin(e) {
-        const rect = lightboxImg.getBoundingClientRect();
+        const rect = lightboxImgContainer.getBoundingClientRect();
         if (rect.width === 0 || rect.height === 0) return;
         let x = ((e.clientX - rect.left) / rect.width) * 100;
         let y = ((e.clientY - rect.top) / rect.height) * 100;

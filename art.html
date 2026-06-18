@@ -97,7 +97,7 @@
       background: rgba(8, 15, 11, 0.95);
       backdrop-filter: blur(10px);
       z-index: 1000;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       opacity: 0;
@@ -213,6 +213,8 @@
       // Lightbox Logic
       function openLightbox(src) {
         lightboxImg.src = src;
+        lightbox.style.display = 'flex';
+        lightbox.offsetHeight; // force reflow
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden'; // Prevent scrolling
       }
@@ -231,6 +233,11 @@
       const closeLightbox = () => {
         lightbox.classList.remove('active');
         document.body.style.overflow = '';
+        setTimeout(() => {
+          if (!lightbox.classList.contains('active')) {
+            lightbox.style.display = 'none';
+          }
+        }, 400);
       };
       
       lightboxClose.addEventListener('click', closeLightbox);
