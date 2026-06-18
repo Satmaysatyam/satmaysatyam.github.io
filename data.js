@@ -809,7 +809,7 @@ const site = {
       amount: '$1,000',
       year: '2025',
       note: 'Awarded for the ongoing Amphibian Ecology project in the Western Ghats.',
-      logo: ''
+      logo: 'logos/atbc_funding.jpg'
     },
     {
       title: 'DST INSPIRE Scholarship',
