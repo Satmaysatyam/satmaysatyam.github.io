@@ -534,16 +534,16 @@ const site = {
       scientific: 'Craspedocephalus malabaricus',
       group: 'Reptiles',
       srcs: [
+        'Photography/MPV1.png',
         'Photography/Malabar_Pit_Viper.png',
         'Photography/Malabar_Pit_Viper2.png',
-        'Photography/MPV1.png',
         'Photography/MPV2.png',
         'Photography/MPV4.png'
       ],
       captions: [
+        'A striking color morph displaying complex blotched patterns that mimic decaying leaves.',
         'A magnificent venomous snake endemic to the Western Ghats forests, showcasing beautiful green scaling.',
         'An ambush predator resting on a wet forest twig, perfectly camouflaged in the understory.',
-        'A striking color morph displaying complex blotched patterns that mimic decaying leaves.',
         'A brilliant green variation of the species, commonly found waiting near streams.',
         'One of the rarest color variations, sporting vibrant golden-yellow scales.'
       ],
@@ -623,10 +623,11 @@ const site = {
     },
     {
       id: 'tragopan',
-      title: 'Western Tragopan',
-      scientific: 'Tragopan melanocephalus',
+      title: 'Blyth\'s Tragopan',
+      scientific: 'Tragopan blythii',
       group: 'Birds',
       srcs: ['Photography/Tragopan2-0857.png'],
+      objectPosition: 'top',
       captions: [
         'An incredibly rare and brightly patterned pheasant species, highlighting Himalayan high-altitude forest biodiversity.'
       ],

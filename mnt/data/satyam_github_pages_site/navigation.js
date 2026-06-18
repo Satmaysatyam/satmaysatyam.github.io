@@ -66,4 +66,28 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 200);
     }
   });
+
+  // Temporary element diagnostic
+  setTimeout(() => {
+    try {
+      const card = document.querySelector('.gallery-item') || document.querySelector('.research-fig-card');
+      if (card) {
+        const rect = card.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+        const el = document.elementFromPoint(x, y);
+        let path = [];
+        let curr = el;
+        while (curr) {
+          path.push(curr.tagName + (curr.id ? '#' + curr.id : '') + (curr.className ? '.' + curr.className.split(' ').join('.') : ''));
+          curr = curr.parentElement;
+        }
+        fetch('/log_diagnostic?page=' + encodeURIComponent(window.location.pathname) + '&element=' + encodeURIComponent(path.join(' > ')))
+          .catch(() => {});
+      }
+    } catch (err) {
+      fetch('/log_diagnostic?error=' + encodeURIComponent(err.message))
+        .catch(() => {});
+    }
+  }, 1000);
 });

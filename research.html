@@ -113,6 +113,7 @@
         height: 72px;
         display: -webkit-box;
         -webkit-line-clamp: 2;
+        line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
@@ -120,13 +121,15 @@
     /* --- Lightbox Modal --- */
     .lightbox {
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      height: 100dvh;
       z-index: 1000;
       background: rgba(8, 18, 14, 0.97);
       backdrop-filter: blur(16px);
       display: none;
-      align-items: center;
-      justify-content: center;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -138,16 +141,14 @@
     }
     
     .lightbox-content-wrap {
-      max-width: 960px;
-      width: 90%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
       transform: translateY(20px) scale(0.95);
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: 105;
     }
     
     .lightbox.visible .lightbox-content-wrap {
@@ -155,30 +156,33 @@
     }
     
     .lightbox-img-container {
-      position: relative;
-      overflow: hidden;
-      border-radius: 20px;
-      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: #0d1a14;
-      cursor: zoom-in;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      max-height: 72vh;
-      width: 100%;
+      cursor: zoom-in;
+      z-index: 10;
     }
     
     .lightbox-img-container.zoomed {
       cursor: zoom-out;
+      z-index: 100;
     }
     
     .lightbox-img-container img {
-      max-height: 72vh;
-      max-width: 100%;
+      max-height: 85vh;
+      max-width: 90vw;
+      border-radius: 16px;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #0d1a14;
       object-fit: contain;
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      transform-origin: center center;
+      transform-origin: 50% 50%;
     }
     
     .lightbox-img-container.zoomed img {
@@ -186,16 +190,43 @@
     }
     
     .lightbox-caption {
-      width: 100%;
-      margin-top: 20px;
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 92%;
+      max-width: 760px;
+      z-index: 50;
+      margin: 0;
       color: white;
       text-align: left;
       padding: 16px 20px;
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(8, 18, 14, 0.75);
       border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: 18px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    
+    .lightbox-zoom-out-btn {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.15);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      z-index: 200;
+      display: none;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .lightbox-img-container.zoomed ~ .lightbox-zoom-out-btn {
+      display: block;
     }
     
     .lightbox-title {
@@ -738,6 +769,45 @@
         gap: 20px;
         width: 100%;
       }
+      
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 32px;
+        color: white;
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        user-select: none;
+        opacity: 0.5;
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        z-index: 10;
+      }
+      .lightbox-nav:hover {
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.15);
+      }
+      .lightbox-prev { left: 30px; }
+      .lightbox-next { right: 30px; }
+      @media (max-width: 1080px) {
+        .lightbox-nav {
+          width: 48px;
+          height: 48px;
+          font-size: 24px;
+        }
+        .lightbox-prev { left: 15px; }
+        .lightbox-next { right: 15px; }
+      }
+      @media (max-width: 760px) {
+        .lightbox-nav { display: none; }
+      }
   </style>
 </head>
 <body>
@@ -792,10 +862,13 @@
   <!-- Lightbox Modal for figures -->
   <div id="lightbox" class="lightbox">
     <span id="lightboxClose" class="lightbox-close">&times;</span>
+    <span id="lightboxPrev" class="lightbox-nav lightbox-prev">&#10094;</span>
+    <span id="lightboxNext" class="lightbox-nav lightbox-next">&#10095;</span>
     <div class="lightbox-content-wrap">
       <div class="lightbox-img-container" id="lightboxImgContainer">
         <img id="lightboxImg" src="" alt="Enlarged research figure" />
       </div>
+      <div id="lightboxZoomOut" class="lightbox-zoom-out-btn">Zoom Out</div>
       <div class="lightbox-caption">
         <div class="lightbox-title-row">
           <div class="lightbox-title-wrap">
@@ -1094,7 +1167,7 @@
           thumbs.forEach((thumb, idx) => {
             if (idx === activeIdx) {
               thumb.classList.add('active');
-              thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
             } else {
               thumb.classList.remove('active');
             }
@@ -1102,20 +1175,69 @@
         }
       };
 
-      // Lightbox functions
-      function openLightbox(src, caption) {
+      // Lightbox Logic
+      let scrollPosition = 0;
+      let currentLightboxImages = [];
+      let currentImageIndex = 0;
+      
+      function openLightbox(index, customImages = null) {
+        currentImageIndex = index;
+        
+        if (customImages) {
+          currentLightboxImages = customImages;
+        } else {
+          // get from active tab
+          const tab = site.researchTabs.find(t => t.id === activeResearch);
+          currentLightboxImages = [];
+          if (tab.imageGroups) {
+            tab.imageGroups.forEach(group => {
+              group.images.forEach(img => {
+                currentLightboxImages.push({ src: img.src, caption: img.caption });
+              });
+            });
+          } else if (tab.images) {
+            currentLightboxImages = tab.images;
+          }
+        }
+        
         resetZoom();
-        lightboxImg.src = src;
-        lightboxTitle.textContent = caption;
-        lightbox.style.display = 'flex';
+        updateLightboxContent();
+        
+        // iOS Safari scroll lock fix
+        scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollPosition}px`;
+        document.body.style.width = '100%';
+        
+        lightbox.style.display = 'block';
+        lightbox.style.height = '100dvh';
         lightbox.offsetHeight; // force reflow
         lightbox.classList.add('visible');
-        document.body.style.overflow = 'hidden';
+      }
+
+      function updateLightboxContent() {
+        if (!currentLightboxImages.length) return;
+        const imgObj = currentLightboxImages[currentImageIndex];
+        lightboxImg.src = imgObj.src;
+        lightboxTitle.textContent = imgObj.caption || '';
+      }
+
+      function navigateLightbox(dir) {
+        if (!currentLightboxImages.length) return;
+        currentImageIndex = (currentImageIndex + dir + currentLightboxImages.length) % currentLightboxImages.length;
+        resetZoom();
+        updateLightboxContent();
       }
 
       function closeLightbox() {
         lightbox.classList.remove('visible');
-        document.body.style.overflow = '';
+        
+        // Restore scroll position
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, scrollPosition);
+        
         resetZoom();
         setTimeout(() => {
           if (!lightbox.classList.contains('visible')) {
@@ -1127,35 +1249,34 @@
       // Zoom and Pan Handlers
       lightboxImgContainer.addEventListener('click', (e) => {
         lightboxImgContainer.classList.toggle('zoomed');
-        if (!lightboxImgContainer.classList.contains('zoomed')) {
-          lightboxImg.style.transformOrigin = 'center center';
-        } else {
-          updateZoomOrigin(e);
-        }
       });
-      
-      lightboxImgContainer.addEventListener('mousemove', (e) => {
-        if (lightboxImgContainer.classList.contains('zoomed')) {
-          updateZoomOrigin(e);
-        }
-      });
-      
-      function updateZoomOrigin(e) {
-        const rect = lightboxImgContainer.getBoundingClientRect();
-        if (rect.width === 0 || rect.height === 0) return;
-        let x = ((e.clientX - rect.left) / rect.width) * 100;
-        let y = ((e.clientY - rect.top) / rect.height) * 100;
-        x = Math.max(0, Math.min(100, x));
-        y = Math.max(0, Math.min(100, y));
-        lightboxImg.style.transformOrigin = `${x}% ${y}%`;
-      }
       
       function resetZoom() {
         lightboxImgContainer.classList.remove('zoomed');
-        lightboxImg.style.transformOrigin = 'center center';
+      }
+
+      const lightboxPrev = document.getElementById('lightboxPrev');
+      const lightboxNext = document.getElementById('lightboxNext');
+      
+      if (lightboxPrev) {
+        lightboxPrev.addEventListener('click', (e) => {
+          e.stopPropagation();
+          navigateLightbox(-1);
+        });
+      }
+      
+      if (lightboxNext) {
+        lightboxNext.addEventListener('click', (e) => {
+          e.stopPropagation();
+          navigateLightbox(1);
+        });
       }
 
       lightboxClose.addEventListener('click', closeLightbox);
+      document.getElementById('lightboxZoomOut').addEventListener('click', (e) => {
+        e.stopPropagation();
+        resetZoom();
+      });
       lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) {
           closeLightbox();
@@ -1163,8 +1284,10 @@
       });
 
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightbox.classList.contains('visible')) {
-          closeLightbox();
+        if (lightbox.classList.contains('visible')) {
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowRight') navigateLightbox(1);
+          if (e.key === 'ArrowLeft') navigateLightbox(-1);
         }
       });
 
@@ -1360,10 +1483,18 @@
           if (e.target.closest('.carousel-btn') || e.target.closest('.carousel-thumb') || e.target.closest('.cite-trigger') || e.target.closest('.btn-link')) {
             return;
           }
-          const src = card.getAttribute('data-img-src') || (card.querySelector('img.main-img') && card.querySelector('img.main-img').src);
-          const caption = card.getAttribute('data-img-caption') || '';
-          if (src) {
-            openLightbox(src, caption);
+          
+          const carouselItem = card.closest('.carousel-item');
+          if (carouselItem) {
+             const idx = parseInt(carouselItem.getAttribute('data-idx'), 10);
+             openLightbox(idx);
+          } else {
+             // Fallback if not inside carousel
+             const src = card.getAttribute('data-img-src') || (card.querySelector('img.main-img') && card.querySelector('img.main-img').src);
+             const caption = card.getAttribute('data-img-caption') || '';
+             if (src) {
+               openLightbox(0, [{src, caption}]);
+             }
           }
         }
       });
