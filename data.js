@@ -369,7 +369,7 @@ const site = {
       voice: 'croak',
       emoji: '🐸',
       src: 'Audio Bank/P.amboli_Ind_19 (mp3cut.net).wav',
-      img: 'Photography/ABF1.jpg',
+      img: 'Photography/ABF1.png',
       imgCredit: 'Satyam Gupta',
       audioCredit: 'Satyam Gupta',
       group: 'Amphibians'
@@ -395,7 +395,7 @@ const site = {
       voice: 'croak',
       emoji: '🐸',
       src: 'Audio Bank/P.tuberculosus_Ind_15 (mp3cut.net).wav',
-      img: 'Photography/MTT1.jpg',
+      img: 'Photography/MTT1.png',
       imgCredit: 'Satyam Gupta',
       audioCredit: 'Satyam Gupta',
       group: 'Amphibians'
@@ -408,7 +408,7 @@ const site = {
       voice: 'whistle',
       emoji: '🐸',
       src: 'Audio Bank/R.luteolus_Ind_14 (mp3cut.net).wav',
-      img: 'Photography/BEYB1.jpg',
+      img: 'Photography/BEYB1.png',
       imgCredit: 'Satyam Gupta',
       audioCredit: 'Satyam Gupta',
       group: 'Amphibians'
@@ -448,7 +448,7 @@ const site = {
       title: 'Malabar Gliding Frog',
       scientific: 'Rhacophorus malabaricus',
       group: 'Amphibians',
-      srcs: ['Photography/MGF1.png', 'Photography/MGF2.jpg'],
+      srcs: ['Photography/MGF1.png', 'Photography/MGF2.png'],
       captions: [
         'Can glide up to 12 meters between canopy trees using the extensive webbing between its toes.'
       ],
@@ -459,7 +459,7 @@ const site = {
       title: 'Malabar Tree Toad',
       scientific: 'Pedostibes tuberculosus',
       group: 'Amphibians',
-      srcs: ['Photography/MTT1.jpg', 'Photography/MTT2.jpg'],
+      srcs: ['Photography/MTT1.png', 'Photography/MTT2.png'],
       captions: [
         'Unlike most toads that live on the ground, this species spends almost its entire life high in the forest canopy.'
       ],
@@ -470,7 +470,7 @@ const site = {
       title: 'Amboli Bush Frog',
       scientific: 'Pseudophilautus amboli',
       group: 'Amphibians',
-      srcs: ['Photography/ABF1.jpg', 'Photography/ABF2.jpg'],
+      srcs: ['Photography/ABF1.png', 'Photography/ABF2.png'],
       captions: [
         'Bypasses the tadpole stage entirely, hatching from its egg as a fully formed miniature froglet.'
       ],
@@ -481,7 +481,7 @@ const site = {
       title: 'Blue-eyed Yellow Bush Frog',
       scientific: 'Raorchestes luteolus',
       group: 'Amphibians',
-      srcs: ['Photography/BEYB1.jpg', 'Photography/BEYB2.jpg'],
+      srcs: ['Photography/BEYB1.png', 'Photography/BEYB2.png'],
       captions: [
         'Male frogs produce a distinct "tink-tink" metallic call to attract females during the heavy monsoon rains.'
       ],
@@ -492,7 +492,7 @@ const site = {
       title: 'Indian Tree Frog',
       scientific: 'Polypedates maculatus',
       group: 'Amphibians',
-      srcs: ['Photography/WTF1.png', 'Photography/WTF2.jpg'],
+      srcs: ['Photography/WTF1.png', 'Photography/WTF2.png'],
       captions: [
         'Can rapidly change its skin coloration from bright yellow to dark brown to match its surroundings.'
       ],
@@ -514,7 +514,7 @@ const site = {
       title: 'Indian Dot Frog',
       scientific: 'Uperodon mormorata',
       group: 'Amphibians',
-      srcs: ['Photography/IDF1.png', 'Photography/IDF2.jpg'],
+      srcs: ['Photography/IDF1.png', 'Photography/IDF2.png'],
       captions: [
         'Features a tiny mouth specialized almost exclusively for an insect diet of ants and termites.'
       ],
@@ -529,8 +529,8 @@ const site = {
       group: 'Reptiles',
       srcs: [
         'Photography/MPV1.png',
-        'Photography/Malabar_Pit_Viper.jpg',
-        'Photography/Malabar_Pit_Viper2.jpg',
+        'Photography/Malabar_Pit_Viper.png',
+        'Photography/Malabar_Pit_Viper2.png',
         'Photography/MPV2.png',
         'Photography/MPV4.png'
       ],
@@ -556,8 +556,8 @@ const site = {
       scientific: 'Boiga nuchalis',
       group: 'Reptiles',
       srcs: [
-        'Photography/Collared_Cat_Snake.jpg',
-        'Photography/Collared_Cat_Snake2.jpg'
+        'Photography/Collared_Cat_Snake.png',
+        'Photography/Collared_Cat_Snake2.png'
       ],
       captions: [
         'Uses its mildly venomous grooved rear fangs to paralyze sleeping lizards and small birds in the canopy.'
@@ -615,7 +615,7 @@ const site = {
       title: 'Blyth\'s Tragopan',
       scientific: 'Tragopan blythii',
       group: 'Birds',
-      srcs: ['Photography/Tragopan2-0857.jpg'],
+      srcs: ['Photography/Tragopan2-0857.png'],
       objectPosition: 'top',
       captions: [
         'During courtship, males inflate brightly colored, fleshy "horns" and a vibrant bib-like lappet to impress females.'
@@ -627,7 +627,7 @@ const site = {
       title: 'Rufous Woodpecker',
       scientific: 'Micropternus brachyurus',
       group: 'Birds',
-      srcs: ['Photography/Woodpecker_rufous1-0647.jpg'],
+      srcs: ['Photography/Woodpecker_rufous1-0647.png'],
       captions: [
         'Lays its eggs directly inside the active, stinging nests of acrobat ants, which surprisingly do not attack the incubating bird.'
       ],
@@ -638,7 +638,7 @@ const site = {
       title: 'Nepal Laughingthrush',
       scientific: 'Trochalopteron lineatum',
       group: 'Birds',
-      srcs: ['Photography/Nepal_LT-0009.jpg'],
+      srcs: ['Photography/Nepal_LT-0009.png'],
       captions: [
         'Highly social birds that form tight-knit flocks, constantly communicating with a diverse vocabulary of squeaks, chatters, and trills.'
       ],
@@ -684,7 +684,7 @@ const site = {
       title: 'Himalayan Serow',
       scientific: 'Capricornis sumatraensis thar',
       group: 'Mammals',
-      srcs: ['Photography/Serow1-0074.jpg'],
+      srcs: ['Photography/Serow1-0074.png'],
       captions: [
         'An unusual mammal that looks like a cross between a goat, a donkey, and an antelope, perfectly adapted for steep, rocky slopes.'
       ],
@@ -695,7 +695,7 @@ const site = {
       title: 'Wild Water Buffalo',
       scientific: 'Bubalus arnee',
       group: 'Mammals',
-      srcs: ['Photography/buffalo1-0017.jpg', 'Photography/buffalo3-0419.jpg'],
+      srcs: ['Photography/buffalo1-0017.png', 'Photography/buffalo3-0419.png'],
       captions: [
         'Boasts the widest horn span of any living bovid, with massive crescent-shaped horns that can stretch over two meters across.'
       ],
@@ -706,7 +706,7 @@ const site = {
       title: 'Spotted Deer',
       scientific: 'Axis axis',
       group: 'Mammals',
-      srcs: ['Photography/spotted_deer1-1006.jpg', 'Photography/spotted_deer2-0140.jpg'],
+      srcs: ['Photography/spotted_deer1-1006.png', 'Photography/spotted_deer2-0140.png'],
       captions: [
         'Often forms a mutualistic relationship with langur monkeys, eating the fruits they drop and relying on their alarm calls for predator warnings.'
       ],
@@ -821,4 +821,3 @@ const site = {
     }
   ]
 };
-
