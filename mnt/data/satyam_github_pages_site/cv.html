@@ -12,6 +12,7 @@
     .cv-item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; gap: 10px; flex-wrap: nowrap; }
     .cv-item-title-wrap { display: flex; align-items: center; gap: 12px; flex-wrap: nowrap; min-width: 0; }
     .cv-logo { width: 44px; height: 44px; border-radius: 4px; object-fit: contain; flex-shrink: 0; background: white; }
+    #anti-cv .cv-logo { width: 64px; height: 64px; border-radius: 6px; }
     .cv-emoji { font-size: 1.1rem; line-height: 1; flex-shrink: 0; }
     .cv-item-title { font-weight: 700; color: var(--ink); }
     .cv-item-date { font-size: 0.85rem; color: var(--muted); white-space: nowrap; font-weight: 600; }
@@ -28,6 +29,10 @@
     .skills-category { margin-bottom: 14px; }
     .skills-category strong { display: block; margin-bottom: 6px; font-size: 0.95rem; }
     
+    .tabs { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; }
+    .tab { border: 1px solid rgba(22, 49, 38, 0.12); background: white; color: var(--muted); padding: 10px 18px; border-radius: 999px; cursor: pointer; font-weight: 600; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); font-family: inherit; font-size: 0.95rem; }
+    .tab:hover { background: rgba(11, 93, 67, 0.05); color: var(--ink); border-color: var(--brand); }
+    .tab.active { background: var(--brand); color: white; border-color: transparent; box-shadow: 0 10px 24px rgba(11, 93, 67, 0.18); }
     @media (max-width: 780px) {
       .cv-item-header { flex-direction: column; align-items: flex-start; gap: 4px; }
     }
@@ -39,14 +44,17 @@
 
     <main class="section-wrap">
       <section id="page-cv" class="page">
-        <div class="section-title">
+        <div class="section-title" style="margin-bottom: 10px;">
           <div>
             <h2>Curriculum Vitae</h2>
           </div>
-          <span class="badge">Formal</span>
         </div>
 
-        <div style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+          <div class="tabs" style="margin: 0;">
+            <button class="tab active" data-target="formal-cv">Formal CV</button>
+            <button class="tab" data-target="anti-cv">Anti-CV</button>
+          </div>
           <a href="Satyam_Gupta_CV.pdf" download class="btn primary" style="text-decoration: none; padding: 10px 20px; font-size: 0.95rem; border-radius: 999px;">
             Download PDF
           </a>
@@ -66,13 +74,11 @@
                       <img src="logos/dpz.png" alt="DPZ" class="cv-logo">
                       <span class="cv-item-title">Doctor of Philosophy in Biology</span>
                     </div>
-                    <span class="cv-item-date">Starting Oct. 2026</span>
+                    <span class="cv-item-date">Oct 2026 - Oct 2029</span>
                   </div>
                   <div class="cv-item-subtitle">German Primate Center (DPZ) & Georg-August-Universität Göttingen</div>
                   <div class="cv-item-desc">
-                    <ul>
-                      <li>Funded by the DAAD Doctoral Scholarship.</li>
-                    </ul>
+                    <p style="margin: 0;">Funded by the DAAD Doctoral Scholarship.</p>
                   </div>
                 </div>
 
@@ -103,7 +109,7 @@
               </div>
 
               <div class="card pad cv-section">
-                <h3 class="cv-section-title">Research Experience</h3>
+                <h3 class="cv-section-title">Field Assistantships & Professional Research Internships</h3>
                 
                 <div class="cv-item">
                   <div class="cv-item-header">
@@ -117,9 +123,7 @@
                   <div class="cv-item-desc">
                     <strong>Title:</strong> Symphony of survival: A bioacoustic approach to studying mixed-species bird flocks.<br/>
                     <strong>Advisors:</strong> Dr. K Sivakumar & Dr. Umesh Srinivasan.
-                    <ul>
-                      <li>Studied mixed species bird flock dynamics using bioacoustics.</li>
-                    </ul>
+                    <p style="margin: 0;">Studied mixed species bird flock dynamics using bioacoustics.</p>
                   </div>
                 </div>
 
@@ -133,9 +137,7 @@
                   </div>
                   <div class="cv-item-subtitle">Eaglenest Wildlife Sanctuary, Arunachal Pradesh</div>
                   <div class="cv-item-desc">
-                    <ul>
-                      <li>Estimated arthropod prey availability for insectivorous birds across an elevational gradient.</li>
-                    </ul>
+                    <p style="margin: 0;">Estimated arthropod prey availability for insectivorous birds across an elevational gradient.</p>
                   </div>
                 </div>
                 
@@ -149,9 +151,7 @@
                   </div>
                   <div class="cv-item-subtitle">CAMPA DUGONG Conservation Project, Marine National Park</div>
                   <div class="cv-item-desc">
-                    <ul>
-                      <li>Assisted WII research team at Gulf of Kutch in conducting field surveys, awareness programs, and sorting seagrass associated macrobenthic fauna.</li>
-                    </ul>
+                    <p style="margin: 0;">Assisted WII research team at Gulf of Kutch in conducting field surveys, awareness programs, and sorting seagrass associated macrobenthic fauna.</p>
                   </div>
                 </div>
 
@@ -165,9 +165,7 @@
                   </div>
                   <div class="cv-item-subtitle">Kanha Tiger Reserve, Madhya Pradesh</div>
                   <div class="cv-item-desc">
-                    <ul>
-                      <li>Worked under the Wildlife and Nature Conservancy (WNC) Indore, for the annual bird count.</li>
-                    </ul>
+                    <p style="margin: 0;">Worked under the Wildlife and Nature Conservancy (WNC) Indore, for the annual bird count.</p>
                   </div>
                 </div>
 
@@ -181,9 +179,7 @@
                   </div>
                   <div class="cv-item-subtitle">Satpura-Pench Corridor, Madhya Pradesh</div>
                   <div class="cv-item-desc">
-                    <ul>
-                      <li>Worked with the WWF India central Indian landscape team for the Occupancy survey and Camera trapping in the Satpura-Pench Tiger Reserve Corridor project.</li>
-                    </ul>
+                    <p style="margin: 0;">Worked with the WWF India central Indian landscape team for the Occupancy survey and Camera trapping in the Satpura-Pench Tiger Reserve Corridor project.</p>
                   </div>
                 </div>
 
@@ -197,9 +193,7 @@
                   </div>
                   <div class="cv-item-subtitle">Melghat Tiger Reserve, Maharashtra</div>
                   <div class="cv-item-desc">
-                    <ul>
-                      <li>Volunteered in the second phase of "Occupancy of tiger, co-predator and prey species in the Satpuda-Melghat Corridor" under Wildlife Research and Conservation Society.</li>
-                    </ul>
+                    <p style="margin: 0;">Volunteered in the second phase of "Occupancy of tiger, co-predator and prey species in the Satpuda-Melghat Corridor" under Wildlife Research and Conservation Society.</p>
                   </div>
                 </div>
 
@@ -213,9 +207,7 @@
                   </div>
                   <div class="cv-item-subtitle">WALMI, Madhya Pradesh</div>
                   <div class="cv-item-desc">
-                    <ul>
-                      <li>Interned with the Water and Land Management Institute Bhopal for GIS and Remote Sensing training.</li>
-                    </ul>
+                    <p style="margin: 0;">Interned with the Water and Land Management Institute Bhopal for GIS and Remote Sensing training.</p>
                   </div>
                 </div>
 
@@ -229,9 +221,7 @@
                   </div>
                   <div class="cv-item-subtitle">Kanha Tiger Reserve, Madhya Pradesh</div>
                   <div class="cv-item-desc">
-                    <ul>
-                      <li>Worked with Centre for Wildlife Sciences to collect data for examining nature viewing preferences of tourists visiting Indian protected areas.</li>
-                    </ul>
+                    <p style="margin: 0;">Worked with Centre for Wildlife Sciences to collect data for examining nature viewing preferences of tourists visiting Indian protected areas.</p>
                   </div>
                 </div>
 
@@ -245,9 +235,7 @@
                   </div>
                   <div class="cv-item-subtitle">Anuppur, Madhya Pradesh</div>
                   <div class="cv-item-desc">
-                    <ul>
-                      <li>Worked with the Madhya Pradesh Forest Department for the Vulture Census.</li>
-                    </ul>
+                    <p style="margin: 0;">Worked with the Madhya Pradesh Forest Department for the Vulture Census.</p>
                   </div>
                 </div>
 
@@ -261,9 +249,7 @@
                   </div>
                   <div class="cv-item-subtitle">Achanakmar Tiger Reserve, Chhattisgarh</div>
                   <div class="cv-item-desc">
-                    <ul>
-                      <li>Worked with the Chhattisgarh Forest Department and FRLHT for the documentation of Rural PBR in the Core region.</li>
-                    </ul>
+                    <p style="margin: 0;">Worked with the Chhattisgarh Forest Department and FRLHT for the documentation of Rural PBR in the Core region.</p>
                   </div>
                 </div>
 
@@ -277,9 +263,7 @@
                   </div>
                   <div class="cv-item-subtitle">Satpura Tiger Reserve, Madhya Pradesh</div>
                   <div class="cv-item-desc">
-                    <ul>
-                      <li>Volunteered for the "Occupancy of tiger, co-predator and prey species in the Satpuda-Melghat Corridor" project under Wildlife Research and Conservation Society.</li>
-                    </ul>
+                    <p style="margin: 0;">Volunteered for the "Occupancy of tiger, co-predator and prey species in the Satpuda-Melghat Corridor" project under Wildlife Research and Conservation Society.</p>
                   </div>
                 </div>
 
@@ -293,9 +277,7 @@
                   </div>
                   <div class="cv-item-subtitle">Haryana, India</div>
                   <div class="cv-item-desc">
-                    <ul>
-                      <li>Worked with the Haryana Forest Department and FRLHT for the documentation of the Rural and Urban PBR of three districts.</li>
-                    </ul>
+                    <p style="margin: 0;">Worked with the Haryana Forest Department and FRLHT for the documentation of the Rural and Urban PBR of three districts.</p>
                   </div>
                 </div>
               </div>
@@ -452,7 +434,7 @@
                   </div>
                   <div class="cv-item-subtitle">Edinburgh, UK</div>
                   <div class="cv-item-desc">
-                    <ul><li>Delivered a talk titled "A Song to Die for: Acoustic Eavesdropping by Mosquitoes on Anuran Calls in the Western Ghats, India" at the Edinburgh Royal College of Physicians.</li></ul>
+                    <p style="margin: 0;">Delivered a talk titled "A Song to Die for: Acoustic Eavesdropping by Mosquitoes on Anuran Calls in the Western Ghats, India" at the Edinburgh Royal College of Physicians.</p>
                   </div>
                 </div>
 
@@ -466,7 +448,7 @@
                     </div>
                     <div class="cv-item-subtitle">Kolkata, West Bengal</div>
                   <div class="cv-item-desc">
-                    <ul><li>Delivered an oral presentation titled "Vocal Species are More Central in Eastern Himalayan Mixed-Species Bird Flocks" at the Collaborations in Nature symposium.</li></ul>
+                    <p style="margin: 0;">Delivered an oral presentation titled "Vocal Species are More Central in Eastern Himalayan Mixed-Species Bird Flocks" at the Collaborations in Nature symposium.</p>
                   </div>
                 </div>
 
@@ -480,7 +462,7 @@
                   </div>
                   <div class="cv-item-subtitle">NCBS Bangalore, India</div>
                   <div class="cv-item-desc">
-                    <ul><li>Presented my master’s thesis work titled "Symphony of Survival: Bioacoustic Approach to understanding Mixed-species bird flocks in Eastern Himalayas" in the open session.</li></ul>
+                    <p style="margin: 0;">Presented my master’s thesis work titled "Symphony of Survival: Bioacoustic Approach to understanding Mixed-species bird flocks in Eastern Himalayas" in the open session.</p>
                   </div>
                 </div>
 
@@ -493,7 +475,7 @@
                     <span class="cv-item-date">Oct. 2024</span>
                   </div>
                   <div class="cv-item-desc">
-                    <ul><li>Participated in workshops ranging from Bio-acoustics and R programming to Behavioural Sciences.</li></ul>
+                    <p style="margin: 0;">Participated in workshops ranging from Bio-acoustics and R programming to Behavioural Sciences.</p>
                   </div>
                 </div>
 
@@ -507,21 +489,20 @@
                   </div>
                   <div class="cv-item-subtitle">Pune, Maharashtra</div>
                   <div class="cv-item-desc">
-                    <ul><li>Attended the national level conference conducted by Bharati Vidyapeeth University in collaboration with Engagement Global, Germany.</li></ul>
+                    <p style="margin: 0;">Attended the national level conference conducted by Bharati Vidyapeeth University in collaboration with Engagement Global, Germany.</p>
                   </div>
                 </div>
 
                 <div class="cv-item">
                   <div class="cv-item-header">
                     <div class="cv-item-title-wrap">
-                      <span class="cv-emoji">🔬</span>
                       <span class="cv-item-title">SCIENCE MANTHAN</span>
                     </div>
                     <span class="cv-item-date">Feb. 2020</span>
                   </div>
                   <div class="cv-item-subtitle">Gujarat, India</div>
                   <div class="cv-item-desc">
-                    <ul><li>Presented a Scientific poster on the history, symptoms, precautions, and treatment of COVID-19.</li></ul>
+                    <p style="margin: 0;">Presented a Scientific poster on the history, symptoms, precautions, and treatment of COVID-19.</p>
                   </div>
                 </div>
               </div>
@@ -537,7 +518,7 @@
                     </div>
                     <span class="cv-item-date">April 2024</span>
                   </div>
-                  <div class="cv-item-desc"><ul><li>Kerala Forest Research Institute, Thrissur, Kerala.</li></ul></div>
+                  <div class="cv-item-desc"><p style="margin: 0;">Kerala Forest Research Institute, Thrissur, Kerala.</p></div>
                 </div>
 
                 <div class="cv-item">
@@ -548,18 +529,17 @@
                     </div>
                     <span class="cv-item-date">Oct. 2021</span>
                   </div>
-                  <div class="cv-item-desc"><ul><li>Aligarh Muslim University, Aligarh.</li></ul></div>
+                  <div class="cv-item-desc"><p style="margin: 0;">Aligarh Muslim University, Aligarh.</p></div>
                 </div>
 
                 <div class="cv-item">
                   <div class="cv-item-header">
                     <div class="cv-item-title-wrap">
-                      <span class="cv-emoji">🌿</span>
                       <span class="cv-item-title">Basis of Conservation</span>
                     </div>
                     <span class="cv-item-date">Aug. 2020</span>
                   </div>
-                  <div class="cv-item-desc"><ul><li>Green Works Trust, Mumbai.</li></ul></div>
+                  <div class="cv-item-desc"><p style="margin: 0;">Green Works Trust, Mumbai.</p></div>
                 </div>
 
                 <div class="cv-item">
@@ -570,8 +550,131 @@
                     </div>
                     <span class="cv-item-date">June 2020</span>
                   </div>
-                  <div class="cv-item-desc"><ul><li>Wildlife Institute of India, Dehradun.</li></ul></div>
+                  <div class="cv-item-desc"><p style="margin: 0;">Wildlife Institute of India, Dehradun.</p></div>
                 </div>
+        </div>
+
+        </div>
+
+        </div>
+
+        </div>
+
+
+        <!-- ANTI CV -->
+        <div id="anti-cv" class="tab-panel" style="display: none;">
+          <div class="card pad cv-section" style="background: rgba(11, 93, 67, 0.04); border: 1px solid rgba(11, 93, 67, 0.15); box-shadow: inset 0 2px 10px rgba(11,93,67,0.02);">
+            <h3 class="cv-section-title" style="border-bottom: none; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+              <span>💡</span> Why an Anti-CV?
+            </h3>
+            <p style="margin: 0; line-height: 1.7; color: rgba(22,49,38,0.85); font-size: 0.95rem;">
+              A standard curriculum vitae is a highly curated timeline of successes, but it leaves out the invisible labor, near-misses, and tough choices that genuinely shape a researcher. In competitive fields like ecology and evolutionary biology, high-stakes selection processes are the norm, and rejection is an essential mechanism of growth. This section maps out the competitive shortlists, funding gaps, and deliberate pivots that occurred behind the scenes—offering a transparent look at the resilience and alternative paths that ultimately built my academic journey.
+            </p>
+          </div>
+
+          <div class="card pad cv-section">
+            <h3 class="cv-section-title">Master’s Programs & Admissions (2022)</h3>
+            
+            <div class="cv-item">
+              <div class="cv-item-header">
+                <div class="cv-item-title-wrap">
+                  <img src="logos/tropimundo.png" alt="TROPIMUNDO" class="cv-logo">
+                  <span class="cv-item-title">Erasmus Mundus Joint Master Degree (TROPIMUNDO)</span>
+                </div>
+              </div>
+              <div class="cv-item-subtitle">Track: Tropical Biodiversity and Ecosystems</div>
+              <div class="cv-item-desc">
+                <p style="margin: 0;"><strong>Outcome:</strong> Successfully secured a formal admission offer but was waitlisted for the full Erasmus Mundus scholarship. Had to decline the position due to a lack of alternative funding.</p>
+              </div>
+            </div>
+
+            <div class="cv-item">
+              <div class="cv-item-header">
+                <div class="cv-item-title-wrap">
+                  <img src="logos/meme.png" alt="MEME" class="cv-logo">
+                  <span class="cv-item-title">Erasmus Mundus Joint Master Degree (MEME)</span>
+                </div>
+              </div>
+              <div class="cv-item-subtitle">Track: Erasmus Mundus Master Programme in Evolutionary Biology</div>
+              <div class="cv-item-desc">
+                <p style="margin: 0;"><strong>Outcome:</strong> Advanced through the highly competitive evaluation stages to the final selection round. Ultimately turned down the opportunity to prioritize programs with a stronger core focus on field ecology and behavior.</p>
+              </div>
+            </div>
+
+            <div class="cv-item">
+              <div class="cv-item-header">
+                <div class="cv-item-title-wrap">
+                  <img src="logos/ncbs.png" alt="NCBS" class="cv-logo">
+                  <img src="logos/wii.png" alt="WII" class="cv-logo">
+                  <span class="cv-item-title">M.Sc. Wildlife Biology & Conservation Admissions</span>
+                </div>
+              </div>
+              <div class="cv-item-subtitle">Institutions: TIFR-NCBS & Wildlife Institute of India (WII)</div>
+              <div class="cv-item-desc">
+                <p style="margin: 0;"><strong>Outcome:</strong> Cleared the nationwide entrance hurdles and advanced to the final round of presentation/interview panels for both premium programs, falling just short of the final intake threshold.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card pad cv-section">
+            <h3 class="cv-section-title">Doctoral Positions & Academic Fellowships (2024)</h3>
+            
+            <div class="cv-item">
+              <div class="cv-item-header">
+                <div class="cv-item-title-wrap">
+                  <img src="logos/iiser.svg" alt="IISER" class="cv-logo">
+                  <span class="cv-item-title">Ph.D. Admission | IISER Pune</span>
+                </div>
+              </div>
+              <div class="cv-item-subtitle">Indian Institute of Science Education and Research, Pune</div>
+              <div class="cv-item-desc">
+                <p style="margin: 0;"><strong>Outcome:</strong> Cleared the rigorous multi-stage departmental interview process and secured a formal Ph.D. offer. Ultimately chose not to pursue the position due to personal reasons.</p>
+              </div>
+            </div>
+
+            <div class="cv-item">
+              <div class="cv-item-header">
+                <div class="cv-item-title-wrap">
+                  <img src="logos/dst.png" alt="DST" class="cv-logo">
+                  <span class="cv-item-title">DST INSPIRE Fellowship (Doctoral Component)</span>
+                </div>
+              </div>
+              <div class="cv-item-subtitle">Department of Science and Technology, Government of India</div>
+              <div class="cv-item-desc">
+                <p style="margin: 0;"><strong>Outcome:</strong> Advanced through the initial national screening into the second evaluation round, but did not make the final funding cut for the doctoral phase.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card pad cv-section">
+            <h3 class="cv-section-title">Independent Research & Project Grants (2025)</h3>
+            
+            <div class="cv-item">
+              <div class="cv-item-header">
+                <div class="cv-item-title-wrap">
+                  <img src="logos/inlaks.png" alt="Inlaks" class="cv-logo">
+                  <span class="cv-item-title">Ravi Sankaran Small Grants Program</span>
+                </div>
+              </div>
+              <div class="cv-item-subtitle">Inlaks Shivdasani Foundation</div>
+              <div class="cv-item-desc">
+                <p style="margin: 0;"><strong>Outcome:</strong> Formulated and submitted an independent field research proposal; advanced past the preliminary screening into the competitive shortlist but was not selected for final funding.</p>
+              </div>
+            </div>
+
+            <div class="cv-item">
+              <div class="cv-item-header">
+                <div class="cv-item-title-wrap">
+                  <img src="logos/clp.png" alt="CLP" class="cv-logo">
+                  <span class="cv-item-title">Future Conservationist Award</span>
+                </div>
+              </div>
+              <div class="cv-item-subtitle">Conservation Leadership Programme (CLP)</div>
+              <div class="cv-item-desc">
+                <p style="margin: 0;"><strong>Outcome:</strong> Designed an international, collaborative conservation project proposal and advanced through the initial evaluation tiers, missing out on the final global selection list.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
       </section>
