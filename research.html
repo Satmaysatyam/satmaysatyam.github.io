@@ -1217,11 +1217,8 @@
         resetZoom();
         updateLightboxContent();
         
-        // iOS Safari scroll lock fix
-        scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${scrollPosition}px`;
-        document.body.style.width = '100%';
+        // Prevent background scrolling
+        document.body.style.overflow = 'hidden';
         
         lightbox.style.display = 'block';
         lightbox.style.height = '100dvh';
@@ -1246,11 +1243,8 @@
       function closeLightbox() {
         lightbox.classList.remove('visible');
         
-        // Restore scroll position
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        window.scrollTo(0, scrollPosition);
+        // Restore scrolling
+        document.body.style.overflow = '';
         
         resetZoom();
         setTimeout(() => {
