@@ -73,7 +73,7 @@ const site = {
       title: 'Research Internship & Field Assistantship',
       date: '2020 - 2022',
       emoji: '🔬',
-      intro: 'Field Assistantships & Professional Research Internships',
+      intro: 'Field Assistantships & Research Internships',
       desc: 'Professional research roles spanning marine biology, People’s Biodiversity Registers (PBR) documentation, spatial modeling, and elevational bird prey surveys across India.',
       points: [
         '<b>Field Assistant (Jan 2021 - Feb 2021)</b>: Worked with the Wildlife Institute of India (WII) on the CAMPA Dugong Conservation Project at Marine National Park, Gulf of Kutch, Gujarat. Conducted seagrass habitat mapping, awareness programs, and sorted seagrass-associated macrobenthic fauna.',
