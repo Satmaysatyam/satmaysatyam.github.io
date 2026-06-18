@@ -653,10 +653,15 @@
       background: #f4f8f6;
     }
     
-    .copy-btn {
+    .modal-actions {
       position: absolute;
       top: 10px;
       right: 10px;
+      display: flex;
+      gap: 8px;
+    }
+    
+    .copy-btn {
       background: white;
       border: 1px solid rgba(22, 49, 38, 0.12);
       color: var(--ink);
@@ -930,9 +935,14 @@
       
       <div class="modal-body">
         <div id="citationBox" class="citation-box"></div>
-        <button id="copyBtn" class="copy-btn">
-          <span>📋 Copy citation</span>
-        </button>
+        <div class="modal-actions">
+          <button id="copyBtn" class="copy-btn">
+            <span>📋 Copy</span>
+          </button>
+          <button id="downloadBtn" class="copy-btn">
+            <span>⬇ Download</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1354,6 +1364,7 @@
       const modalTabs = citationModal.querySelectorAll('.modal-tab');
       const citationBox = document.getElementById('citationBox');
       const copyBtn = document.getElementById('copyBtn');
+      const downloadBtn = document.getElementById('downloadBtn');
       
       let selectedPub = null;
       let selectedFormat = 'apa';
@@ -1485,11 +1496,35 @@
           
           setTimeout(() => {
             copyBtn.classList.remove('copied');
-            copyBtn.querySelector('span').textContent = '📋 Copy citation';
+            copyBtn.querySelector('span').textContent = '📋 Copy';
           }, 2000);
         }).catch(err => {
           console.error('Failed to copy text: ', err);
         });
+      });
+      
+      downloadBtn.addEventListener('click', () => {
+        if (!selectedPub) return;
+        const text = selectedPub.citations[selectedFormat];
+        let ext = '.txt';
+        if (selectedFormat === 'bibtex') ext = '.bib';
+        else if (selectedFormat === 'chicago' || selectedFormat === 'mla' || selectedFormat === 'apa') ext = '.txt';
+        
+        const blob = new Blob([text], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${selectedPub.id}_citation_${selectedFormat}${ext}`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        const originalText = downloadBtn.innerHTML;
+        downloadBtn.innerHTML = '<span>✅ Downloaded!</span>';
+        setTimeout(() => {
+          downloadBtn.innerHTML = originalText;
+        }, 2000);
       });
       
       // Render Grants
