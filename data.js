@@ -793,7 +793,7 @@ const site = {
       amount: '£500',
       year: '2025',
       note: 'Travel grant awarded for attending the ASAB Winter Conference in Edinburgh, Scotland.',
-      logo: ''
+      logo: 'logos/asab.png'
     },
     {
       title: 'IEC Conference Attendance Grant',
