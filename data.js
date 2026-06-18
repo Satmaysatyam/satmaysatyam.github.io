@@ -450,8 +450,7 @@ const site = {
       group: 'Amphibians',
       srcs: ['Photography/MGF1.png', 'Photography/MGF2.png'],
       captions: [
-        'A vivid green tree frog known for its incredible ability to glide between tree canopies using its large orange-red webbed feet.',
-        'Perched high in the Western Ghats rain forest canopy, preparing for a glide.'
+        'Can glide up to 12 meters between canopy trees using the extensive webbing between its toes.'
       ],
       emoji: '🐸'
     },
@@ -462,8 +461,7 @@ const site = {
       group: 'Amphibians',
       srcs: ['Photography/MTT1.png', 'Photography/MTT2.png'],
       captions: [
-        'An endangered and highly elusive arboreal toad, endemic to the wet forest zones of the Western Ghats.',
-        'Captured during the monsoon breeding season on a tree branch near a rushing torrent.'
+        'Unlike most toads that live on the ground, this species spends almost its entire life high in the forest canopy.'
       ],
       emoji: '🐸'
     },
@@ -474,8 +472,7 @@ const site = {
       group: 'Amphibians',
       srcs: ['Photography/ABF1.png', 'Photography/ABF2.png'],
       captions: [
-        'A critically endangered shrub frog endemic to Amboli, Maharashtra. Known for skipping the tadpole stage entirely.',
-        'Active on low vegetation during monsoon nights, broadcasting its advertisement call.'
+        'Bypasses the tadpole stage entirely, hatching from its egg as a fully formed miniature froglet.'
       ],
       emoji: '🐸'
     },
@@ -486,8 +483,7 @@ const site = {
       group: 'Amphibians',
       srcs: ['Photography/BEYB1.png', 'Photography/BEYB2.png'],
       captions: [
-        'A tiny bush frog endemic to Karnataka, easily recognized by its bright golden body and striking blue ring around the eyes.',
-        'Blending seamlessly with coffee leaves and wet vegetation in the Coorg hills.'
+        'Male frogs produce a distinct "tink-tink" metallic call to attract females during the heavy monsoon rains.'
       ],
       emoji: '🐸'
     },
@@ -498,8 +494,7 @@ const site = {
       group: 'Amphibians',
       srcs: ['Photography/WTF1.png', 'Photography/WTF2.png'],
       captions: [
-        'A Common Indian Tree Frog showcasing its variable brownish-yellow body and adhesive toe pads suited for climbing.',
-        'Captured on a mossy branch, highlighting the dark temporal region on the side of its head.'
+        'Can rapidly change its skin coloration from bright yellow to dark brown to match its surroundings.'
       ],
       emoji: '🐸'
     },
@@ -510,7 +505,7 @@ const site = {
       group: 'Amphibians',
       srcs: ['Photography/BCF2.png'],
       captions: [
-        'A distinct forest-floor dweller of the Western Ghats, sporting a sharp contrast between its upper and lower body coloration.'
+        'Their tadpoles are exceptionally large—often growing much larger than the adult frogs themselves before metamorphosis.'
       ],
       emoji: '🐸'
     },
@@ -521,8 +516,7 @@ const site = {
       group: 'Amphibians',
       srcs: ['Photography/IDF1.png', 'Photography/IDF2.png'],
       captions: [
-        'A beautifully patterned narrow-mouthed frog endemic to the Western Ghats of India.',
-        'Often found in tree holes or under forest floor leaf litter.'
+        'Features a tiny mouth specialized almost exclusively for an insect diet of ants and termites.'
       ],
       emoji: '🐸'
     },
@@ -541,11 +535,7 @@ const site = {
         'Photography/MPV4.png'
       ],
       captions: [
-        'A striking color morph displaying complex blotched patterns that mimic decaying leaves.',
-        'A magnificent venomous snake endemic to the Western Ghats forests, showcasing beautiful green scaling.',
-        'An ambush predator resting on a wet forest twig, perfectly camouflaged in the understory.',
-        'A brilliant green variation of the species, commonly found waiting near streams.',
-        'One of the rarest color variations, sporting vibrant golden-yellow scales.'
+        'Features heat-sensing pits between its eyes and nostrils to strike warm-blooded prey in complete darkness.'
       ],
       emoji: '🐍'
     },
@@ -556,7 +546,7 @@ const site = {
       group: 'Reptiles',
       srcs: ['Photography/_DSC0792.JPG'],
       captions: [
-        'A group of Indian Tent Turtles (Pangshura tentoria) basking in a line on a log in their riverine habitat.'
+        'Identified by the distinct, tent-like elevated spikes running vertically down the center of its shell.'
       ],
       emoji: '🐢'
     },
@@ -570,8 +560,7 @@ const site = {
         'Photography/Collared_Cat_Snake2.png'
       ],
       captions: [
-        'A nocturnal, tree-dwelling collared cat snake (Boiga nuchalis) photographed during nocturnal search surveys in the Western Ghats.',
-        'Close-up showing the distinct collar markings and large eyes adapted for night foraging.'
+        'Uses its mildly venomous grooved rear fangs to paralyze sleeping lizards and small birds in the canopy.'
       ],
       emoji: '🐍'
     },
@@ -582,7 +571,7 @@ const site = {
       group: 'Reptiles',
       srcs: ['Photography/Monitor_lizard (1 of 1).jpg'],
       captions: [
-        'A large, powerful monitor lizard photographed while foraging in a dry deciduous habitat.'
+        'Possesses a highly forked tongue like a snake, which it uses to "taste" the air and track prey over long distances.'
       ],
       emoji: '🦎'
     },
@@ -595,7 +584,7 @@ const site = {
       group: 'Birds',
       srcs: ['Photography/DSC_0064.JPG'],
       captions: [
-        'A White-throated Kingfisher perched on a branch, displaying its rich chocolate-brown body, bright blue back, and vibrant red bill.'
+        'Unlike many kingfishers, it frequently hunts far from water, feeding primarily on large insects, lizards, and rodents.'
       ],
       emoji: '🪶'
     },
@@ -606,7 +595,7 @@ const site = {
       group: 'Birds',
       srcs: ['Photography/DSC_0755.JPG'],
       captions: [
-        'A stunning male Indian Paradise Flycatcher (white morph) with its signature long tail streamers, photographed in central India.'
+        'Adult males grow spectacular tail ribbons up to 12 inches long, which flutter gracefully as they chase insects in mid-air.'
       ],
       emoji: '🪶'
     },
@@ -617,7 +606,7 @@ const site = {
       group: 'Birds',
       srcs: ['Photography/DSC_0420.JPG'],
       captions: [
-        'A Jungle Owlet camouflaged among the lush green foliage, looking forward with its distinctive golden eyes.'
+        'Unlike most owls, this species is frequently active during the day and often hunts small birds and lizards in bright sunlight.'
       ],
       emoji: '🪶'
     },
@@ -629,7 +618,7 @@ const site = {
       srcs: ['Photography/Tragopan2-0857.png'],
       objectPosition: 'top',
       captions: [
-        'An incredibly rare and brightly patterned pheasant species, highlighting Himalayan high-altitude forest biodiversity.'
+        'During courtship, males inflate brightly colored, fleshy "horns" and a vibrant bib-like lappet to impress females.'
       ],
       emoji: '🪶'
     },
@@ -640,7 +629,7 @@ const site = {
       group: 'Birds',
       srcs: ['Photography/Woodpecker_rufous1-0647.png'],
       captions: [
-        'A unique rufous-colored woodpecker known to lay its eggs inside the active nests of stinging acrobat ants (*Crematogaster*).'
+        'Lays its eggs directly inside the active, stinging nests of acrobat ants, which surprisingly do not attack the incubating bird.'
       ],
       emoji: '🪶'
     },
@@ -651,7 +640,7 @@ const site = {
       group: 'Birds',
       srcs: ['Photography/Nepal_LT-0009.png'],
       captions: [
-        'An active flocking bird of the Eastern Himalayas, recorded during mixed-species bird flock bioacoustic surveys.'
+        'Highly social birds that form tight-knit flocks, constantly communicating with a diverse vocabulary of squeaks, chatters, and trills.'
       ],
       emoji: '🪶'
     },
@@ -662,7 +651,7 @@ const site = {
       group: 'Birds',
       srcs: ['Photography/_DSC0774.JPG'],
       captions: [
-        'A close view of the majestic Great Hornbill, showcasing its massive bill and yellow casque.'
+        'Females seal themselves entirely inside a tree cavity with mud for months during nesting, relying completely on the male for food.'
       ],
       emoji: '🪶'
     },
@@ -675,7 +664,7 @@ const site = {
       group: 'Mammals',
       srcs: ['Photography/Elephant1-0927.jpg'],
       captions: [
-        'A majestic bull elephant photographed in a forest corridor, emphasizing the need for landscape-scale conservation.'
+        'Can consume up to 150 kilograms of vegetation daily and uses its trunk to pick up objects as tiny as a single grain of rice.'
       ],
       emoji: '🐘'
     },
@@ -686,7 +675,7 @@ const site = {
       group: 'Mammals',
       srcs: ['Photography/Leopard1-0435.jpg'],
       captions: [
-        'An elusive big cat captured using camera traps during occupancy surveys in Central India.'
+        'Possesses immense upper body strength, allowing it to drag prey heavier than its own body weight high into tree branches.'
       ],
       emoji: '🐆'
     },
@@ -697,7 +686,7 @@ const site = {
       group: 'Mammals',
       srcs: ['Photography/Serow1-0074.png'],
       captions: [
-        'A goat-like mammal found in rugged Himalayan woodlands, representing the fragile alpine ecosystem.'
+        'An unusual mammal that looks like a cross between a goat, a donkey, and an antelope, perfectly adapted for steep, rocky slopes.'
       ],
       emoji: '🐐'
     },
@@ -708,8 +697,7 @@ const site = {
       group: 'Mammals',
       srcs: ['Photography/buffalo1-0017.png', 'Photography/buffalo3-0419.png'],
       captions: [
-        'An endangered bovid photographed wallowing in the wetlands of Central Indian grasslands.',
-        'A small family group keeping watch in a high-grass wetland habitat.'
+        'Boasts the widest horn span of any living bovid, with massive crescent-shaped horns that can stretch over two meters across.'
       ],
       emoji: '🐃'
     },
@@ -720,8 +708,7 @@ const site = {
       group: 'Mammals',
       srcs: ['Photography/spotted_deer1-1006.png', 'Photography/spotted_deer2-0140.png'],
       captions: [
-        'A mature male with impressive antlers, representing the core prey base in tropical dry forests.',
-        'Foraging along the edge of a deciduous forest meadow in the early morning.'
+        'Often forms a mutualistic relationship with langur monkeys, eating the fruits they drop and relying on their alarm calls for predator warnings.'
       ],
       emoji: '🦌'
     },
@@ -732,7 +719,7 @@ const site = {
       group: 'Mammals',
       srcs: ['Photography/_DSC0310.JPG'],
       captions: [
-        'An adult Hog Deer (Axis porcinus) observed in a grassland clearing during biodiversity occupancy surveys.'
+        'Gets its name from its unusual habit of running through tall grass with its head hung low like a pig, rather than leaping.'
       ],
       emoji: '🦌'
     },
@@ -743,7 +730,7 @@ const site = {
       group: 'Mammals',
       srcs: ['Photography/_DSC0479.JPG'],
       captions: [
-        'An arboreal Black Giant Squirrel (Ratufa bicolor) foraging high in the canopy of a broadleaf forest.'
+        'One of the largest squirrel species in the world, capable of leaping incredible distances of up to 6 meters between canopy branches.'
       ],
       emoji: '🐿️'
     },
@@ -754,7 +741,7 @@ const site = {
       group: 'Mammals',
       srcs: ['Photography/_DSC0525.JPG'],
       captions: [
-        'An Indian Muntjac or Barking Deer (Muntiacus muntjak) scaling a steep, mossy slope in a dense forested ravine.'
+        'Produces a loud, dog-like bark when alarmed by predators, giving it the nickname "barking deer".'
       ],
       emoji: '🦌'
     },
@@ -768,7 +755,7 @@ const site = {
       group: 'Invertebrates',
       srcs: ['Photography/_DSC0328.png'],
       captions: [
-        'An Amboli purple forest crab (Ghatiana atropurpurea) observed in the Western Ghats.'
+        'A fully terrestrial crab that never returns to water to breed, instead relying entirely on the high humidity of the monsoon forest.'
       ],
       emoji: '🦀'
     }

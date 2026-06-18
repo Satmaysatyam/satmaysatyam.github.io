@@ -598,7 +598,7 @@
           const hasMultiple = p.srcs.length > 1;
           
           const imagesHtml = p.srcs.map((src, imgIdx) => `
-            <img src="${src}" alt="${p.title}" data-img-index="${imgIdx}" loading="lazy">
+            <img src="${src}" alt="${p.title}" data-img-index="${imgIdx}" loading="lazy" style="object-position: ${p.objectPosition || 'center'};">
           `).join('');
           
           const trackHtml = `
@@ -837,7 +837,7 @@
         lightboxTitle.textContent = p.title;
         lightboxBadge.textContent = p.group;
         lightboxSci.textContent = p.scientific;
-        lightboxDesc.textContent = p.captions[currentImageIndex];
+        lightboxDesc.textContent = p.captions[currentImageIndex] || p.captions[0];
         
         // Update photo counter indicator
         if (p.srcs.length > 1) {
