@@ -42,7 +42,7 @@ const site = {
         { src: 'Research/Amphibian4.jpeg', caption: 'Dense forest stream habitat for amphibian surveys' },
         { src: 'Research/Amphibian5.jpeg', caption: 'Searching for vocalizing amphibians in the undergrowth' },
         { src: 'Research/Amphibian6.jpeg', caption: 'Documenting amphibian microhabitats' },
-        { src: 'Research/Amphibian7.jpeg', caption: 'Field observations during monsoon surveys' },
+        { src: 'Research/Amphibian7.jpeg', caption: 'Modified CDC mosquito traps for quantifying parasitic pressure on frogs' },
         { src: 'Research/Amphibian8.jpeg', caption: 'Recording acoustic data in natural amphibian habitats' }
       ],
       logos: [
