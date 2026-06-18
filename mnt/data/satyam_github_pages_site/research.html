@@ -254,6 +254,32 @@
       z-index: 20;
     }
     
+    .lightbox-close-bottom {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      opacity: 0.65;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      padding: 10px 18px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 99px;
+      border: 1px solid rgba(255,255,255,0.08);
+      z-index: 200;
+      backdrop-filter: blur(8px);
+    }
+    
+    .lightbox-close-bottom:hover {
+      opacity: 1;
+      background: rgba(255,255,255,0.15);
+      transform: scale(1.05);
+    }
+    
     .lightbox-close:hover {
       opacity: 1;
       background: rgba(255,255,255,0.15);
@@ -865,6 +891,9 @@
   <!-- Lightbox Modal for figures -->
   <div id="lightbox" class="lightbox">
     <span id="lightboxClose" class="lightbox-close">&times;</span>
+    <div id="lightboxCloseBottom" class="lightbox-close-bottom">
+      <span style="font-size: 1.2rem; margin-right: 4px;">&times;</span> Close
+    </div>
     <span id="lightboxPrev" class="lightbox-nav lightbox-prev">&#10094;</span>
     <span id="lightboxNext" class="lightbox-nav lightbox-next">&#10095;</span>
     <div class="lightbox-content-wrap">
@@ -1283,6 +1312,10 @@
         });
       }
 
+      const lightboxCloseBottom = document.getElementById('lightboxCloseBottom');
+      if (lightboxCloseBottom) {
+        lightboxCloseBottom.addEventListener('click', closeLightbox);
+      }
       lightboxClose.addEventListener('click', closeLightbox);
       document.getElementById('lightboxZoomOut').addEventListener('click', (e) => {
         e.stopPropagation();
