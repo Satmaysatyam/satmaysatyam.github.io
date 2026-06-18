@@ -371,6 +371,8 @@ input[type="range"] { width: 100%; accent-color: var(--brand); }
   .grid-2, .grid-3, .grid-4, .split, .contact-grid, .gallery-grid, .art-grid, .sound-grid, .mixer-grid { grid-template-columns: 1fr; }
   .timeline-item, .pub { grid-template-columns: 1fr; }
   .floating-note { left: 16px; right: 16px; max-width: none; }
+  .section-wrap { padding: 16px; }
+  .panel-inner { padding: 16px; }
   .hide-on-mobile { display:none; }
 }
 
