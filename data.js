@@ -186,7 +186,7 @@ const site = {
       doi: '10.1093/ornithology/ukag021',
       url: 'https://doi.org/10.1093/ornithology/ukag021',
       note: 'Investigates how vocal activity during the dawn chorus acts as an acoustic beacon, influencing the social centrality and cohesion of mixed-species understory bird flocks.',
-      speciesName: 'Vocal Centrality Network Plot',
+      speciesName: 'MSF network plots with nodes as species, edges as co-occurrence and node colours as Flocktypes',
       img: 'Photography/bird_network_plot.png',
       citations: {
         apa: 'Gupta, S., Bharadwaj, A., Bhat, A., Thapa, A., Biswakarma, A., Tamang, B., Munda, B., Biswakarma, B., Tamang, D., Pradhan, D., Rai, M. K., Rai, R., Rai, S., & Srinivasan, U. (2026). Vocal species are more central in Eastern Himalayan mixed-species bird flocks. Ornithology, 115(2), ukag021. https://doi.org/10.1093/ornithology/ukag021',
