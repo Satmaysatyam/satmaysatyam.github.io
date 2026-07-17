@@ -496,26 +496,26 @@ input[type="range"] { width: 100%; accent-color: var(--brand); }
 
 @keyframes lemur-traverse {
   /* 1. Start at top-left, walk RIGHT */
-  0% { left: 0; top: 0; transform: translate(-235px, -30px) rotate(0deg) scaleX(1); }
-  29% { left: 60%; top: 0; transform: translate(-261px, -30px) rotate(0deg) scaleX(1); }
+  0% { left: -15%; top: 5%; transform: rotate(0deg); }
+  29% { left: 48%; top: 5%; transform: rotate(0deg); }
   
   /* Corner 1: Pivot DOWN */
-  34% { left: 60%; top: 0; transform: translate(-134px, -158px) rotate(90deg) scaleX(1); }
+  34% { left: 48%; top: 5%; transform: rotate(90deg); }
   
   /* 2. Walk DOWN the gap */
-  51% { left: 60%; top: 100%; transform: translate(-134px, -212px) rotate(90deg) scaleX(1); }
+  51% { left: 48%; top: 85%; transform: rotate(90deg); }
   
   /* Corner 2: Pivot RIGHT */
-  56% { left: 60%; top: 100%; transform: translate(-134px, -24px) rotate(0deg) scaleX(1); }
+  56% { left: 48%; top: 85%; transform: rotate(0deg); }
   
   /* 3. Walk RIGHT under photo */
-  75% { left: 100%; top: 100%; transform: translate(-275px, -24px) rotate(0deg) scaleX(1); }
+  75% { left: 110%; top: 85%; transform: rotate(0deg); }
   
   /* Corner 3: Pivot DOWN */
-  80% { left: 100%; top: 100%; transform: translate(-148px, -212px) rotate(90deg) scaleX(1); }
+  80% { left: 110%; top: 85%; transform: rotate(90deg); }
   
   /* 4. Walk DOWN off-screen */
-  100% { left: 100%; top: 100%; transform: translate(-148px, 288px) rotate(90deg) scaleX(1); }
+  100% { left: 110%; top: 150%; transform: rotate(90deg); }
 }
 
 .lemur {
