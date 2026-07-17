@@ -602,7 +602,7 @@
           const hasMultiple = p.srcs.length > 1;
           
           const imagesHtml = p.srcs.map((src, imgIdx) => `
-            <img src="${src}" alt="${p.title}" data-img-index="${imgIdx}" loading="lazy" style="object-position: ${p.objectPosition || 'center'};">
+            <img src="${encodeURI(src)}" alt="${p.title}" data-img-index="${imgIdx}" ${imgIdx === 0 ? 'loading="lazy"' : ''} style="object-position: ${p.objectPosition || 'center'};">
           `).join('');
           
           const trackHtml = `
@@ -836,7 +836,7 @@
         const p = filteredPhotos[currentSpeciesIndex];
         if (!p) return;
         
-        lightboxImg.src = p.srcs[currentImageIndex];
+        lightboxImg.src = encodeURI(p.srcs[currentImageIndex]);
         lightboxEmoji.textContent = p.emoji;
         lightboxTitle.textContent = p.title;
         lightboxBadge.textContent = p.group;

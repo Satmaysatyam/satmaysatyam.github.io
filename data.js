@@ -760,23 +760,23 @@ const site = {
       emoji: '🦀'
     }
   ],
-  art: [
-    { title: 'Avian Study I', medium: 'Graphite on Paper', note: 'A detailed study of plumage and form from field observations.', emoji: '✏️', src: 'Art/WhatsApp Image 2026-06-03 at 1.34.22 PM (1).jpeg' },
-    { title: 'Nature Study II', medium: 'Graphite on Paper', note: 'Capturing the essence of wildlife in its natural habitat.', emoji: '✏️', src: 'Art/WhatsApp Image 2026-06-03 at 1.34.22 PM.jpeg' },
-    { title: 'Digital Portrait I', medium: 'Procreate', note: 'Scientific illustration highlighting key morphological features.', emoji: '🎨', src: 'Art/WhatsApp Image 2026-06-03 at 1.35.44 PM.jpeg' },
-    { title: 'Flora Study I', medium: 'Watercolors', note: 'Exploring color and texture in botanical subjects.', emoji: '🖌️', src: 'Art/WhatsApp Image 2026-06-03 at 1.35.45 PM (1).jpeg' },
-    { title: 'Wildlife Sketch III', medium: 'Graphite on Paper', note: 'Quick field sketch focusing on movement and posture.', emoji: '✏️', src: 'Art/WhatsApp Image 2026-06-03 at 1.35.45 PM (2).jpeg' },
-    { title: 'Digital Portrait II', medium: 'Procreate', note: 'A vibrant depiction of local fauna.', emoji: '🎨', src: 'Art/WhatsApp Image 2026-06-03 at 1.35.45 PM.jpeg' },
-    { title: 'Landscape Study I', medium: 'Watercolors', note: 'Atmospheric study of the Eastern Himalayas.', emoji: '🖌️', src: 'Art/WhatsApp Image 2026-06-03 at 1.35.46 PM (1).jpeg' },
-    { title: 'Avian Study II', medium: 'Graphite on Paper', note: 'Detailed pencil work capturing intricate feather patterns.', emoji: '✏️', src: 'Art/WhatsApp Image 2026-06-03 at 1.35.46 PM (2).jpeg' },
-    { title: 'Digital Portrait III', medium: 'Procreate', note: 'Stylized scientific rendering for educational materials.', emoji: '🎨', src: 'Art/WhatsApp Image 2026-06-03 at 1.35.46 PM.jpeg' },
-    { title: 'Flora Study II', medium: 'Watercolors', note: 'Vibrant colors of the undergrowth.', emoji: '🖌️', src: 'Art/WhatsApp Image 2026-06-03 at 1.35.47 PM (1).jpeg' },
-    { title: 'Nature Study IV', medium: 'Graphite on Paper', note: 'Pencil sketch of an amphibian in its microhabitat.', emoji: '✏️', src: 'Art/WhatsApp Image 2026-06-03 at 1.35.47 PM (2).jpeg' },
-    { title: 'Digital Portrait IV', medium: 'Procreate', note: 'Detailed illustration of a mixed-species flock participant.', emoji: '🎨', src: 'Art/WhatsApp Image 2026-06-03 at 1.35.47 PM (3).jpeg' },
-    { title: 'Landscape Study II', medium: 'Watercolors', note: 'Morning mist over the canopy.', emoji: '🖌️', src: 'Art/WhatsApp Image 2026-06-03 at 1.35.47 PM.jpeg' },
-    { title: 'Avian Study III', medium: 'Graphite on Paper', note: 'Focusing on the beak and facial structure.', emoji: '✏️', src: 'Art/WhatsApp Image 2026-06-03 at 1.35.48 PM (1).jpeg' },
-    { title: 'Digital Portrait V', medium: 'Procreate', note: 'Bringing field notes to life digitally.', emoji: '🎨', src: 'Art/WhatsApp Image 2026-06-03 at 1.35.48 PM (2).jpeg' },
-    { title: 'Flora Study III', medium: 'Watercolors', note: 'A delicate study of monsoon blooms.', emoji: '🖌️', src: 'Art/WhatsApp Image 2026-06-03 at 1.35.48 PM.jpeg' }
+art: [
+    { title: 'Avian Study I', medium: 'Graphite on Paper', note: 'A detailed study of plumage and form from field observations.', emoji: '✏️', src: 'Art/1.png' },
+    { title: 'Nature Study II', medium: 'Graphite on Paper', note: 'Capturing the essence of wildlife in its natural habitat.', emoji: '✏️', src: 'Art/2.png' },
+    { title: 'Digital Portrait I', medium: 'Procreate', note: 'Scientific illustration highlighting key morphological features.', emoji: '🎨', src: 'Art/3.png' },
+    { title: 'Flora Study I', medium: 'Watercolors', note: 'Exploring color and texture in botanical subjects.', emoji: '🖌️', src: 'Art/4.png' },
+    { title: 'Wildlife Sketch III', medium: 'Graphite on Paper', note: 'Quick field sketch focusing on movement and posture.', emoji: '✏️', src: 'Art/5.png' },
+    { title: 'Digital Portrait II', medium: 'Procreate', note: 'A vibrant depiction of local fauna.', emoji: '🎨', src: 'Art/6.png' },
+    { title: 'Landscape Study I', medium: 'Watercolors', note: 'Atmospheric study of the Eastern Himalayas.', emoji: '🖌️', src: 'Art/7.png' },
+    { title: 'Avian Study II', medium: 'Graphite on Paper', note: 'Detailed pencil work capturing intricate feather patterns.', emoji: '✏️', src: 'Art/8.png' },
+    { title: 'Digital Portrait III', medium: 'Procreate', note: 'Stylized scientific rendering for educational materials.', emoji: '🎨', src: 'Art/9.png' },
+    { title: 'Flora Study II', medium: 'Watercolors', note: 'Vibrant colors of the undergrowth.', emoji: '🖌️', src: 'Art/10.jpeg' },
+    { title: 'Nature Study IV', medium: 'Graphite on Paper', note: 'Pencil sketch of an amphibian in its microhabitat.', emoji: '✏️', src: 'Art/11.png' },
+    { title: 'Digital Portrait IV', medium: 'Procreate', note: 'Detailed illustration of a mixed-species flock participant.', emoji: '🎨', src: 'Art/12.png' },
+    { title: 'Landscape Study II', medium: 'Watercolors', note: 'Morning mist over the canopy.', emoji: '🖌️', src: 'Art/13.png' },
+    { title: 'Avian Study III', medium: 'Graphite on Paper', note: 'Focusing on the beak and facial structure.', emoji: '✏️', src: 'Art/14.png' },
+    { title: 'Digital Portrait V', medium: 'Procreate', note: 'Bringing field notes to life digitally.', emoji: '🎨', src: 'Art/15.png' },
+    { title: 'Flora Study III', medium: 'Watercolors', note: 'A delicate study of monsoon blooms.', emoji: '🖌️', src: 'Art/16.png' }
   ],
   grants: [
     {
